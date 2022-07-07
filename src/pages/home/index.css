@@ -1,7 +1,7 @@
 .swiper {
   width: 100%;
   height: 100%;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .home {
@@ -11,5 +11,14 @@
 
 .mySwiper {
   height: 100vh;
-  background-color: red;
+  /* background-color: red; */
 }
+
+
+/* home init style css */
+.home-init,.banner-item {
+  background-size: cover;  
+  height: 100vh;
+  background-repeat: no-repeat no-repeat;
+}
+

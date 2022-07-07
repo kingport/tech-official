@@ -91,7 +91,6 @@ export default function () {
               <img src={listBlackIcon} alt="black" />
             </div>
           </div> 
-          {/* {JSON.stringify({width: size?.width, height: size?.height}, null, 2)}         */}
         </div>
       </div>
     </header>
