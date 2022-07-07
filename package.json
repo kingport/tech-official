@@ -2,6 +2,7 @@
   "name": "react-h5-template",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://kingport.github.io/tech-official",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
