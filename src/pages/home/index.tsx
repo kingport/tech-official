@@ -10,22 +10,26 @@ import Banner1Bg from '../../assets/home/banner-1.jpeg'
 import Banner2Bg from '../../assets/home/banner-2.jpeg'
 import Banner3Bg from '../../assets/home/banner-3.jpeg'
 import Banner4Bg from '../../assets/home/banner-4.jpeg'
+import Banner1MBg from '../../assets/home/banner-1-m.jpeg'
+import Banner2MBg from '../../assets/home/banner-2-m.jpeg'
+import Banner3MBg from '../../assets/home/banner-3-m.jpeg'
+import Banner4MBg from '../../assets/home/banner-4-m.jpeg'
 
 function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
 
   const styleBanner1 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner1Bg : Banner1Bg})`
+    backgroundImage: `url(${size?.width > 580 ? Banner1Bg : Banner1MBg})`
   }
   const styleBanner2 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner2Bg : Banner2Bg})`
+    backgroundImage: `url(${size?.width > 580 ? Banner2Bg : Banner2MBg})`
   }
   const styleBanner3 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner3Bg : Banner3Bg})`
+    backgroundImage: `url(${size?.width > 580 ? Banner3Bg : Banner3MBg})`
   }
   const styleBanner4 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner4Bg : Banner4Bg})`
+    backgroundImage: `url(${size?.width > 580 ? Banner4Bg : Banner4MBg})`
   }
 
   return (
