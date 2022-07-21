@@ -39,6 +39,8 @@ function Home() {
         speed={1000}
         slidesPerView={1}
         spaceBetween={0}
+        // 禁止点击
+        simulateTouch={false}
         mousewheel={{
           // 滚轮灵明度
           sensitivity: 100,

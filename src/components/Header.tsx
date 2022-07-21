@@ -34,28 +34,28 @@ export default function () {
     {
       id: 1,
       name: 'Home',
-      path: '/tech-official'
+      path: '/'
     },
     {
       id: 2,
       name: 'About Us',
-      path: '/tech-official'
+      path: '/about'
 
     },
     {
       id: 3,
       name: 'Brand',
-      path: '/tech-official'
+      path: '/'
     }, 
     {
       id: 4,
       name: 'Contact Us',
-      path: '/tech-official'
+      path: '/'
     },
     {
       id: 5,
       name: 'Welcome to join',
-      path: '/tech-official'
+      path: '/'
     }
   ]
 
