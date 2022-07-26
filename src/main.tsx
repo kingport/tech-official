@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import App from './App'
 import Header from './components/Header';
 import {
@@ -21,15 +21,15 @@ const queryClient = new QueryClient({
 });
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <HashRouter>
         <div className='root-content'>
           <Header />
           <App />
           {window?.location.pathname !== '/' && <Footer />}
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </QueryClientProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

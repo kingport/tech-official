@@ -39,19 +39,27 @@ export default function () {
     {
       id: 2,
       name: 'About Us',
-      path: '/tech-official'
+      path: '/about'
 
     },
     {
       id: 3,
       name: 'Brand',
-      path: '/tech-official'
+      path: '/'
     }, 
     {
       id: 4,
       name: 'Contact Us',
-      path: '/tech-official'
+      path: '/'
     },
+<<<<<<< HEAD
+=======
+    {
+      id: 5,
+      name: 'Welcome to join',
+      path: '/'
+    }
+>>>>>>> 963af57ec4ae067476b819ae3f117ceff15ab7d3
   ]
 
   const jumpToNav = (item: navParams) => {
