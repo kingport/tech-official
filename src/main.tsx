@@ -23,13 +23,13 @@ const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <HashRouter>
+      <BrowserRouter>
         <div className='root-content'>
           <Header />
           <App />
           {window?.location.pathname !== '/' && <Footer />}
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </QueryClientProvider>
   // </React.StrictMode>
 )

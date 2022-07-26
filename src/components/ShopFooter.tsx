@@ -1,10 +1,20 @@
 import React from "react";
+import { useFooterUrlResult } from "../hooks/useFooterUrlResult";
 import { useSize } from "../hooks/useSize";
+import { getLanguage } from "../utils";
 import './shopFooter.css'
 
 export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
+
+  const {
+    data: footerResult,
+    isLoading: footerResultLoading,
+    isFetching: footerResultFetching,
+    refetch: footerResultRefetch
+  } = useFooterUrlResult({language: getLanguage(), companyId: 1})
+
   
   return (
    <div ref={target} className="footer-main">
@@ -58,7 +68,7 @@ export default function () {
                   </div>
                   <div className="make-box">
                       <div className="make-item d-none d-md-block d-sm-block">
-                          <div className="qrcode-box"><img src="https://www.hello-tech.com/images/qrcode5f31645ac121c20b294150c7ba68228f.png" alt=""/></div>
+                          <div className="qrcode-box"><img src={footerResult?.quickCode} alt=""/></div>
                       </div>
                   </div>
               </div>

@@ -5,6 +5,9 @@ import logoEn from '../assets/logo-en.png'
 import logoMain from '../assets/logo-main.png'
 import listBlackIcon from '../assets/index-list.png';
 import './header.css'
+import { useMenusResult } from '../hooks/useMenusResult'
+import { useSize } from "../hooks/useSize";
+import { getLanguage } from "../utils";
 
 
 interface navParams {
@@ -13,22 +16,22 @@ interface navParams {
   path: string;
 }
 
-const useSize = (target: any) => {
-  const [size, setSize] = React.useState<any>()
-
-  React.useLayoutEffect(() => {
-    setSize(target.current.getBoundingClientRect())
-  }, [target])
-
-  // Where the magic happens
-  useResizeObserver(target, (entry:any) => setSize(entry.contentRect))
-  return size
-}
 
 export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
   let navigate = useNavigate();
+
+  const {
+    data: homeResult,
+    isLoading: homeResultLoading,
+    isFetching: homeResultFetching,
+    refetch: homeResultRefetch
+  } = useMenusResult({language: getLanguage(), companyId: 1})
+
+  console.log(homeResult, 'searchResult')
+  console.log(homeResultLoading, 'searchResultLoading')
+  console.log(homeResultFetching, 'searchResultFetching')
 
   const navList = [
     {
@@ -52,14 +55,6 @@ export default function () {
       name: 'Contact Us',
       path: '/'
     },
-<<<<<<< HEAD
-=======
-    {
-      id: 5,
-      name: 'Welcome to join',
-      path: '/'
-    }
->>>>>>> 963af57ec4ae067476b819ae3f117ceff15ab7d3
   ]
 
   const jumpToNav = (item: navParams) => {

@@ -8,5 +8,14 @@ export default defineConfig({
     react(),
     // WindiCSS(),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://106.13.197.84:80",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
   // base: '/tech-official/'
 })

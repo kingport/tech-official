@@ -6,31 +6,39 @@ import "swiper/css/pagination";
 import './index.css'
 import InitPage from "./InitPage";
 import { useSize } from "../../hooks/useSize";
-import Banner1Bg from '../../assets/home/banner-1.jpeg'
-import Banner2Bg from '../../assets/home/banner-2.jpeg'
-import Banner3Bg from '../../assets/home/banner-3.jpeg'
-import Banner4Bg from '../../assets/home/banner-4.jpeg'
-import Banner1MBg from '../../assets/home/banner-1-m.jpeg'
-import Banner2MBg from '../../assets/home/banner-2-m.jpeg'
-import Banner3MBg from '../../assets/home/banner-3-m.jpeg'
-import Banner4MBg from '../../assets/home/banner-4-m.jpeg'
-import Footer from "../../components/Footer";
+import { useHomeResult } from '../../hooks/useHomeResult'
 
+import Footer from "../../components/Footer";
+import { getLanguage } from '../../utils/index'
 function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
 
+  const {
+    data: homeResult,
+    isLoading: homeResultLoading,
+    isFetching: homeResultFetching,
+    refetch: homeResultRefetch
+  } = useHomeResult({language: getLanguage(), topTitleId: 1})
+
+  console.log(homeResult, 'searchResult')
+  console.log(homeResultLoading, 'searchResultLoading')
+  console.log(homeResultFetching, 'searchResultFetching')
+
   const styleBanner1 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner1Bg : Banner1MBg})`
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner1 : homeResult?.h5?.banner1})`
   }
   const styleBanner2 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner2Bg : Banner2MBg})`
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner2 : homeResult?.h5?.banner2})`
   }
   const styleBanner3 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner3Bg : Banner3MBg})`
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner3 : homeResult?.h5?.banner3})`
   }
   const styleBanner4 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner4Bg : Banner4MBg})`,
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner4 : homeResult?.h5?.banner4})`
+  }
+  const styleBanner5 = {
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner5 : homeResult?.h5?.banner5})`,
     height: '90vh'
   }
 
@@ -50,9 +58,9 @@ function Home() {
         modules={[Mousewheel, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <InitPage />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <div style={styleBanner1} className="banner-item"></div>
         </SwiperSlide>
@@ -63,7 +71,10 @@ function Home() {
           <div style={styleBanner3} className="banner-item"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner4} className="banner-item">
+          <div style={styleBanner4} className="banner-item"></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div style={styleBanner5} className="banner-item">
             <div className="home-footer">
               <Footer />
             </div>
