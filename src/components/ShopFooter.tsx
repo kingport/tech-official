@@ -28,26 +28,26 @@ export default function () {
                           <div className="make-box">
                               <div className="make-item">
                                   <div className="make-a-box">
-                                      <a
+                                      {/* <a
                                           className="make-a d-none d-md-block d-sm-block"
                                           href="http://www.dx2.cn"
                                           target="_blank">
                                           <div className="logo-item"><img src="https://www.hello-tech.com/images/dxe-logo861a0c79b129250e485699e58e6ea87a.png" alt=""/></div>
-                                      </a>
-                                      <a
+                                      </a> */}
+                                      {/* <a
                                           className="make-a"
                                           href="https://dxpower.tmall.com/shop/view_shop.htm?spm=a1z0k.6846577.1130980037.d4919817.751237de2SHZi7&amp;shop_id=65667358"
                                           target="_blank">
                                           <div className="img tmall-img"></div>
                                           <span>天猫旗舰店</span>
-                                      </a>
-                                      <a
+                                      </a> */}
+                                      {/* <a
                                           className="make-a"
                                           href="https://mall.jd.com/index-962137.html"
                                           target="_blank">
                                           <div className="img jd-img"></div>
                                           <span>京东旗舰店</span>
-                                      </a>
+                                      </a> */}
                                       <div className="make-a d-block d-sm-none">
                                           <div className="qrcode-box"><img src="" alt=""/></div>
                                       </div>
