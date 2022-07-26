@@ -12,6 +12,7 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background-color: #fff;
 }
 
 .header-box {
@@ -19,7 +20,7 @@
   align-items: center;
   justify-content: space-between;
   height: 60px;
-  color: #fff;
+  color: #000;
   font-weight: 400;
 }
 
@@ -51,15 +52,14 @@
 
 .header-maim .header-box .nav-box .nav-item {
   display: flex;
-  height: 60px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  position: relative;
 }
 
 .header-maim .header-box .nav-box .nav-item span {
-  color: #fff;
-  position: relative;
+  /* color: #fff; */
 }
 
 .header-maim .header-box .nav-box .nav-item span::before {
@@ -78,6 +78,10 @@
 .header-maim .header-box .nav-box .nav-item span:hover::before {
   width: 100%;
   left: 0;
+}
+
+.header-maim .header-box .nav-box .nav-item span:hover.container-fluid {
+  background-color: #fff;
 }
 
 .header-r {
@@ -101,8 +105,9 @@
   cursor: pointer;
 }
 
+
 /* 适配 */
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 580px) {
   .header-c {
     display: none;
   }

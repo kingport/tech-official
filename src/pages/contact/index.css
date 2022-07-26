@@ -1,0 +1,59 @@
+.content-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.com-img {
+  background: url("https://www.hello-tech.com/images/banner-contact5988c4482ba9f4b750eb221a4e45546e.jpg") center/cover no-repeat;
+  min-height: 75vh;
+}
+
+.com-img .info-box {
+  width: auto;
+  top: 50%;
+  left: 20%;
+}
+
+.contact-wrapper {
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-box {
+  width: 100%;
+  max-width: 1469px;
+}
+
+.contact-box .contact-item {
+  position: relative;
+  margin-top: 80px;
+}
+
+.contact-box .info-box {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+
+.contact-box .info-box .title {
+  font-size: 32px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 10px;
+}
+
+.contact-box .info-box .text .icon {
+  margin-top: -2px;
+}
+
+.contact-box .info-box .text {
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(49, 48, 48, 0.9);
+}
+
+.container-box {
+  margin-top: 180px;
+}

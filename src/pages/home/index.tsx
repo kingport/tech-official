@@ -14,6 +14,7 @@ import Banner1MBg from '../../assets/home/banner-1-m.jpeg'
 import Banner2MBg from '../../assets/home/banner-2-m.jpeg'
 import Banner3MBg from '../../assets/home/banner-3-m.jpeg'
 import Banner4MBg from '../../assets/home/banner-4-m.jpeg'
+import Footer from "../../components/Footer";
 
 function Home() {
   const target = React.useRef(null)
@@ -29,7 +30,8 @@ function Home() {
     backgroundImage: `url(${size?.width > 580 ? Banner3Bg : Banner3MBg})`
   }
   const styleBanner4 = {
-    backgroundImage: `url(${size?.width > 580 ? Banner4Bg : Banner4MBg})`
+    backgroundImage: `url(${size?.width > 580 ? Banner4Bg : Banner4MBg})`,
+    height: '90vh'
   }
 
   return (
@@ -59,7 +61,11 @@ function Home() {
           <div style={styleBanner3} className="banner-item"></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner4} className="banner-item"></div>
+          <div style={styleBanner4} className="banner-item">
+            <div className="home-footer">
+              <Footer />
+            </div>
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>

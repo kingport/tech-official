@@ -8,6 +8,7 @@ import {
   QueryClientProvider, 
 } from 'react-query'
 import './index.css'
+import Footer from './components/Footer';
 
 const queryClient = new QueryClient({
   defaultOptions:{
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <div className='root-content'>
           <Header />
           <App />
+          {window?.location.pathname !== '/' && <Footer />}
         </div>
       </BrowserRouter>
     </QueryClientProvider>

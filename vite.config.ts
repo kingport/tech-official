@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [react(),
     // WindiCSS(),
   ],
-  base: '/tech-official/'
+  // base: '/tech-official/'
 })

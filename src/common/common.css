@@ -6,3 +6,8 @@ body {
   text-align: left;
 }
 
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}

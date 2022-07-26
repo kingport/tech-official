@@ -1,0 +1,77 @@
+
+.content-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.com-img {
+  background: url("https://www.hello-tech.com/images/banner-partbbaa1f581b48d30d4a9f09594e76a41d.jpg") no-repeat no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.row-part {
+  margin: 40px 0;
+}
+
+.row-part .part-box:not(:last-child) {
+  margin-bottom: 40px;
+}
+
+.row-part .part-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.row-part .part-box .part-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.row-part .part-box .part-item .part-img {
+  flex-basis: 50%;
+}
+
+.row-part .part-box .part-item .part-info {
+  flex-basis: 50%;
+  flex-direction: column;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.row-part .part-box .part-item .part-info .title {
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.row-part .part-box .part-item .part-info .text {
+  width: 80%;
+  margin-top: 20px;
+}
+
+.row-part .part-box:nth-child(even) {
+  background: #f8f8f8;
+  padding: 40px 0;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .row-part .part-box .part-item {
+    flex-basis: 100%;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .row-part .part-box .part-item .part-img .text, .row-part .part-box .part-item .part-info .text {
+    width: 100%;
+  }
+}

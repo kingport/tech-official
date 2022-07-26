@@ -216,3 +216,17 @@ header i:hover {
   /* 将额外部分隐藏，这样小车通过时不会超出边界形成违和感 */
   overflow: hidden; 
 }
+
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  /* color: #000; */
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  border-style: none;
+}

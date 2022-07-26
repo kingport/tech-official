@@ -34,7 +34,7 @@ export default function () {
     {
       id: 1,
       name: 'Home',
-      path: '/tech-official'
+      path: '/'
     },
     {
       id: 2,
@@ -52,11 +52,6 @@ export default function () {
       name: 'Contact Us',
       path: '/tech-official'
     },
-    {
-      id: 5,
-      name: 'Welcome to join',
-      path: '/tech-official'
-    }
   ]
 
   const jumpToNav = (item: navParams) => {
@@ -75,7 +70,10 @@ export default function () {
           <div className="header-c">
             <div className="nav-box">
             {
-              navList.map((nav) => <div onClick={() => jumpToNav(nav)} className="nav-item nav-item-main active" key={nav.id}><span className="nav-item-a">{nav.name}</span></div>)
+              navList.map((nav,index) => 
+              <div onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
+                <span className="nav-item-a">{nav.name}</span>
+              </div>)
             }
             </div>
           </div>
