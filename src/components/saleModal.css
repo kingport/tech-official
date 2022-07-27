@@ -1,0 +1,51 @@
+.sale-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.sales-content {
+  padding: 15px;
+  background: #ff5b00;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sale-btn {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-size: 12px;
+  border: none;
+  margin-top: 12px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.sale-btn:hover { 
+  color: #ff5b00;
+}
+
+.sale-percent {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1.32;
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.sale-description {
+  font-size: 15px;
+  line-height: 1.32;
+  color: rgb(255, 255, 255);
+}

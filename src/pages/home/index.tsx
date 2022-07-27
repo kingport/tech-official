@@ -21,10 +21,6 @@ function Home() {
     refetch: homeResultRefetch
   } = useHomeResult({language: getLanguage(), topTitleId: 1})
 
-  console.log(homeResult, 'searchResult')
-  console.log(homeResultLoading, 'searchResultLoading')
-  console.log(homeResultFetching, 'searchResultFetching')
-
   const styleBanner1 = {
     backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner1 : homeResult?.h5?.banner1})`
   }

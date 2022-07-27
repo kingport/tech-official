@@ -1,8 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useResizeObserver from '@react-hook/resize-observer'
-import logoEn from '../assets/logo-en.png'
-import logoMain from '../assets/logo-main.png'
 import listBlackIcon from '../assets/index-list.png';
 import './header.css'
 import { useMenusResult } from '../hooks/useMenusResult'
@@ -11,9 +8,9 @@ import { getLanguage } from "../utils";
 
 
 interface navParams {
-  name: string;
-  id: number;
-  path: string;
+  id: number, 
+  title: string,
+  path?: string,
 }
 
 
@@ -23,15 +20,12 @@ export default function () {
   let navigate = useNavigate();
 
   const {
-    data: homeResult,
-    isLoading: homeResultLoading,
-    isFetching: homeResultFetching,
-    refetch: homeResultRefetch
+    data: menusResult,
+    isLoading: menusResultLoading,
+    isFetching: menusResultFetching,
+    refetch: menusResultRefetch
   } = useMenusResult({language: getLanguage(), companyId: 1})
 
-  console.log(homeResult, 'searchResult')
-  console.log(homeResultLoading, 'searchResultLoading')
-  console.log(homeResultFetching, 'searchResultFetching')
 
   const navList = [
     {
@@ -58,7 +52,7 @@ export default function () {
   ]
 
   const jumpToNav = (item: navParams) => {
-    navigate(item.path);
+    // navigate(item?.path);
   }
 
   return (
@@ -67,15 +61,15 @@ export default function () {
         <div className="header-box">
           <div className="header-l">
             <div className="logo">
-              <img style={{width: size?.width > 580 ? '200px' : '100px'}} className="navbar-logo" src={size?.width > 580 ? logoEn : logoMain} />
+              <img style={{width: size?.width > 580 ? '200px' : '100px'}} className="navbar-logo" src={size?.width > 580 ? menusResult?.pc?.logoUrl : menusResult?.h5?.logoUrl} />
             </div>
           </div>
           <div className="header-c">
             <div className="nav-box">
             {
-              navList.map((nav,index) => 
+              menusResult?.pc.topTitleVoList.map((nav: navParams) => 
               <div onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
-                <span className="nav-item-a">{nav.name}</span>
+                <span className="nav-item-a">{nav.title}</span>
               </div>)
             }
             </div>
@@ -83,9 +77,19 @@ export default function () {
           <div className="header-r">
             <div className="nav-box">
               <div className="nav-item">
-                <span className="lang">Chinese</span>
+                <span
+                  onClick={() => {
+                    localStorage.setItem('lang', 'cn');
+                    window.location.reload()
+                  }}
+                 className="lang">Chinese</span>
                 <span>&nbsp;/&nbsp;</span>
-                <span className="lang active">English</span>
+                <span 
+                  onClick={() => {
+                    localStorage.setItem('lang', 'en');
+                    window.location.reload()
+                  }} 
+                className="lang active">English</span>
               </div>
             </div>
             <div className="navbar-toggler">

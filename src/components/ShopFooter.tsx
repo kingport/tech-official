@@ -28,6 +28,19 @@ export default function () {
                           <div className="make-box">
                               <div className="make-item">
                                   <div className="make-a-box">
+                                    {
+                                       footerResult?.bottomUrlVoList.map((item: {imageUrl: string,turnUrl: string}, index) => {
+                                        return (
+                                            <a
+                                                className="make-a d-none d-md-block d-sm-block"
+                                                href={item?.turnUrl}
+                                                key={index}
+                                                target="_blank">
+                                                <div className="logo-item"><img src={item?.imageUrl} alt=""/></div>
+                                            </a>
+                                        )
+                                       })
+                                    }
                                       {/* <a
                                           className="make-a d-none d-md-block d-sm-block"
                                           href="http://www.dx2.cn"
@@ -82,10 +95,23 @@ export default function () {
           <div className="mall-box-sm">
             <div className="make-item-sm">
               <div className="make-a-box">
-                <a className="make-a-sm" href="http://www.dx2.cn" target="_blank">
+            {
+                footerResult?.bottomUrlVoList.map((item: {imageUrl: string,turnUrl: string}, index) => {
+                    return (
+                        <a
+                            className="make-a-sm"
+                            href={item?.turnUrl}
+                            key={index}
+                            target="_blank">
+                            <div className="logo-item"><img src={item?.imageUrl} alt=""/></div>
+                        </a>
+                    )
+                    })
+                }
+                {/* <a className="make-a-sm" href="http://www.dx2.cn" target="_blank">
                     <div className="logo-item-sm"><img src="https://www.hello-tech.com/images/dxe-logo861a0c79b129250e485699e58e6ea87a.png" alt=""/></div>
-                </a>
-                <a
+                </a> */}
+                {/* <a
                   className="make-a-sm"
                   href="https://dxpower.tmall.com/shop/view_shop.htm?spm=a1z0k.6846577.1130980037.d4919817.751237de2SHZi7&amp;shop_id=65667358"
                   target="_blank">
@@ -98,12 +124,12 @@ export default function () {
                         target="_blank">
                         <img src="https://www.hello-tech.com/images/jd7e537e8d003ae3a5fd195050f4d58526.png" alt="" />
                             <span>京东旗舰店</span>
-                        </a>
+                        </a> */}
                     </div>
                   </div>
                     <div className="footer-logo-sm">
                         <div className="logo-item">
-                            <a href="" target="_blank"><img src="https://www.hello-tech.com/images/qrcode5f31645ac121c20b294150c7ba68228f.png" alt=""/></a>
+                            <a href="" target="_blank"><img src={footerResult?.quickCode} alt=""/></a>
                         </div>
                         <div className="logo-item">
                             <a href="https://www.jackery.com" target="_blank"><img src="https://www.hello-tech.com/images/jackery-logo0bf0f38cddab4b996df749e7ecdf3792.png" alt=""/></a>

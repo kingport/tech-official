@@ -9,6 +9,7 @@ import {
 } from 'react-query'
 import './index.css'
 import Footer from './components/Footer';
+import SaleModal from './components/SaleModal';
 
 const queryClient = new QueryClient({
   defaultOptions:{
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Header />
           <App />
           {window?.location.pathname !== '/' && <Footer />}
+          <SaleModal />
         </div>
       </BrowserRouter>
     </QueryClientProvider>
