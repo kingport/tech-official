@@ -85,6 +85,7 @@ export interface IGetFormResultReq {
   language?: string,
 }
 export interface IFormResult {
+  fieldList: [],
 }
 export const getFieldForm = async (params: IGetFormResultReq) => {
   const res = await axios.get(`/front/index/dialog/${params?.companyId}`)
