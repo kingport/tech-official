@@ -5,8 +5,7 @@
   min-height: 68.6vh;
 }
 
-.com-img {
-  background: url("https://www.hello-tech.com/images/banner-honor0ce09d699175387b21e2abac02f9200a.jpg") center/cover no-repeat;
+.com-img-honor {
   position: relative;
   text-align: center;
   min-height: 100vh;
@@ -93,7 +92,7 @@
 }
 
 .honor-bg {
-  background: url("https://www.hello-tech.com/images/honor-bg2bcdda3bc009a9fa364bc9cc954eab35.jpg") center/cover no-repeat #fff;
+  /* background: url("https://www.hello-tech.com/images/honor-bg2bcdda3bc009a9fa364bc9cc954eab35.jpg") center/cover no-repeat #fff; */
   color: #fff;
   min-height: 300px;
   padding: 100px 20px;

@@ -7,7 +7,15 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
+import { values } from 'lodash';
+import { useMutation } from 'react-query';
+import { postFormSumbit } from '../apis';
+import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
+export interface State extends SnackbarOrigin {
+  openSnackbar: boolean;
+}
 
 export default function() {
 
@@ -20,14 +28,36 @@ export default function() {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
+  const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+    props,
+    ref,
+  ) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
   const [open, setOpen] = React.useState(false);
   const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('lg');
+
+  
+
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [alertText,setAlertText] = React.useState("");
+  const [severity,setSeverity] = React.useState<any>("success");
+  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
   };
 
 
@@ -45,13 +75,28 @@ export default function() {
     refetch: formResultRefetch
   } = useFieldFormResult({language: getLanguage(), companyId: 1})
 
-  // 弹窗表单信息
-  const renderForm = () => {
-    return (
-      <form>
+  const initialValues = () => {
+    return {
+    }
+  }
 
-      </form>
-    )
+  const mutation = useMutation(postFormSumbit, {
+    onSuccess: (data:any, variables, context) => {
+      setOpenSnackbar(true);
+      setAlertText(data.msg)
+      if(data.code === 0) {        
+        setOpen(false)
+      }else {
+        setSeverity('error')
+      }
+    },
+  })
+
+  const onSubmit = async (values:any) => {
+    if(values) {
+      values.companyId = 1
+      await mutation.mutate(values)    
+    }
   }
 
   return (
@@ -71,31 +116,19 @@ export default function() {
         keepMounted
         onClose={handleClose}
         maxWidth={maxWidth}
-        // aria-describedby="alert-dialog-slide-description"
       >
         <div className="form-container">
           <div className="form-l">
             <div className='form-header'>
-              <img src='' />
-              <p>Take advantage of our Bi-Annual Sale 🎉</p>
-              <p>GET YOUR 40% OFF</p>
+              <img src={formResult?.logoImageUrl} />
+              <p>{formResult?.title} 🎉</p>
+              <p>{formResult?.discount}</p>
               <p>When You Join Our Email List</p>
             </div>
             <div className='form'>
               <Formik
-                initialValues={{
-                  firstName: '',
-                  lastName: '',
-                }}
-                onSubmit={(
-                  values: any,
-                  { setSubmitting }: FormikHelpers<Values>
-                ) => {
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                  }, 500);
-                }}
+                initialValues={initialValues}
+                onSubmit={onSubmit}
               >
                 <Form className="form-horizontal">
                   {
@@ -106,7 +139,7 @@ export default function() {
                       return (
                         <div className='field' key={index}>
                           <label className='field-label' htmlFor="firstName">{item?.fieldName}*</label>
-                          <Field className='field-input' id="firstName" name={item?.fieldKey} placeholder="" />
+                          <Field required className='field-input' id="firstName" name={item?.fieldKey} placeholder="" />
                         </div>
                       )
                     })
@@ -117,10 +150,21 @@ export default function() {
             </div>
           </div>
           <div className='form-r'>
-            <img src='https://d9hhrg4mnvzow.cloudfront.net/bac8b10c9c144ad29131c4204f77c456.pages.ubembed.com/16654b42-f890-4d00-8e1f-72281c21cb86/fbfc3d9b-ic-unbounce-popup_107g0dc000000000000000.jpg' />
+            <img src={formResult?.productImageUrl} />
           </div>
         </div>       
       </Dialog>
+      <Snackbar
+        autoHideDuration={6000} 
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={openSnackbar}
+      >
+        
+        <Alert onClose={handleCloseSnackbar} severity={severity} sx={{ width: '100%' }}>
+          {alertText}!
+        </Alert>
+      </Snackbar>
     </div>
   )
 }

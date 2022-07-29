@@ -2,12 +2,21 @@
 import React from 'react';
 
 import ShopFooter from '../../../components/ShopFooter';
+import { useQualityResult } from '../../../hooks/useQualityResult';
 import {useSize} from '../../../hooks/useSize';
+import { getLanguage } from '../../../utils';
 import './index.css'
 
 export default function () {
     const target = React.useRef(null)
     const size = useSize(target)
+
+    const {
+        data: qualityResult,
+        isLoading: qualityResultLoading,
+        isFetching: qualityResultFetching,
+        refetch: qualityResultRefetch
+      } = useQualityResult({language: getLanguage(), subtitleId: 13})
 
     return (
         <div ref={target} className='content-main'>
@@ -16,18 +25,17 @@ export default function () {
             {/* 质量方针 */}
             <div className="container">
                 <div className="section-box">
-                    <div className="title active">质量方针</div>
+                    <div className="title">质量方针</div>
                 </div>
                 <div className="row-imgs">
                     {
-                        [1, 2, 3, 4].map((x) => {
+                        qualityResult?.pc.qualityPolicyList.map((x:any) => {
                             return (
                                 <div key={x} className="row-item">
                                     <div className="img-box wow fadeIn">
-                                        <img
-                                            src="https://www.hello-tech.com/images/quality-icon105824f56ba2cc3aa58d85e091b6eec6.png"
-                                            alt=""/></div>
-                                    <div className="text">科技创新</div>
+                                        <img src={x.image} alt=""/>
+                                    </div>
+                                    <div className="text">{x.content}</div>
                                 </div>
                             )
                         })
@@ -49,23 +57,23 @@ export default function () {
                                             <div className="store-box store-box-a wow fadeInLeft">
                                                 <div className="store-icon">
                                                     <img
-                                                        src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                        src={qualityResult?.pc.qualitySecurityList[0].image}
                                                         alt=""/></div>
                                                 <div className="store-title">
                                                     <span className="number"></span>
-                                                    <span>九道质检工序UL安全检测</span>
+                                                    <span>{qualityResult?.pc.qualitySecurityList[0].title}</span>
                                                 </div>
-                                                <div className="store-text">拥有广东省工程技术中心和行业标准实验室，产品必须经过7大类目测试项目UL安全检测及45道测试工序。</div>
+                                                <div className="store-text">{qualityResult?.pc.qualitySecurityList[0].content}</div>
                                             </div>
                                             <div className="store-box store-box-b wow fadeInLeft">
                                                 <div className="store-icon">
                                                     <img
-                                                        src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                        src={qualityResult?.pc.qualitySecurityList[1].image}
                                                         alt=""/></div>
                                                 <div className="store-title">
-                                                    <span>绿色环保耐高温低压锂电芯</span>
+                                                    <span>{qualityResult?.pc.qualitySecurityList[1].title}</span>
                                                 </div>
-                                                <div className="store-text">电小二锂电芯经过测试，在-10度-40度的恶劣环境下仍然可正常运转，其电芯寿命高可反复循环使用，缘色环保。</div>
+                                                <div className="store-text">{qualityResult?.pc.qualitySecurityList[1].content}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -80,22 +88,22 @@ export default function () {
                                             <div className="store-box store-box-c wow fadeInLeft">
                                                 <div className="store-icon">
                                                     <img
-                                                        src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                        src={qualityResult?.pc.qualitySecurityList[2].image}
                                                         alt=""/></div>
                                                 <div className="store-title">
-                                                    <span>智能BMS保护板自动识别高压电流</span>
+                                                    <span>{qualityResult?.pc.qualitySecurityList[2].title}</span>
                                                 </div>
-                                                <div className="store-text">智能BMS保护板，能够自动识别高电压电流，有效地保护电芯，避免过放、过充或短路等问题，安全可靠。</div>
+                                                <div className="store-text">{qualityResult?.pc.qualitySecurityList[2].content}</div>
                                             </div>
                                             <div className="store-box store-box-d wow fadeInLeft">
                                                 <div className="store-icon">
                                                     <img
-                                                        src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                        src={qualityResult?.pc.qualitySecurityList[3].image}
                                                         alt=""/></div>
                                                 <div className="store-title">
-                                                    <span>平安保险承保您的权益我们买单</span>
+                                                    <span>{qualityResult?.pc.qualitySecurityList[3].title}</span>
                                                 </div>
-                                                <div className="store-text">本产品由中国平安保险承保，您的权益我们买单，安心使用，享受精彩户外。</div>
+                                                <div className="store-text">{qualityResult?.pc.qualitySecurityList[3].content}</div>
                                             </div>
                                         </div>
                                     </div>

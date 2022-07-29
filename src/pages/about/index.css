@@ -7,9 +7,8 @@
   flex-direction: column;
 }
 
-.com-img {
-  background: url("https://www.hello-tech.com/images/banner-info901bb42b879e99dd91380cf609fe2e38.jpg") no-repeat no-repeat;
-  background-size: cover;
+.com-img-about {
+  background-size: cover !important;
   min-height: 100vh;
 }
 
@@ -112,7 +111,6 @@
 
 
 .development-bg {
-  background: url('https://www.hello-tech.com/images/compang-bg7c919e07f5d3b07ffaaed14fdfef9eb5.jpg') center/cover no-repeat;
   color: #fff;
   padding: 140px 0 200px;
 }
@@ -244,7 +242,7 @@
 @media only screen and (max-width: 767px) {
   .com-img {
     height: 238px !important;
-    background: url("https://www.hello-tech.com/images/banner-info901bb42b879e99dd91380cf609fe2e38.jpg") center/cover no-repeat;
+    /* background: url("https://www.hello-tech.com/images/banner-info901bb42b879e99dd91380cf609fe2e38.jpg") center/cover no-repeat; */
   }
 }
 
@@ -257,6 +255,7 @@
 @media only screen and (max-width: 767px) {
   .company-info p {
       line-height: 25px !important;
+      font-size: 14px;
   }
 }
 
@@ -303,7 +302,7 @@
 
 @media only screen and (max-width: 767px) {
   .development-bg {
-    background: url("https://www.hello-tech.com/images/course11b91de37e97a16c35c417294b21803b.png") center/100% 100% no-repeat;
+    /* background: url("https://www.hello-tech.com/images/course11b91de37e97a16c35c417294b21803b.png") center/100% 100% no-repeat; */
     padding: 0px;
   }
 }

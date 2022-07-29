@@ -86,8 +86,80 @@ export interface IGetFormResultReq {
 }
 export interface IFormResult {
   fieldList: [],
+  discount: string,
+  title: string,
+  logoImageUrl: string,
+  payUrl: string,
+  productImageUrl: string,
+  productTurnUrl: string,
+  companyId: number,
 }
 export const getFieldForm = async (params: IGetFormResultReq) => {
   const res = await axios.get(`/front/index/dialog/${params?.companyId}`)
   return res?.data as IFormResult | undefined;
+}
+
+// 提交表单
+export interface IPostFormResultReq {
+  dialogFormParam: any
+}
+export interface IFormSumbitResult {
+  
+}
+export const postFormSumbit = async (dialogFormParam: IPostFormResultReq) => {
+  return await axios.post(`/front/dialog/save`, {...dialogFormParam})   
+}
+
+// 获取公司简介
+export interface IGetCompanyResultReq {
+  subtitleId: number,
+  language?: string,
+}
+export interface ICompanyResult {
+  pc: {
+    historyVoList: [],
+    introduction: any,
+    topImageUrl: string,
+    historyImageUrl: string
+  }
+}
+export const getCompanyInfo = async (params: IGetCompanyResultReq) => {
+  const res = await axios.get(`/front/profile`, {params})
+  return res?.data as ICompanyResult | undefined;
+}
+
+
+// 获取荣誉资质
+export interface IGetHonorResultReq {
+  subtitleId: number,
+  language?: string,
+}
+export interface IHonorResult {
+  pc: {
+    topBackgroundImage: string,
+    bannerImageList: [],
+    bottomBackgroundImage: string,
+    content: any,
+    eventList: []
+  }
+}
+export const getHonorInfo = async (params: IGetHonorResultReq) => {
+  const res = await axios.get(`/front/awards`, {params})
+  return res?.data as IHonorResult | undefined;
+}
+
+// 获取质量方针信息
+export interface IGetQualityResultReq {
+  subtitleId: number,
+  language?: string,
+}
+export interface IQualityResult {
+  pc: {
+    qualityPolicyList: [],
+    qualitySecurityList: any
+  }
+}
+export const getQualityInfo = async (params: IGetQualityResultReq) => {
+  const res = await axios.get(`/front/quality`, {params})
+  return res?.data as IQualityResult | undefined;
 }

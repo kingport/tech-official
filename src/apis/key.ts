@@ -9,3 +9,11 @@ export const RQ_FOOTER_URL = 'RQ_footer_url'
 export const RQ_WINDOW_INFO = 'RQ_window_info'
 // 获取弹窗表单详情
 export const RQ_FIELD_FORM = 'RQ_field_from'
+// 提交表单
+export const RQ_SUMBIT_FORM = 'RQ_sumbit_from'
+// 获取公司简介
+export const RQ_COMPANY_INFO = 'RQ_company_info'
+// 获取荣誉资质
+export const RQ_HONOR_INFO = 'RQ_honor_info'
+// 获取质量方针信息
+export const RQ_QUALITY_INFO = 'RQ_quality_info'
