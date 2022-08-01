@@ -17,3 +17,7 @@ export const RQ_COMPANY_INFO = 'RQ_company_info'
 export const RQ_HONOR_INFO = 'RQ_honor_info'
 // 获取质量方针信息
 export const RQ_QUALITY_INFO = 'RQ_quality_info'
+// 获取新闻与事件列表
+export const RQ_NEWS_EVENTS = 'RQ_news_events'
+// 获取社会责任
+export const RQ_RESPONSIBILITY_INFO = 'RQ_responsibility_info'

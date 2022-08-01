@@ -61,8 +61,7 @@ body {
   margin: 0 auto;
   /* 文本颜色 */
   color: var(--text-color);
-  /* 背景颜色 */
-  /* background-color: var(--primary-color); */
+  overflow: auto;
 }
 
 a {
@@ -85,7 +84,7 @@ header,
   /* flex 布局 */
   display: flex;
   /* 相对位置，为绝对定位做铆钉点 */
-  position: relative;
+  /* position: relative; */
   /* 纵向设置为中央 */
   align-items: center;
   /* 过度时间 */

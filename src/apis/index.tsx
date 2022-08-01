@@ -156,10 +156,67 @@ export interface IGetQualityResultReq {
 export interface IQualityResult {
   pc: {
     qualityPolicyList: [],
-    qualitySecurityList: any
+    qualitySecurityList: any,
+    topImage: string,
+    bottomImage: string,
+    ecoTitle: string,
+    securityTitle: string,
+    productImage: string,
+    qualityTitle: string,
+    ecoList: [],
+  },
+  h5: {
+    qualityPolicyList: [],
+    qualityTitle: string,
+    ecoList: [],
+    qualitySecurityList: any,
+    topImage: string,
+    bottomImage: string,
+    ecoTitle: string,
+    securityTitle: string,
+    productImage: string
+
   }
 }
 export const getQualityInfo = async (params: IGetQualityResultReq) => {
   const res = await axios.get(`/front/quality`, {params})
   return res?.data as IQualityResult | undefined;
+}
+
+// 社会责任
+export interface IGetResponsibilityResultReq {
+  subtitleId?: number,
+  language?: string,
+}
+export interface IResponsibilityResult {
+  pc: {
+    articleList: [],
+    subtitle: string,
+    title: string,
+    topImage: string,
+  },
+  h5: {
+    articleList: [],
+    subtitle: string,
+    title: string,
+    topImage: string,
+  }
+}
+export const getResponsibilityInfo = async (params: IGetResponsibilityResultReq) => {
+  const res = await axios.get(`/front/responsibility`, {params})
+  return res?.data as IResponsibilityResult | undefined;
+}
+
+
+
+// 新闻与事件列表
+export interface IGetNewsResultReq {
+  subtitleId?: number,
+  language?: string,
+}
+export interface INewsResult {
+}
+export const getNewsEvents = async (params: IGetNewsResultReq) => {
+  const res = await axios.get(`/front/news`, {params})
+  return res?.data as INewsResult | undefined;
 }

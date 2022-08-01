@@ -12,12 +12,22 @@ import { useMutation } from 'react-query';
 import { postFormSumbit } from '../apis';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import { useSnackbar } from 'notistack';
 
 export interface State extends SnackbarOrigin {
   openSnackbar: boolean;
 }
 
 export default function() {
+
+
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [open, setOpen] = React.useState(false);
+  const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('lg');
+
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+  const [alertText,setAlertText] = React.useState("");
+  const [severity,setSeverity] = React.useState<any>("success");
 
   const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -35,16 +45,10 @@ export default function() {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
   });
 
-  const [open, setOpen] = React.useState(false);
-  const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('lg');
-
+  const handleClick = () => {
+      enqueueSnackbar('I love hooks');
+  };
   
-
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [alertText,setAlertText] = React.useState("");
-  const [severity,setSeverity] = React.useState<any>("success");
-  
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -82,11 +86,20 @@ export default function() {
 
   const mutation = useMutation(postFormSumbit, {
     onSuccess: (data:any, variables, context) => {
-      setOpenSnackbar(true);
-      setAlertText(data.msg)
+      // handleClick()
+      // setOpenSnackbar(true);
+      // setAlertText(data.msg)
       if(data.code === 0) {        
+        enqueueSnackbar(data.msg, {variant: 'success',anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'center'
+        },autoHideDuration: 1000});
         setOpen(false)
       }else {
+        enqueueSnackbar(data.msg, {variant: 'error',anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'center'
+        },autoHideDuration: 1000});
         setSeverity('error')
       }
     },
@@ -116,6 +129,7 @@ export default function() {
         keepMounted
         onClose={handleClose}
         maxWidth={maxWidth}
+        style={{position: open ? 'fixed' : 'relative'}}
       >
         <div className="form-container">
           <div className="form-l">
@@ -154,17 +168,6 @@ export default function() {
           </div>
         </div>       
       </Dialog>
-      <Snackbar
-        autoHideDuration={6000} 
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        open={openSnackbar}
-      >
-        
-        <Alert onClose={handleCloseSnackbar} severity={severity} sx={{ width: '100%' }}>
-          {alertText}!
-        </Alert>
-      </Snackbar>
     </div>
   )
 }

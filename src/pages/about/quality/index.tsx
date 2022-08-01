@@ -21,11 +21,11 @@ export default function () {
     return (
         <div ref={target} className='content-main'>
             {/* banner */}
-            <div className="com-img"></div>
+            <div style={{ background: `url(${qualityResult?.pc?.topImage}) center/cover no-repeat`}} className="com-img-quality"></div>
             {/* 质量方针 */}
             <div className="container">
                 <div className="section-box">
-                    <div className="title">质量方针</div>
+                    <div className="title">{qualityResult?.pc?.ecoTitle}</div>
                 </div>
                 <div className="row-imgs">
                     {
@@ -46,7 +46,7 @@ export default function () {
             <div className="store-bg">
                 <div className="container">
                     <div className="section-box">
-                        <div className="title ta-left">四大安全保障</div>
+                        <div className="title ta-left">{qualityResult?.pc?.securityTitle}</div>
                     </div>
                     {/*  PC */}
                     {
@@ -80,7 +80,7 @@ export default function () {
                                     <div className="col-xs-12 col-md-4 wow fadeIn">
                                         <div className="store-img">
                                             <img
-                                                src="https://www.hello-tech.com/images/quality-middle-img05bf80baf12f20ab6ce76b97194f176b.png"
+                                                src={qualityResult?.pc.productImage}
                                                 alt=""/></div>
                                     </div>
                                     <div className="col-xs-12 col-md-4">
@@ -120,11 +120,11 @@ export default function () {
                                                 <div className="store-title">
                                                     <span className="number">
                                                         <img
-                                                            src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                            src={qualityResult?.h5.qualitySecurityList[0].image}
                                                             alt=""/></span>
                                                     <div className="store-text">
-                                                        <div className="title">九道质检工序UL安全检测</div>
-                                                        <div className="subtitle">拥有广东省工程技术中心和行业标准实验室，产品必须经过7大类目测试项目UL安全检测及45道测试工序。</div>
+                                                        <div className="title">{qualityResult?.h5.qualitySecurityList[0].title}</div>
+                                                        <div className="subtitle">{qualityResult?.h5.qualitySecurityList[0].content}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,11 +136,11 @@ export default function () {
                                                 <div className="store-title">
                                                     <span className="number">
                                                         <img
-                                                            src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                            src={qualityResult?.h5.qualitySecurityList[1].image}
                                                             alt=""/></span>
                                                     <div className="store-text">
-                                                        <div className="title">智能BMS保护板自动识别高压电流</div>
-                                                        <div className="subtitle">智能BMS保护板，能够自动识别高电压电流，有效地保护电芯，避免过放、过充或短路等问题，安全可靠。</div>
+                                                        <div className="title">{qualityResult?.h5.qualitySecurityList[1].title}</div>
+                                                        <div className="subtitle">{qualityResult?.h5.qualitySecurityList[1].content}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@ export default function () {
                                             <div className="store-box">
                                                 <img
                                                     className="middle-img"
-                                                    src="https://www.hello-tech.com/images/quality-middle-img05bf80baf12f20ab6ce76b97194f176b.png"
+                                                    src={qualityResult?.pc.productImage}
                                                     alt=""/></div>
                                         </div>
                                     </div>
@@ -161,11 +161,11 @@ export default function () {
                                                 <div className="store-title">
                                                     <span className="number">
                                                         <img
-                                                            src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                            src={qualityResult?.h5.qualitySecurityList[2].image}
                                                             alt=""/></span>
                                                     <div className="store-text">
-                                                        <div className="title">绿色环保耐高温低压锂电芯</div>
-                                                        <div className="subtitle">电小二锂电芯经过测试，在-10度-40度的恶劣环境下仍然可正常运转，其电芯寿命高可反复循环使用，缘色环保。</div>
+                                                        <div className="title">{qualityResult?.h5.qualitySecurityList[2].title}</div>
+                                                        <div className="subtitle">{qualityResult?.h5.qualitySecurityList[2].content}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,11 +177,11 @@ export default function () {
                                                 <div className="store-title">
                                                     <span className="number">
                                                         <img
-                                                            src="https://www.hello-tech.com/images/quality-icon-ae533b0bcb04379b8c21cc2d58ffa90ea.png"
+                                                            src={qualityResult?.h5.qualitySecurityList[3].image}
                                                             alt=""/></span>
                                                     <div className="store-text">
-                                                        <div className="title">平安保险承保您的权益我们买单</div>
-                                                        <div className="subtitle">本产品由中国平安保险承保，您的权益我们买单，安心使用，享受精彩户外</div>
+                                                        <div className="title">{qualityResult?.h5.qualitySecurityList[3].title}</div>
+                                                        <div className="subtitle">{qualityResult?.h5.qualitySecurityList[3].content}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -193,31 +193,22 @@ export default function () {
                 </div>
             </div>
             {/* banner 图 */}
-            <div className='com-img com-img-footer'></div>
+            <div style={{ background: `url(${qualityResult?.pc?.bottomImage}) center/cover no-repeat`}} className='com-img com-img-footer'></div>
             {/* 环境方针 */}
             <div className="container-fluid">
                 <div className="section-box">
-                    <div className="title">环境方针</div>
+                    <div className="title">{qualityResult?.pc?.qualityTitle}</div>
                 </div>
                 <div className="type-box">
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">遵守法规</div>
-                    </div>
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">节约能源</div>
-                    </div>
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">提前预防</div>
-                    </div>
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">保护环境</div>
-                    </div>
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">减少污染</div>
-                    </div>
-                    <div className="type-item wow fadeInDown">
-                        <div className="type-text">持续发展</div>
-                    </div>
+                    {
+                        qualityResult?.pc?.ecoList.map((x,index) => {
+                            return (
+                                <div key={index} className="type-item wow fadeInDown">
+                                    <div className="type-text">{x}</div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
             {/* footer */}

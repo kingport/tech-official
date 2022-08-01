@@ -10,6 +10,7 @@ import {
 import './index.css'
 import Footer from './components/Footer';
 import SaleModal from './components/SaleModal';
+import { SnackbarProvider } from 'notistack';
 
 const queryClient = new QueryClient({
   defaultOptions:{
@@ -25,12 +26,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className='root-content'>
-          <Header />
-          <App />
-          {window?.location.pathname !== '/' && <Footer />}
-          <SaleModal />
-        </div>
+        <SnackbarProvider maxSnack={3}>
+          {/* <div className='root-content'> */}
+            <Header />
+            <App />
+            {window?.location.pathname !== '/' && <Footer />}
+            <SaleModal />
+          {/* </div> */}
+        </SnackbarProvider>
       </BrowserRouter>
     </QueryClientProvider>
   // </React.StrictMode>
