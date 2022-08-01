@@ -1,4 +1,5 @@
 import Axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
 
 const axios = Axios.create({
   baseURL:  '/api',
@@ -23,8 +24,15 @@ axios.interceptors.response.use(
   (response) => {
       const data = response.data;
       console.log('response:', response);
-      if (response.status === 200) {
+      if (response.status === 200 && response.data.code === 0) {
           return data;
+      }else {
+        toast.error(
+          response.data.msg,
+          {
+            duration: 5000,
+          }
+        );
       }
 
       return Promise.reject(new Error(response.statusText || 'Error'));

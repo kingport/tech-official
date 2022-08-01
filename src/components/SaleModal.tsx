@@ -6,12 +6,10 @@ import './saleModal.css';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
-import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { values } from 'lodash';
+import { Formik, Field, Form } from 'formik';
 import { useMutation } from 'react-query';
 import { postFormSumbit } from '../apis';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useSnackbar } from 'notistack';
 
 export interface State extends SnackbarOrigin {
@@ -25,10 +23,6 @@ export default function() {
   const [open, setOpen] = React.useState(false);
   const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('lg');
 
-  const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [alertText,setAlertText] = React.useState("");
-  const [severity,setSeverity] = React.useState<any>("success");
-
   const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
       children: React.ReactElement<any, any>;
@@ -38,17 +32,6 @@ export default function() {
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-  const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-    props,
-    ref,
-  ) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
-
-  const handleClick = () => {
-      enqueueSnackbar('I love hooks');
-  };
-  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -57,26 +40,12 @@ export default function() {
     setOpen(false);
   };
 
-  const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpenSnackbar(false);
-  };
-
-
   const {
-    data: windowResult,
-    isLoading: windowResultLoading,
-    isFetching: windowResultFetching,
-    refetch: windowResultRefetch
+    data: windowResult
   } = useWindowResult({language: getLanguage(), companyId: 1})
 
   const {
-    data: formResult,
-    isLoading: formResultLoading,
-    isFetching: formResultFetching,
-    refetch: formResultRefetch
+    data: formResult
   } = useFieldFormResult({language: getLanguage(), companyId: 1})
 
   const initialValues = () => {
@@ -86,9 +55,6 @@ export default function() {
 
   const mutation = useMutation(postFormSumbit, {
     onSuccess: (data:any, variables, context) => {
-      // handleClick()
-      // setOpenSnackbar(true);
-      // setAlertText(data.msg)
       if(data.code === 0) {        
         enqueueSnackbar(data.msg, {variant: 'success',anchorOrigin: {
           vertical: 'top',
@@ -100,7 +66,6 @@ export default function() {
           vertical: 'top',
           horizontal: 'center'
         },autoHideDuration: 1000});
-        setSeverity('error')
       }
     },
   })
@@ -129,7 +94,6 @@ export default function() {
         keepMounted
         onClose={handleClose}
         maxWidth={maxWidth}
-        style={{position: open ? 'fixed' : 'relative'}}
       >
         <div className="form-container">
           <div className="form-l">
@@ -146,10 +110,7 @@ export default function() {
               >
                 <Form className="form-horizontal">
                   {
-                    formResult?.fieldList.map((item: {
-                    fieldName: string,
-                    fieldKey: string
-                  },index) => {
+                    formResult?.fieldList.map((item: {fieldName: string,fieldKey: string},index) => {
                       return (
                         <div className='field' key={index}>
                           <label className='field-label' htmlFor="firstName">{item?.fieldName}*</label>

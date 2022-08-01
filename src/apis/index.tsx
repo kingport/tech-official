@@ -208,15 +208,32 @@ export const getResponsibilityInfo = async (params: IGetResponsibilityResultReq)
 }
 
 
-
-// 新闻与事件列表
+// 新闻中心
 export interface IGetNewsResultReq {
   subtitleId?: number,
   language?: string,
 }
 export interface INewsResult {
+  pc: {
+    title: string,
+    image: string,
+  },
+  newsId: number,
 }
-export const getNewsEvents = async (params: IGetNewsResultReq) => {
+export const getNews = async (params: IGetNewsResultReq) => {
   const res = await axios.get(`/front/news`, {params})
   return res?.data as INewsResult | undefined;
+}
+
+// 新闻与事件列表
+export interface IGetNewsEventResultReq {
+  newsId?: number,
+  language?: string,
+}
+export interface INewsEventResult {
+  rows:[]
+}
+export const getNewsEvents = async (params: IGetNewsEventResultReq) => {
+  const res = await axios.get(`/front/news/event`, {params})
+  return res?.data as INewsEventResult | undefined;
 }

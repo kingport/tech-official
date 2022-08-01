@@ -11,6 +11,7 @@ import './index.css'
 import Footer from './components/Footer';
 import SaleModal from './components/SaleModal';
 import { SnackbarProvider } from 'notistack';
+import toast, { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient({
   defaultOptions:{
@@ -27,12 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SnackbarProvider maxSnack={3}>
-          {/* <div className='root-content'> */}
             <Header />
             <App />
             {window?.location.pathname !== '/' && <Footer />}
             <SaleModal />
-          {/* </div> */}
+          <Toaster />
         </SnackbarProvider>
       </BrowserRouter>
     </QueryClientProvider>

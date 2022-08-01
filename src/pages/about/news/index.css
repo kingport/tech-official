@@ -1,6 +1,5 @@
 
-.com-img {
-  background: url("https://www.hello-tech.com/images/banner-news8302ddef7672fed5b99fe9e583814cdf.jpg") center/cover no-repeat;
+.com-img-news {  
   position: relative;
   text-align: center;
   min-height: 100vh;
@@ -116,4 +115,115 @@
 
 .iconarrow-r:before {
   content: "";
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box:first-child {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    flex-direction: column;
+  }
+} 
+
+.news-box:nth-child(odd) {
+  background: #f8f8f8;
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box:first-child .news-l {
+    padding-top: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-l {
+    flex-basis: 100%;
+    padding: 0px 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box:first-child .news-l {
+    padding-top: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-l .img-box img {
+      height: 155px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-r {
+    flex-basis: 100%;
+    padding: 0 20px;
+  }
+}
+
+.news-box .news-r {
+  flex-basis: 50%;
+  word-break: break-word;
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-item .news-icon {
+      display: none;
+      flex: 0 0 60px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-item .news-info {
+      padding: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-item .news-info .news-title {
+      margin-top: 20px;
+      font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-item .news-info .news-title .date {
+      font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news-box .news-item .news-info .news-title .title {
+      font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-box .title {
+      text-align: left;
+      padding: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .section-box .title {
+    font-size: 28px;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .com-img-news {
+      min-height: 238px !important;
+  }
+  .content-main {
+    height: auto;
+  }
 }
