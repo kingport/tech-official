@@ -11,6 +11,7 @@ interface navParams {
   id: number, 
   title: string,
   path?: string,
+  subjectId?: number
 }
 
 
@@ -18,41 +19,58 @@ export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
   let navigate = useNavigate();
-
+  const [selectId,setSelectId] = React.useState<any>(1)
+  
   const {
     data: menusResult,
-    isLoading: menusResultLoading,
-    isFetching: menusResultFetching,
-    refetch: menusResultRefetch
   } = useMenusResult({language: getLanguage(), companyId: 1})
 
 
-  const navList = [
-    {
-      id: 1,
-      name: 'Home',
-      path: '/'
-    },
-    {
-      id: 2,
-      name: 'About Us',
-      path: '/about'
-
-    },
-    {
-      id: 3,
-      name: 'Brand',
-      path: '/'
-    }, 
-    {
-      id: 4,
-      name: 'Contact Us',
-      path: '/'
-    },
-  ]
-
   const jumpToNav = (item: navParams) => {
     // navigate(item?.path);
+    if(item.id === 1) {
+      navigate('/')
+    }
+    if(item.id === 2) {
+      navigate('/about')
+    }
+    if(item.id === 3) {
+      navigate('/brand/storage')
+    }
+    if(item.id === 4) {
+      navigate('/contact')
+    }
+    if(item.subjectId === 11) {
+      navigate('/about')
+    }
+    if(item.subjectId === 12) {
+      navigate('/about/honor')
+    }
+    if(item.subjectId === 13) {
+      navigate('/about/quality')
+
+    }
+    if(item.subjectId === 14) {
+      navigate('/about/responsibility')
+    }
+    if(item.subjectId === 15) {
+      navigate('/about/news')
+    }
+    if(item.subjectId === 16) {
+      navigate('/brand/storage')
+    }
+    if(item.subjectId === 17) {
+      navigate('/brand/solar')
+    }
+    if(item.subjectId === 18) {
+      navigate('/brand/part')
+    }
+    if(item.subjectId === 19) {
+      navigate('/contact')
+    }
+    if(item.subjectId === 20) {
+      navigate('/contact/dealers')
+    }
   }
 
   return (
@@ -66,12 +84,12 @@ export default function () {
           </div>
           <div className="header-c">
             <div className="nav-box">
-            {
-              menusResult?.pc.topTitleVoList.map((nav: navParams) => 
-              <div onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
-                <span className="nav-item-a">{nav.title}</span>
-              </div>)
-            }
+              {
+                menusResult?.pc?.topTitleVoList?.map((nav: navParams) => 
+                <div  onMouseEnter={() => {setSelectId(nav.id)}} onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
+                  <span className="nav-item-a">{nav.title}</span>
+                </div>)
+              }
             </div>
           </div>
           <div className="header-r">
@@ -98,6 +116,18 @@ export default function () {
           </div> 
         </div>
       </div>
+      {
+        selectId !== 1 && size?.width > 580 &&  
+          <div onMouseLeave={() => setSelectId(1)} className="children-nav">
+          {
+            menusResult?.pc.topTitleVoList.find((x:any) => x.id === selectId)?.subtitleVoList?.map((k:any, index:any) => {
+              return (
+                <div onClick={() => jumpToNav(k)} className="children-title" key={index}>{k.title}</div>
+              )
+            })
+          }
+        </div>
+      }  
     </header>
   )
 }

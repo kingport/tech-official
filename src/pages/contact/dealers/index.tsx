@@ -15,15 +15,40 @@ import { useSize } from '../../../hooks/useSize';
 import { useStoreListResult } from '../../../hooks/useStoreListResult';
 import { getLanguage } from '../../../utils';
 import { Formik, Field, Form } from 'formik';
+import { useMutation } from 'react-query';
+import { postCooperateSumbit } from '../../../apis';
+import { useSnackbar } from 'notistack';
 
 export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
-  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
-  
-  const onSubmit = (values: any) => {
-    console.log(values, 'LLLLL')
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
+  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
+
+  const mutation = useMutation(postCooperateSumbit, {
+    onSuccess: (data:any, variables, context) => {
+      if(data.code === 0) {        
+        enqueueSnackbar(data.msg, {variant: 'success',anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'center'
+        },autoHideDuration: 1000});
+      }else {
+        enqueueSnackbar(data.msg, {variant: 'error',anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'center'
+        },autoHideDuration: 1000});
+      }
+    },
+  })
+
+  // @ts-ignore
+  const onSubmit = async (values: any,{setSubmitting, resetForm}) => {
+    if(values) {
+      values.companyId = 1
+      await mutation.mutate(values)   
+      resetForm() 
+    }
   }
 
 
@@ -41,7 +66,11 @@ export default function () {
       </div>
       {/* 商业合作 */}
       <div className="container">
-        <Formik initialValues={{}} onSubmit={onSubmit}>
+        <Formik initialValues={{
+          email: '',
+          phone: '',
+          content: '',
+        }} onSubmit={onSubmit}>
           <Form className="com-form" id="form">
             {
               size?.width > 580 &&
@@ -75,7 +104,7 @@ export default function () {
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" /></div>
-                        <input className="email" type="text" name="userEmail" placeholder="请输入您的邮箱" />
+                        <Field required className="email" name="email" placeholder="请输入您的邮箱" />
                       </div>
                     </label>
                   </div>
@@ -85,7 +114,6 @@ export default function () {
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" /></div>
-                        {/* <input className="phone" type="text" name="phone" placeholder="请输入您的电话" /> */}
                         <Field required className="phone" name="phone" placeholder="请输入您的电话" />
                       </div>
                     </label>
@@ -98,7 +126,7 @@ export default function () {
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" /></div>
-                        <textarea className="description" rows={10} name="description" placeholder="请输入您想咨询的内容"></textarea>
+                        <Field as={'textarea'} required className="description" rows={10} name="content" placeholder="请输入您想咨询的内容" />
                       </div>
                     </label>
                   </div>

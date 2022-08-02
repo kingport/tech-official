@@ -35,12 +35,12 @@ export interface IMenusResult {
   pc: {
     companyName: string,
     logoUrl: string,
-    topTitleVoList: [],
+    topTitleVoList: any[],
   },
   h5: {
     companyName: string,
     logoUrl: string,
-    topTitleVoList: [],
+    topTitleVoList: any[],
   }
 }
 export const getMenusResult = async (params: IGetMenusResultReq) => {
@@ -322,4 +322,15 @@ export interface IStoreListResult {
 export const getStoreList = async (params: IGetStoreListResultReq) => {
   const res = await axios.get(`/front/store`, {params})
   return res?.data as IStoreListResult | undefined;
+}
+
+// 提交咨询表单
+export interface IPostFormResultReq {
+  cooperateParam: any
+}
+export interface IFormSumbitResult {
+  
+}
+export const postCooperateSumbit = async (cooperateParam: IPostFormResultReq) => {
+  return await axios.post(`/front/cooperate`, {...cooperateParam})   
 }

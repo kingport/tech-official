@@ -86,7 +86,7 @@ function About() {
               </div>
               <div className="time-box">
                 {
-                  aboutResult?.pc.historyVoList.map((item: {years:string},index) => {
+                  aboutResult?.pc?.historyVoList?.map((item: {years:string},index) => {
                     const isLast = index + 1 === aboutResult?.pc.historyVoList.length
                     return (
                       <div key={index} className={`time-item wow fadeInDown ${isLast ? 'active' : ''}`}>
@@ -115,7 +115,7 @@ function About() {
              
               <div className="time-box-sm">
                 {
-                  aboutResult?.pc.historyVoList.map((item: {years:string},index) => {
+                  aboutResult?.pc?.historyVoList?.map((item: {years:string},index) => {
                     const isLast = index + 1 === aboutResult?.pc.historyVoList.length
                     return (
                       <div key={index} className={`time-item wow fadeInDown ${isLast ? 'active' : ''}`}>

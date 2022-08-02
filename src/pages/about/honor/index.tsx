@@ -38,7 +38,7 @@ export default function () {
             <div className='honor-wrapper'>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                     {
-                       honorResult?.pc.bannerImageList.map((x) => {
+                       honorResult?.pc?.bannerImageList?.map((x) => {
                             return (
                                 <SwiperSlide key={x} className="honor-swiper-img">
                                   <img src={x} />
@@ -53,7 +53,7 @@ export default function () {
                 <div className="honor-info">
                     <div className="info-item">
                         {
-                            honorResult?.pc.eventList.map((x) => {
+                            honorResult?.pc?.eventList?.map((x) => {
                                 return (
                                     <div className="text-box wow fadeInDown">
                                         <div className="icon">
