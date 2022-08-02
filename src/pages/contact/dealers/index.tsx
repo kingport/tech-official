@@ -14,13 +14,14 @@ import { Pagination,Autoplay } from "swiper";
 import { useSize } from '../../../hooks/useSize';
 import { useStoreListResult } from '../../../hooks/useStoreListResult';
 import { getLanguage } from '../../../utils';
+import { Formik, Field, Form } from 'formik';
 
 export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
   const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
   
-  const sumbit = (values: any) => {
+  const onSubmit = (values: any) => {
     console.log(values, 'LLLLL')
 
   }
@@ -40,97 +41,100 @@ export default function () {
       </div>
       {/* 商业合作 */}
       <div className="container">
-        <form onSubmit={sumbit} className="com-form" id="form">
-          {
-            size?.width > 580 &&
-            <div className="d-none d-md-block d-sm-block">
-              <div className="form-title wow fadeInDown">欢迎发送邮件或填写下方“咨询表”获取更多信息</div>
-            </div>
-          }
-          {
-            size?.width <= 580 && 
-            <div className="d-block d-sm-none">
-              <div className="business-header-sm wow fadeInDown">
-                <div className="title">商业合作</div>
-                <div className="subtitle">我们正在全球范围内招经销商和代理商，欢迎你的加入， 请留下你的联系方式，我们会再详细沟通。</div>
+        <Formik initialValues={{}} onSubmit={onSubmit}>
+          <Form className="com-form" id="form">
+            {
+              size?.width > 580 &&
+              <div className="d-none d-md-block d-sm-block">
+                <div className="form-title wow fadeInDown">欢迎发送邮件或填写下方“咨询表”获取更多信息</div>
               </div>
-              <div className="business-email-box wow fadeInDown">
-                <div className="email-box">
-                  <div className="box"> 
-                    <div className="title">欢迎发送邮件或填写下方“咨询表”获取更多信息</div>
-                    <div className="subtitle">经销加盟联系邮箱<br />sales@hello-tech.com<br /> 期待与您合作，互利共赢 </div>
+            }
+            {
+              size?.width <= 580 && 
+              <div className="d-block d-sm-none">
+                <div className="business-header-sm wow fadeInDown">
+                  <div className="title">商业合作</div>
+                  <div className="subtitle">我们正在全球范围内招经销商和代理商，欢迎你的加入， 请留下你的联系方式，我们会再详细沟通。</div>
+                </div>
+                <div className="business-email-box wow fadeInDown">
+                  <div className="email-box">
+                    <div className="box"> 
+                      <div className="title">欢迎发送邮件或填写下方“咨询表”获取更多信息</div>
+                      <div className="subtitle">经销加盟联系邮箱<br />sales@hello-tech.com<br /> 期待与您合作，互利共赢 </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          }
-          <div className="form-info wow fadeInDown">
-            <div className="info-box">
-              <div className="row-form row-flex">
-                <div className="form-item">
-                  <label>
-                    <div className="type">电子邮箱</div>
-                    <div className="input">
-                      {/* @ts-ignore */}
-                      <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" /></icon>
-                      <input className="email" type="text" name="userEmail" placeholder="请输入您的邮箱" />
-                    </div>
-                  </label>
-                </div>
-                <div className="form-item">
-                  <label>
-                    <div className="type">联系电话</div>
-                    <div className="input">
-                      {/* @ts-ignore */}
-                      <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" /></icon>
-                      <input className="phone" type="text" name="phone" placeholder="请输入您的电话" />
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <div className="row-form">
-                <div className="form-item">
-                  <label>
-                    <div className="type">咨询内容</div>
-                    <div className="input">
-                      {/* @ts-ignore */}
-                      <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" /></icon>
-                      <textarea className="description" rows={10} name="description" placeholder="请输入您想咨询的内容"></textarea>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <div className="row-form">
-                {
-                  size?.width > 580 &&
-                  <div className="d-none d-md-block d-sm-block">
-                    <div className="form-btn">
-                      <button type="submit">
-                        <div className="icon"><img src="https://www.hello-tech.com/images/icon-submit905db2b91e8886c73463d3baac6e8016.png" /></div>提交咨询
-                      </button>
-                    </div>
+            }
+            <div className="form-info wow fadeInDown">
+              <div className="info-box">
+                <div className="row-form row-flex">
+                  <div className="form-item">
+                    <label>
+                      <div className="type">电子邮箱</div>
+                      <div className="input">
+                        {/* @ts-ignore */}
+                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" /></icon>
+                        <input className="email" type="text" name="userEmail" placeholder="请输入您的邮箱" />
+                      </div>
+                    </label>
                   </div>
-                }
-                {
-                  size?.width <= 580 &&
-                  <div className="d-block d-sm-none">
-                    <div className="form-btn-sm">
-                      <button type="submit">
-                        <div className="icon"><img src="https://www.hello-tech.com/images/icon-submit-whited9dba3b183484245df6107d0d3e1a603.png" /></div>提交咨询
-                      </button>
-                    </div>
+                  <div className="form-item">
+                    <label>
+                      <div className="type">联系电话</div>
+                      <div className="input">
+                        {/* @ts-ignore */}
+                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" /></icon>
+                        {/* <input className="phone" type="text" name="phone" placeholder="请输入您的电话" /> */}
+                        <Field required className="phone" name="phone" placeholder="请输入您的电话" />
+                      </div>
+                    </label>
                   </div>
-                }
+                </div>
+                <div className="row-form">
+                  <div className="form-item">
+                    <label>
+                      <div className="type">咨询内容</div>
+                      <div className="input">
+                        {/* @ts-ignore */}
+                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" /></icon>
+                        <textarea className="description" rows={10} name="description" placeholder="请输入您想咨询的内容"></textarea>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div className="row-form">
+                  {
+                    size?.width > 580 &&
+                    <div className="d-none d-md-block d-sm-block">
+                      <div className="form-btn">
+                        <button type="submit">
+                          <div className="icon"><img src="https://www.hello-tech.com/images/icon-submit905db2b91e8886c73463d3baac6e8016.png" /></div>提交咨询
+                        </button>
+                      </div>
+                    </div>
+                  }
+                  {
+                    size?.width <= 580 &&
+                    <div className="d-block d-sm-none">
+                      <div className="form-btn-sm">
+                        <button type="submit">
+                          <div className="icon"><img src="https://www.hello-tech.com/images/icon-submit-whited9dba3b183484245df6107d0d3e1a603.png" /></div>提交咨询
+                        </button>
+                      </div>
+                    </div>
+                  }
+                </div>
               </div>
             </div>
-          </div>
-          {
-            size?.width > 580 && 
-            <div className="d-none d-md-block d-sm-block">
-              <div className="text-box wow fadeInDown">经销加盟联系邮箱sales@hello-tech.com，期待与您合作，互利共赢。</div>
-            </div>
-          }
-        </form>
+            {
+              size?.width > 580 && 
+              <div className="d-none d-md-block d-sm-block">
+                <div className="text-box wow fadeInDown">经销加盟联系邮箱sales@hello-tech.com，期待与您合作，互利共赢。</div>
+              </div>
+            }
+          </Form>
+        </Formik>
       </div>
       {/* 线下门店 */}
       <div style={{background: '#fff'}} className="development-wrapper-storage">
