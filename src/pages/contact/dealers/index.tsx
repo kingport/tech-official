@@ -74,7 +74,7 @@ export default function () {
                       <div className="type">电子邮箱</div>
                       <div className="input">
                         {/* @ts-ignore */}
-                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" /></icon>
+                        <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" /></div>
                         <input className="email" type="text" name="userEmail" placeholder="请输入您的邮箱" />
                       </div>
                     </label>
@@ -84,7 +84,7 @@ export default function () {
                       <div className="type">联系电话</div>
                       <div className="input">
                         {/* @ts-ignore */}
-                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" /></icon>
+                        <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" /></div>
                         {/* <input className="phone" type="text" name="phone" placeholder="请输入您的电话" /> */}
                         <Field required className="phone" name="phone" placeholder="请输入您的电话" />
                       </div>
@@ -97,7 +97,7 @@ export default function () {
                       <div className="type">咨询内容</div>
                       <div className="input">
                         {/* @ts-ignore */}
-                        <icon className="icon-pos"><img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" /></icon>
+                        <div className="icon-pos"><img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" /></div>
                         <textarea className="description" rows={10} name="description" placeholder="请输入您想咨询的内容"></textarea>
                       </div>
                     </label>
