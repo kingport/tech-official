@@ -23,3 +23,11 @@ export const RQ_NEWS_EVENTS = 'RQ_news_events'
 export const RQ_RESPONSIBILITY_INFO = 'RQ_responsibility_info'
 // 获取新闻与事件列表
 export const RQ_NEWS_EVENTS_LIST = 'RQ_news_events_list'
+// 获取新闻详情
+export const RQ_NEWS_DETAIL = 'RQ_news_detail'
+// 获取（便携储能和太阳能板）
+export const RQ_BRAND_INFO = 'RQ_brand_info'
+// 获取产品配件
+export const RQ_BRAND_ACCESSORY = 'RQ_brand_accessory'
+// 获取商业合作列表
+export const RQ_STORE_LIST = 'RQ_store_list'

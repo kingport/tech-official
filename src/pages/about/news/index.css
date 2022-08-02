@@ -93,6 +93,7 @@
 .news-box:hover {
   color: #666;
   transition: 0.3s all;
+  cursor: pointer;
 }
 
 .news-box:hover .news-info .news-title {

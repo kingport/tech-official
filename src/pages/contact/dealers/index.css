@@ -4,56 +4,287 @@
 }
 
 .com-img {
-  background: url("https://www.hello-tech.com/images/banner-contact5988c4482ba9f4b750eb221a4e45546e.jpg") center/cover no-repeat;
   min-height: 75vh;
 }
 
 .com-img .info-box {
   width: auto;
-  top: 50%;
-  left: 20%;
+  top: 47%;
+  left: 15%;
+  align-items: start;
 }
 
-.contact-wrapper {
-  padding: 0 20px;
-  display: flex;
-  justify-content: center;
+.com-img .info-box .title {
+  color: #ff5b00;
+  margin-bottom: 24px;
 }
 
-.contact-box {
-  width: 100%;
-  max-width: 1469px;
+.com-img .info-box .text {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.9);
+  text-align: left;
 }
 
-.contact-box .contact-item {
-  position: relative;
-  margin-top: 80px;
+.com-form {
+  margin-bottom: 30px;
 }
 
-.contact-box .info-box {
-  position: absolute;
-  top: 30%;
-  left: 10%;
+form {
+  display: block;
+  margin-top: 0em;
 }
 
-.contact-box .info-box .title {
-  font-size: 32px;
+.form-title {
+  margin: 95px 0;
+  text-align: center;
+  font-size: 40px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.9);
-  margin-bottom: 10px;
 }
 
-.contact-box .info-box .text .icon {
-  margin-top: -2px;
+@media (min-width: 768px) {
+  .d-md-block {
+    display: block !important;
+  }
 }
 
-.contact-box .info-box .text {
+.form-info {
+  padding-top: 100px;
   display: flex;
-  font-size: 18px;
-  font-weight: 500;
-  color: rgba(49, 48, 48, 0.9);
+  align-items: center;
+  justify-content: center;
+  height: 750px;
+  background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png') center bottom/contain no-repeat;
 }
 
-.container-box {
-  margin-top: 180px;
+.form-info .info-box {
+  flex-basis: 80.5%;
+}
+
+.row-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-item:nth-child(odd):not(:last-child) {
+  margin-right: 20px;
+}
+
+.form-item {
+  flex: 1;
+  color: #ff5b00;
+}
+
+.form-item label {
+  width: 100%;
+  display: inline-block;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.form-item .type {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.input {
+  position: relative;
+}
+
+.input .icon-pos {
+  position: absolute;
+  top: 8px;
+  right: 15px;
+}
+
+.form-item input, .form-item textarea {
+  width: 100%;
+  padding: 10px 60px 10px 15px;
+  border: 0;
+  background: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px rgb(255 255 255 / 50%);
+  border: 1px solid #ff5b00;
+}
+
+.form-item:nth-child(even) {
+  margin-left: 20px;
+}
+
+.form-btn {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 60px;
+}
+
+.form-btn button {
+  border: none;
+  background: #fff;
+  color: #ff5b00;
+  width: 205px;
+  height: 50px;
+  box-shadow: 0px 2px 4px 0px rgb(255 255 255 / 50%);
+  border-radius: 50px;
+  font-size: 20px;
+  border: 1px solid #ff5b00;
+  font-weight: bold;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.text-box {
+  padding: 50px 0 0;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 500;
+  color: #ff5b00;
+}
+
+.business-header-sm {
+  text-align: center;
+  padding-top: 31px;
+}
+
+.business-header-sm .title {
+  font-size: 24px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FF5B00;
+}
+
+.business-header-sm .subtitle {
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #000000;
+  opacity: 0.9;
+  line-height: 25px;
+  padding: 17px 0px 39px 0px;
+}
+
+@media only screen and (max-width: 767px) {
+  .business-email-box .email-box {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .business-email-box .email-box .box {
+    width: 60%;
+  }
+}
+
+.business-email-box .email-box .box {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.business-email-box .email-box .box .title {
+  font-size: 16px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color: #FF5B00;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+.business-email-box .email-box .box .subtitle {
+  font-size: 12px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #FF5B00;
+}
+
+@media only screen and (max-width: 767px) {
+  .form-info {
+    height: auto !important;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .form-info {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-info .info-box {
+    flex-basis: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .row-flex {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-item:nth-child(odd):not(:last-child) {
+      margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-item {
+      width: 100%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-item:nth-child(even) {
+    margin-left: 0;
+  }
+}
+
+.business-email-box .email-box {
+  width: 100%;
+  height: 185px;
+  background: url("https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png") center/contain no-repeat;
+  position: relative;
+  margin-bottom: 34px;
+}
+
+@media only screen and (max-width: 767px) {
+  .form-info .info-box .form-btn-sm {
+    padding-top: 25px;
+  }
+}
+.form-btn-sm {
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-btn-sm button {
+  border: none;
+  background: #FF5B00;
+  color: #fff;
+  width: 150px;
+  height: 42px;
+  border-radius: 42px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-btn-sm button .icon img {
+  width: 25px;
+  height: 25px;
 }

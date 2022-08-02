@@ -237,3 +237,89 @@ export const getNewsEvents = async (params: IGetNewsEventResultReq) => {
   const res = await axios.get(`/front/news/event`, {params})
   return res?.data as INewsEventResult | undefined;
 }
+
+// 获取新闻详情
+export interface IGetNewsDetailResultReq {
+  newsEventId?: string,
+  language?: string,
+}
+export interface INewsDetailResult {
+  pc: {
+    content: string,
+  },
+  h5: {
+    content: string,
+  }
+}
+export const getNewsDetail = async (params: IGetNewsDetailResultReq) => {
+  const res = await axios.get(`/front/news/event/detail`, {params})
+  return res?.data as INewsDetailResult | undefined;
+}
+
+// 获取产品便携储能和太阳能板
+export interface IGetBrandInfoResultReq {
+  subtitleId?: number,
+  language?: string,
+}
+export interface IBrandInfoResult {
+  pc: {
+    image: string,
+    productList: {descList: [],image: string,subtitle: string, title: string,}[],
+    slideList: [],
+    title: string,
+    usedList: any[],
+  },
+  h5: {
+    image: string,
+    productList: {descList: [],image: string,subtitle: string, title: string,}[],
+    slideList: [],
+    title: string,
+    usedList: any[],
+  }
+}
+export const getBrandInfo = async (params: IGetBrandInfoResultReq) => {
+  const res = await axios.get(`/front/brand`, {params})
+  return res?.data as IBrandInfoResult | undefined;
+}
+
+// 获取产品配件
+export interface IGetAccessoryResultReq {
+  subtitleId?: number,
+  language?: string,
+}
+export interface IAccessoryResult {
+  pc: {
+    image: string,
+    detailVoList: any[],
+  },
+  h5: {
+    image: string,
+    detailVoList: any[],
+  }
+}
+export const getAccessory= async (params: IGetAccessoryResultReq) => {
+  const res = await axios.get(`/front/accessory`, {params})
+  return res?.data as IAccessoryResult | undefined;
+}
+
+// 商业合作门店接口
+export interface IGetStoreListResultReq {
+  subtitleId?: number,
+  language?: string,
+}
+export interface IStoreListResult {
+  pc: {
+    image: string,
+    detailVoList: any[],
+    imageList: []
+  },
+  h5: {
+    image: string,
+    detailVoList: any[],
+    imageList: []
+  }
+}
+export const getStoreList = async (params: IGetStoreListResultReq) => {
+  const res = await axios.get(`/front/store`, {params})
+  return res?.data as IStoreListResult | undefined;
+}

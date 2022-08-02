@@ -8,10 +8,12 @@ import Honor from './pages/about/honor';
 import Quality from './pages/about/quality';
 import Responsibility from './pages/about/responsibility';
 import News from './pages/about/news';
+import NewsDetail from './pages/about/newsDetail';
 import Storage from './pages/brand/storage';
 import Solar from './pages/brand/solar';
 import Part from './pages/brand/part';
 import Contact from './pages/contact/index';
+import Dealers from './pages/contact/dealers';
 
 function App() {
   return (
@@ -23,10 +25,12 @@ function App() {
         <Route path="/about/quality" element={<Quality />} />
         <Route path="/about/responsibility" element={<Responsibility />} />        
         <Route path="/about/news" element={<News />} />        
+        <Route path="/about/news/:id" element={<NewsDetail />} />        
         <Route path="/brand/storage" element={<Storage />} />        
         <Route path="/brand/solar" element={<Solar />} />        
         <Route path="/brand/part" element={<Part />} />        
         <Route path="/contact" element={<Contact />} />        
+        <Route path="/contact/dealers" element={<Dealers />} />        
       </Routes>
     </div>
   )

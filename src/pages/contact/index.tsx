@@ -1,13 +1,19 @@
 import React from 'react';
 import ShopFooter from '../../components/ShopFooter';
+import { useStoreListResult } from '../../hooks/useStoreListResult';
+import { getLanguage } from '../../utils';
 import './index.css'
 
 export default function () {
+
+  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
+
+
   return (
     <div className='content-main'>
       <div className="com-img">
         <div className="info-box">
-          <div className="title">联系我们</div>
+          <div className="title"></div>
         </div>
       </div>
       <div className='contact-wrapper'>

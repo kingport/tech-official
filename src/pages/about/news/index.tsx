@@ -1,6 +1,6 @@
 // 新闻内容
 import React from 'react';
-
+import { useNavigate } from "react-router-dom";
 import ShopFooter from '../../../components/ShopFooter';
 import { useNewsEventResult } from '../../../hooks/useNewsEventResult';
 import { useNewsResult } from '../../../hooks/useNewsResult';
@@ -11,7 +11,7 @@ import './index.css'
 export default function () {
     const target = React.useRef(null)
     const size = useSize(target)
-
+    let navigate = useNavigate();
     const { data: newsResult} = useNewsResult({language: getLanguage(), subtitleId: 15})
     const { data: newsEventResult} = useNewsEventResult({language: getLanguage(), newsId: newsResult?.newsId})
 
@@ -33,7 +33,8 @@ export default function () {
                                     <a
                                         className="news-box wow fadeInDown"
                                         key={index}
-                                        href="https://baidu.com">
+                                        onClick={() => navigate(`/about/news/${x.pc.id}`)}
+                                        >
                                         <div className="news-l">
                                             <div className="news-img">
                                                 <div className="img-box">
@@ -72,7 +73,7 @@ export default function () {
                             {
                                 newsEventResult?.rows.map((x:any,index) => {
                                     return (
-                                        <a key={index} className="news-box" href="/en/news/20210810/609674421535244288.html">
+                                        <a key={index} className="news-box" onClick={() => navigate(`/about/news/${x.h5.id}`)}>
                                             <div className="news-l">
                                                 <div className="news-img">
                                                     <div className="img-box">
@@ -101,7 +102,6 @@ export default function () {
                     </div>
                 </div>
             }
-            
             {/* footer */}
             <ShopFooter/>
         </div>
