@@ -240,3 +240,6 @@ img {
 .arco-collapse-item-active > .arco-collapse-item-header {
   border-color: transparent !important;
 }
+.arco-divider-horizontal  {
+  border-bottom: none !important;
+}

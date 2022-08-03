@@ -140,6 +140,7 @@ export default function () {
                     localStorage.setItem('lang', 'cn');
                     window.location.reload()
                   }}
+                  style={{color: localStorage.getItem('lang') === 'cn' ? '#ff5b00' : '#000'}}
                  className="lang">Chinese</span>
                 <span>&nbsp;/&nbsp;</span>
                 <span 
@@ -147,6 +148,7 @@ export default function () {
                     localStorage.setItem('lang', 'en');
                     window.location.reload()
                   }} 
+                style={{color: localStorage.getItem('lang') === 'en' ? '#ff5b00' : '#000'}}
                 className="lang active">English</span>
               </div>
             </div>
@@ -195,10 +197,13 @@ export default function () {
                     {
                       x?.subtitleVoList?.map((k:any,index:any) => {
                         return (
-                          <>
-                            <div style={{minHeight: 30}} key={index}>{k.title}</div>
+                          <div key={index}>
+                            <div onClick={() => {
+                              setVisible(false);
+                              jumpToNav(k)
+                            }} style={{minHeight: 40}} >{k.title}</div>
                             <Divider style={{ margin: '8px 0' }} />
-                          </>
+                          </div>
                         )
                       })
                     }
@@ -206,7 +211,6 @@ export default function () {
                 )
               })
             }
-            
           </Collapse>
         </div>
       </Drawer>

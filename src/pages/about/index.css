@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.com-img-about {
+.com-img {
   background-size: cover !important;
   min-height: 100vh;
 }
@@ -36,7 +36,7 @@
 
 .section-box .company-info {
   line-height: 25px;
-  margin-bottom: 84px
+  /* margin-bottom: 84px */
 }
 
 .section-box .company-info p {
@@ -302,7 +302,6 @@
 
 @media only screen and (max-width: 767px) {
   .development-bg {
-    /* background: url("https://www.hello-tech.com/images/course11b91de37e97a16c35c417294b21803b.png") center/100% 100% no-repeat; */
     padding: 0px;
   }
 }

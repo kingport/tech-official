@@ -37,9 +37,9 @@ export default function HistorySwiper(props: Iprops) {
                 <div className="swiper-item">
                   <p className="title">{item?.years}</p>
                   {
-                    item?.event.map((x) => {
+                    item?.event.map((x,index) => {
                       return (
-                        <div className="development-text" key={x}>
+                        <div className="development-text" key={index}>
                           <div className="circle"></div>
                           <p className="description" key={x}>{x}</p>
                         </div>

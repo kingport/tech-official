@@ -45,7 +45,7 @@ function About() {
     <div ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
-        <div style={bannerStyle} className="com-img-about"></div>
+        <div style={bannerStyle} className="com-img"></div>
         {/* 公司简介 */}
         <div className="container">
           <div className="section-box">

@@ -21,7 +21,7 @@ export default function () {
     return (
         <div ref={target} className='content-main'>
             {/* banner */}
-            <div style={{ background: `url(${qualityResult?.pc?.topImage}) center/cover no-repeat`}} className="com-img-quality"></div>
+            <div style={{ background: `url(${qualityResult?.pc?.topImage}) center/cover no-repeat`}} className="com-img"></div>
             {/* 质量方针 */}
             <div className="container">
                 <div className="section-box">

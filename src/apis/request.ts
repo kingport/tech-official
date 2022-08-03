@@ -2,7 +2,8 @@ import Axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 
 const axios = Axios.create({
-  baseURL:  '/api',
+  // baseURL: 'http://106.13.197.84/api',
+  baseURL: '/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
