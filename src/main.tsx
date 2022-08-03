@@ -8,6 +8,7 @@ import {
   QueryClientProvider, 
 } from 'react-query'
 import './index.css'
+import "@arco-design/web-react/dist/css/arco.css";
 import Footer from './components/Footer';
 import SaleModal from './components/SaleModal';
 import { SnackbarProvider } from 'notistack';

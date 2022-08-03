@@ -11,20 +11,20 @@ import "swiper/css/navigation";
 import {Navigation} from "swiper";
 import { getLanguage } from '../../../utils';
 import { useHonorResult } from '../../../hooks/useHonorResult';
+import { useLocation } from 'react-router-dom';
 
 export default function () {
 
+    const location: any = useLocation()
     const {
         data: honorResult,
         isLoading: honorResultLoading,
-        isFetching: honorResultFetching,
-        refetch: honorResultRefetch
-      } = useHonorResult({language: getLanguage(), subtitleId: 12})
+      } = useHonorResult({language: getLanguage(), subtitleId: location?.state?.id})
       
     return (
         <div className='content-main'>
             {/* banner */}
-            <div style={{ background: `url(${honorResult?.pc?.topBackgroundImage}) center/cover no-repeat`}} className="com-img-honor"></div>
+            <div style={{ background: `url(${honorResult?.pc?.topBackgroundImage}) center/cover no-repeat`}} className="com-img"></div>
             {/* 荣誉资质 */}
             <div className="container">
                 <div className="section-box">

@@ -10,16 +10,18 @@ import { useHomeResult } from '../../hooks/useHomeResult'
 
 import Footer from "../../components/Footer";
 import { getLanguage } from '../../utils/index'
+import { useLocation } from "react-router-dom";
 function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
-
+  const location: any = useLocation()
+  console.log(location, 'LL')
   const {
     data: homeResult,
     isLoading: homeResultLoading,
     isFetching: homeResultFetching,
     refetch: homeResultRefetch
-  } = useHomeResult({language: getLanguage(), topTitleId: 1})
+  } = useHomeResult({language: getLanguage(), topTitleId: location?.state?.id || 1})
 
   const styleBanner1 = {
     backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner1 : homeResult?.h5?.banner1})`

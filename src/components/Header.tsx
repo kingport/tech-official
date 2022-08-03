@@ -5,13 +5,20 @@ import './header.css'
 import { useMenusResult } from '../hooks/useMenusResult'
 import { useSize } from "../hooks/useSize";
 import { getLanguage } from "../utils";
-
+import { Drawer, Menu } from '@arco-design/web-react';
+import { Collapse, Divider } from '@arco-design/web-react';
+const CollapseItem = Collapse.Item;
+import { IconApps, IconBug, IconBulb } from '@arco-design/web-react/icon';
+const MenuItem = Menu.Item;
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 
 interface navParams {
   id: number, 
   title: string,
   path?: string,
   subjectId?: number
+  subtitleVoList: any
 }
 
 
@@ -20,6 +27,7 @@ export default function () {
   const size = useSize(target)
   let navigate = useNavigate();
   const [selectId,setSelectId] = React.useState<any>(1)
+  const [visible,setVisible] = React.useState<any>(false)
   
   const {
     data: menusResult,
@@ -28,48 +36,80 @@ export default function () {
 
   const jumpToNav = (item: navParams) => {
     // navigate(item?.path);
+
+    // 一级菜单
     if(item.id === 1) {
-      navigate('/')
+      navigate('/', {state: {
+        id: item.id
+      }})
     }
     if(item.id === 2) {
-      navigate('/about')
+      navigate('/about',{state: {
+        id: item.subtitleVoList[0].subjectId
+      }})
     }
     if(item.id === 3) {
-      navigate('/brand/storage')
+      navigate('/brand/storage', {state: {
+        id: item.id
+      }})
     }
     if(item.id === 4) {
-      navigate('/contact')
+      navigate('/contact', {state: {
+        id: item.subtitleVoList[0].subjectId
+      }})
     }
+
+    // 二级菜单
     if(item.subjectId === 11) {
-      navigate('/about')
+      navigate('/about',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 12) {
-      navigate('/about/honor')
+      navigate('/about/honor',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 13) {
-      navigate('/about/quality')
+      navigate('/about/quality',{state: {
+        id: item.subjectId
+      }})
 
     }
     if(item.subjectId === 14) {
-      navigate('/about/responsibility')
+      navigate('/about/responsibility',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 15) {
-      navigate('/about/news')
+      navigate('/about/news',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 16) {
-      navigate('/brand/storage')
+      navigate('/brand/storage',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 17) {
-      navigate('/brand/solar')
+      navigate('/brand/solar',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 18) {
-      navigate('/brand/part')
+      navigate('/brand/part',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 19) {
-      navigate('/contact')
+      navigate('/contact',{state: {
+        id: item.subjectId
+      }})
     }
     if(item.subjectId === 20) {
-      navigate('/contact/dealers')
+      navigate('/contact/dealers',{state: {
+        id: item.subjectId
+      }})
     }
   }
 
@@ -86,7 +126,7 @@ export default function () {
             <div className="nav-box">
               {
                 menusResult?.pc?.topTitleVoList?.map((nav: navParams) => 
-                <div  onMouseEnter={() => {setSelectId(nav.id)}} onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
+                <div onMouseEnter={() => {setSelectId(nav.id)}} onClick={() => jumpToNav(nav)} className="nav-item nav-item-main" key={nav.id}>
                   <span className="nav-item-a">{nav.title}</span>
                 </div>)
               }
@@ -110,12 +150,13 @@ export default function () {
                 className="lang active">English</span>
               </div>
             </div>
-            <div className="navbar-toggler">
+            <div onClick={() => setVisible(true)} className="navbar-toggler">
               <img src={`https://www.hello-tech.com/images/index-list-black68893984245e5e751475bfcb75bd2398.png`} alt="black" />
             </div>
           </div> 
         </div>
       </div>
+      {/* PC 子菜单 */}
       {
         selectId !== 1 && size?.width > 580 &&  
           <div onMouseLeave={() => setSelectId(1)} className="children-nav">
@@ -128,6 +169,44 @@ export default function () {
           }
         </div>
       }  
+      {/* H5 子菜单 */}
+      <Drawer
+        width={"80%"}
+        title={<span></span>}
+        visible={visible}
+        onOk={() => {
+          setVisible(false);
+        }}
+        onCancel={() => {
+          setVisible(false);
+        }}
+        footer={null}
+      >
+        <div className="nav-list">
+          <Collapse
+            bordered={false}
+            defaultActiveKey={['1']}
+            style={{ maxWidth: 1180 }}
+          >
+            {
+              menusResult?.pc?.topTitleVoList?.map((x:any) => {
+                return (
+                  <CollapseItem header={x.title} name='1'>
+                    {x.title}
+                    <Divider style={{ margin: '8px 0' }}
+                    />
+                    Beijing Toutiao Technology Co., Ltd.
+                    <Divider style={{ margin: '8px 0' }}
+                    />
+                    Beijing Toutiao Technology Co., Ltd.
+                  </CollapseItem>
+                )
+              })
+            }
+            
+          </Collapse>
+        </div>
+      </Drawer>
     </header>
   )
 }

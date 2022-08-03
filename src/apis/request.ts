@@ -27,12 +27,12 @@ axios.interceptors.response.use(
       if (response.status === 200 && response.data.code === 0) {
           return data;
       }else {
-        toast.error(
-          response.data.msg,
-          {
-            duration: 5000,
-          }
-        );
+        // toast.error(
+        //   response.data.msg,
+        //   {
+        //     duration: 5000,
+        //   }
+        // );
       }
 
       return Promise.reject(new Error(response.statusText || 'Error'));
