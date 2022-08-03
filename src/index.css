@@ -234,3 +234,9 @@ img {
 .arco-drawer-wrapper {
   z-index: 10000 !important;
 }
+.arco-collapse-item-content {
+  background: none !important;
+}
+.arco-collapse-item-active > .arco-collapse-item-header {
+  border-color: transparent !important;
+}

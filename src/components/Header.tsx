@@ -191,14 +191,17 @@ export default function () {
             {
               menusResult?.pc?.topTitleVoList?.map((x:any) => {
                 return (
-                  <CollapseItem header={x.title} name='1'>
-                    {x.title}
-                    <Divider style={{ margin: '8px 0' }}
-                    />
-                    Beijing Toutiao Technology Co., Ltd.
-                    <Divider style={{ margin: '8px 0' }}
-                    />
-                    Beijing Toutiao Technology Co., Ltd.
+                  <CollapseItem header={x.title} key={x.id} name='1'>                    
+                    {
+                      x?.subtitleVoList?.map((k:any,index:any) => {
+                        return (
+                          <>
+                            <div style={{minHeight: 30}} key={index}>{k.title}</div>
+                            <Divider style={{ margin: '8px 0' }} />
+                          </>
+                        )
+                      })
+                    }
                   </CollapseItem>
                 )
               })
