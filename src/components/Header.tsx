@@ -1,17 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import listBlackIcon from '../assets/index-list.png';
 import './header.css'
 import { useMenusResult } from '../hooks/useMenusResult'
 import { useSize } from "../hooks/useSize";
 import { getLanguage } from "../utils";
 import { Drawer, Menu } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
+import gsap from "gsap";
 const CollapseItem = Collapse.Item;
-import { IconApps, IconBug, IconBulb } from '@arco-design/web-react/icon';
-const MenuItem = Menu.Item;
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+
 
 interface navParams {
   id?: number, 
@@ -32,6 +29,14 @@ export default function () {
   const {
     data: menusResult,
   } = useMenusResult({language: getLanguage(), companyId: 1})
+
+
+  React.useEffect(() => {
+    gsap.to('.children-nav', {height: 60, duration: 0.5})  
+    if(selectId === 1) {
+      gsap.to('.children-nav', {height: 0, duration: 0.5})  
+    }
+  }, [selectId])
 
 
   const jumpToNav = (item: navParams) => {
@@ -160,8 +165,8 @@ export default function () {
       </div>
       {/* PC 子菜单 */}
       {
-        selectId !== 1 && size?.width > 580 &&  
-          <div onMouseLeave={() => setSelectId(1)} className="children-nav">
+        size?.width > 580 &&  
+          <div onMouseLeave={() => { setSelectId(1) }} className="children-nav">
           {
             menusResult?.pc.topTitleVoList.find((x:any) => x.id === selectId)?.subtitleVoList?.map((k:any, index:any) => {
               return (
