@@ -243,3 +243,6 @@ img {
 .arco-divider-horizontal  {
   border-bottom: none !important;
 }
+.video-react-video {
+  height: 100%;
+}

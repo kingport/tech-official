@@ -14,11 +14,11 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 interface navParams {
-  id: number, 
-  title: string,
+  id?: number, 
+  title?: string,
   path?: string,
   subjectId?: number
-  subtitleVoList: any
+  subtitleVoList?: any
 }
 
 
@@ -189,11 +189,17 @@ export default function () {
             bordered={false}
             defaultActiveKey={['1']}
             style={{ maxWidth: 1180 }}
+            onChange={(x) => {
+              if(x == "0") {
+                setVisible(false);
+                jumpToNav({id: 1})
+              }
+            }}
           >
             {
-              menusResult?.pc?.topTitleVoList?.map((x:any) => {
+              menusResult?.pc?.topTitleVoList?.map((x:any,index:any) => {
                 return (
-                  <CollapseItem header={x.title} key={x.id} name='1'>                    
+                  <CollapseItem header={x.title} key={x.id} name={index}>                    
                     {
                       x?.subtitleVoList?.map((k:any,index:any) => {
                         return (

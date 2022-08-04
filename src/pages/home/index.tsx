@@ -11,6 +11,7 @@ import { useHomeResult } from '../../hooks/useHomeResult'
 import Footer from "../../components/Footer";
 import { getLanguage } from '../../utils/index'
 import { useLocation } from "react-router-dom";
+
 function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
@@ -53,9 +54,12 @@ function Home() {
         modules={[Mousewheel, Pagination]}
         className="mySwiper"
       >
-        {/* <SwiperSlide>
-          <InitPage />
-        </SwiperSlide> */}
+        {
+          size?.width > 580 && 
+          <SwiperSlide>
+            <InitPage />
+          </SwiperSlide>
+        }
         <SwiperSlide>
           <div style={styleBanner1} className="banner-item"></div>
         </SwiperSlide>
