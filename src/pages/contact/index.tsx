@@ -1,12 +1,13 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import ShopFooter from '../../components/ShopFooter';
 import { useStoreListResult } from '../../hooks/useStoreListResult';
 import { getLanguage } from '../../utils';
 import './index.css'
 
 export default function () {
-
-  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
+  const location: any = useLocation()
+  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: location?.state?.id})
 
 
   return (

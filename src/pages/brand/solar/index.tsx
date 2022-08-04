@@ -5,12 +5,14 @@ import { useSize } from "../../../hooks/useSize";
 import './index.css'
 import { getLanguage } from "../../../utils";
 import { useBrandInfoResult } from "../../../hooks/useBrandInfoResult";
+import { useLocation } from "react-router-dom";
 function Solar() {
   const target = React.useRef(null)
   const size = useSize(target)
   const [active,setActive] = React.useState(1)
+  const location: any = useLocation()
 
-  const { data: brandInfoResult} = useBrandInfoResult({language: getLanguage(), subtitleId: 17})
+  const { data: brandInfoResult} = useBrandInfoResult({language: getLanguage(), subtitleId: location?.state?.id})
 
   return (
     <div ref={target} className="about-container">
@@ -23,19 +25,19 @@ function Solar() {
             <div className="row row-section">
               <div className="col-xs-12 col-md-6 wow fadeInLeft" >
                 <div className="row-img">
-                  <img src={brandInfoResult?.pc.productList[0].image} alt="" />
+                  <img src={brandInfoResult?.pc.productList[0]?.image} alt="" />
                 </div>
               </div>
               <div className="col-xs-12 col-md-6">
                 <div className="row-info-wrapper wow fadeInRight" >
                   <div className="row-info">
                     <div className="title">
-                      {brandInfoResult?.pc.productList[0].title}
-                      <span>{brandInfoResult?.pc.productList[0].subtitle}</span>
+                      {brandInfoResult?.pc.productList[0]?.title}
+                      <span>{brandInfoResult?.pc.productList[0]?.subtitle}</span>
                     </div>
-                    <div className="text-box">
+                    <div className="text-box-storage">
                       {
-                        brandInfoResult?.pc.productList[0].descList.map((x,index) => {
+                        brandInfoResult?.pc?.productList[0]?.descList?.map((x,index) => {
                           return (
                             <div key={index} className="text-item">{x}</div>
                           )
@@ -59,7 +61,7 @@ function Solar() {
                 </div>
                 <div className="com-tips">
                   {
-                    brandInfoResult?.pc.usedList.map((x:any,index) => {
+                    brandInfoResult?.pc?.usedList?.map((x:any,index) => {
                       const current = index + 1
                       return (
                         <div key={index} onMouseEnter={() => {setActive(current)}} className={`com-tips-item ${active === current ? 'active' : ''}`}>

@@ -24,7 +24,7 @@ export default function () {
     return (
         <div className='content-main'>
             {/* banner */}
-            <div style={{ background: `url(${honorResult?.pc?.topBackgroundImage}) center/cover no-repeat`}} className="com-img"></div>
+            <div style={{ minHeight: '100vh',background: `url(${honorResult?.pc?.topBackgroundImage}) center/cover no-repeat`}} className="com-img"></div>
             {/* 荣誉资质 */}
             <div className="container">
                 <div className="section-box">

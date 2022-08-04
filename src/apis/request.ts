@@ -1,5 +1,5 @@
 import Axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
+import { Notification } from '@arco-design/web-react';
 
 const axios = Axios.create({
   // baseURL: 'http://106.13.197.84/api',
@@ -16,8 +16,6 @@ axios.interceptors.request.use((config: any) => {
   if (token) {
       config.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(config, 'config');
-
   return config;
 });
 
@@ -28,12 +26,10 @@ axios.interceptors.response.use(
       if (response.status === 200 && response.data.code === 0) {
           return data;
       }else {
-        // toast.error(
-        //   response.data.msg,
-        //   {
-        //     duration: 5000,
-        //   }
-        // );
+        Notification.error({
+          title: 'Error',
+          content: response.data.msg,
+        })
       }
 
       return Promise.reject(new Error(response.statusText || 'Error'));

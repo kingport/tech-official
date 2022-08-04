@@ -5,22 +5,24 @@ import { useSize } from "../../../hooks/useSize";
 import './index.css'
 import { getLanguage } from "../../../utils";
 import { useAccessoryResult } from "../../../hooks/useAccessoryResult";
+import { useLocation } from "react-router-dom";
 
 function Part() {
   const target = React.useRef(null)
   const size = useSize(target)
+  const location: any = useLocation()
   
-  const { data: accessoryResult} = useAccessoryResult({language: getLanguage(), subtitleId: 18})
+  const { data: accessoryResult} = useAccessoryResult({language: getLanguage(), subtitleId: location?.state?.id})
 
   return (
     <div ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
-        <div style={{background: `url(${accessoryResult?.pc?.image}) center/cover no-repeat`}} className="com-img"></div>
+        <div style={{minHeight: '100vh',background: `url(${accessoryResult?.pc?.image}) center/cover no-repeat`}} className="com-img"></div>
         {/* 配件 */}
         <div className="row-part">
           {
-            accessoryResult?.pc?.detailVoList.map((x: any,index) => {
+            accessoryResult?.pc?.detailVoList?.map((x: any,index) => {
               return (
                 <div key={index} className="part-box">
                   <div className="container part-item wow fadeInDown">

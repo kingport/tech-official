@@ -18,13 +18,15 @@ import { Formik, Field, Form } from 'formik';
 import { useMutation } from 'react-query';
 import { postCooperateSumbit } from '../../../apis';
 import { useSnackbar } from 'notistack';
+import { useLocation } from 'react-router-dom';
 
 export default function () {
   const target = React.useRef(null)
   const size = useSize(target)
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const location: any = useLocation()
 
-  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: 19})
+  const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: location?.state?.id})
 
   const mutation = useMutation(postCooperateSumbit, {
     onSuccess: (data:any, variables, context) => {

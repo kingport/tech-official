@@ -1,6 +1,6 @@
 // 新闻内容
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ShopFooter from '../../../components/ShopFooter';
 import { useNewsEventResult } from '../../../hooks/useNewsEventResult';
 import { useNewsResult } from '../../../hooks/useNewsResult';
@@ -12,7 +12,9 @@ export default function () {
     const target = React.useRef(null)
     const size = useSize(target)
     let navigate = useNavigate();
-    const { data: newsResult} = useNewsResult({language: getLanguage(), subtitleId: 15})
+    const location: any = useLocation()
+
+    const { data: newsResult} = useNewsResult({language: getLanguage(), subtitleId: location?.state?.id})
     const { data: newsEventResult} = useNewsEventResult({language: getLanguage(), newsId: newsResult?.newsId})
 
       

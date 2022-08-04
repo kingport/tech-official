@@ -111,7 +111,7 @@ export default function () {
         id: item.subjectId
       }})
     }
-  }
+  }  
 
   return (
     <header ref={target} className="header-maim d-none d-md-block d-sm-block index active" style={{position: 'fixed'}}>

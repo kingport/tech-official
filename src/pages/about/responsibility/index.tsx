@@ -1,5 +1,6 @@
 // 社会责任
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 import ShopFooter from '../../../components/ShopFooter';
 import { useResponsibilityResult } from '../../../hooks/useResponsibilityResult';
@@ -10,21 +11,22 @@ import './index.css'
 export default function () {
     const target = React.useRef(null)
     const size = useSize(target)
+    const location: any = useLocation()
 
     const {
         data: responsibilityResult,
         isLoading: responsibilityResultLoading,
         isFetching: responsibilityResultFetching,
         refetch: responsibilityResultRefetch
-      } = useResponsibilityResult({language: getLanguage(), subtitleId: 14})
+      } = useResponsibilityResult({language: getLanguage(), subtitleId: location?.state?.id})
 
     return (
         <div ref={target} className='content-main'>
             <div className="content-main">
-                <div className="com-img">
+                <div style={{minHeight: '100vh',background: `url(${responsibilityResult?.pc.topImage}) center/cover no-repeat`}} className="com-img">
                     <div className="d-none d-md-block d-sm-block">
                         <div className="info-box">
-                            <div className="title">让绿色能源无处不在</div>
+                            <div className="title"></div>
                         </div>
                         <div className="d-block d-sm-none">
                             <div className="info-box"></div>

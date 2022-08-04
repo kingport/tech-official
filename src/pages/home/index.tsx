@@ -15,12 +15,9 @@ function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
   const location: any = useLocation()
-  console.log(location, 'LL')
   const {
     data: homeResult,
     isLoading: homeResultLoading,
-    isFetching: homeResultFetching,
-    refetch: homeResultRefetch
   } = useHomeResult({language: getLanguage(), topTitleId: location?.state?.id || 1})
 
   const styleBanner1 = {
