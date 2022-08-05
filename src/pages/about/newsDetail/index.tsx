@@ -12,7 +12,7 @@ export default function (props:any) {
 
   return (
     <div className="content-main">
-      <div className="container">
+      <div style={{paddingTop: "60px"}} className="container">
           <div className="news-head" dangerouslySetInnerHTML={{ __html: newsDetailResult?.pc?.content || ''}}>
           </div>
       </div>

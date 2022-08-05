@@ -52,7 +52,7 @@ export default function () {
                                                                 <div className="tag">{x.subtitle}</div>
                                                             </div>
                                                             <div className="time">{x.articleTime}</div>
-                                                            <div className="subtitle">2021年7月河南暴雨灾情严重，抢险救援急需电力支持，电小二紧急安排河南合作伙伴向蓝天救援队及曙光救援队捐赠一批电小二户外电源，方便其为气艇、冲锋舟、无人机、照明灯等救援设备供电，保障救援工作安全顺利开展。同时，电小二户外电源深圳总部向河南省郑州市中牟县红十字会捐赠一批大容量大功率户外电源并安排专车连夜发往郑州，用于救灾应急用电、灾后重建户外用电。</div>
+                                                            <div className="subtitle">{x.content}</div>
                                                         </div>
                                                     )
                                                 })

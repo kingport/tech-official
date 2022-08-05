@@ -10,12 +10,13 @@ import { useHomeResult } from '../../hooks/useHomeResult'
 
 import Footer from "../../components/Footer";
 import { getLanguage } from '../../utils/index'
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Home() {
   const target = React.useRef(null)
   const size = useSize(target)
   const location: any = useLocation()
+  const navigator = useNavigate()
   const {
     data: homeResult,
     isLoading: homeResultLoading,
@@ -35,7 +36,43 @@ function Home() {
   }
   const styleBanner5 = {
     backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner5 : homeResult?.h5?.banner5})`,
-    height: '90vh'
+    // height: '90vh'
+  }
+  const styleBanner6 = {
+    backgroundImage: `url(${size?.width > 580 ? homeResult?.pc?.banner6 : homeResult?.h5?.banner6})`,
+    // height: '90vh'
+  }
+
+  const renderNav = () => {
+    return (
+      <div className="btn-wrap">
+        <a onClick={ () => navigator('/brand/storage', {state: {
+        id: 16
+      }})} className="btn-a active">
+          {
+            localStorage.getItem('lang') === 'en' ? 'Portable Power Station' : '便携储能'
+          }
+          </a>
+        <a 
+        onClick={ () => navigator('/brand/solar', {state: {
+          id: 17
+        }})}
+        className="btn-a active">
+        {
+            localStorage.getItem('lang') === 'en' ? 'Solar Panel' : '太阳能板'
+          }
+          </a>
+        <a
+          onClick={ () => navigator('/brand/part', {state: {
+            id: 18
+          }})}
+         className="btn-a active">
+        {
+            localStorage.getItem('lang') === 'en' ? 'Accessories' : '配件'
+          }
+          </a>
+      </div>
+    )
   }
 
   return (
@@ -61,24 +98,44 @@ function Home() {
           </SwiperSlide>
         }
         <SwiperSlide>
-          <div style={styleBanner1} className="banner-item"></div>
+          <div style={styleBanner1} className="banner-item">
+            {renderNav()}
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner2} className="banner-item"></div>
+          <div style={styleBanner2} className="banner-item">
+          {renderNav()}
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner3} className="banner-item"></div>
+          <div style={styleBanner3} className="banner-item">
+          {renderNav()}
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner4} className="banner-item"></div>
+          <div style={styleBanner4} className="banner-item">
+          {renderNav()}
+          </div>
         </SwiperSlide>
         <SwiperSlide>
           <div style={styleBanner5} className="banner-item">
-            <div className="home-footer">
+            {/* <div className="home-footer">
               <Footer />
-            </div>
+            </div> */}
+            {/* {renderNav()} */}
           </div>
         </SwiperSlide>
+        {
+          homeResult?.pc?.banner6 && 
+          <SwiperSlide>
+            <div style={styleBanner6} className="banner-item">
+              {/* <div className="home-footer">
+                <Footer />
+              </div> */}
+            {/* {renderNav()} */}
+            </div>
+          </SwiperSlide>
+        }
       </Swiper>
     </div>
   )

@@ -18,23 +18,6 @@ function About() {
     isLoading: aboutResultLoading,
   } = useCompanyResult({language: getLanguage(), subtitleId: location?.state?.id})
 
-  const mockdata = [
-    {
-      title: '我们的使命',
-      desc: 'MISSION',
-      text: '让绿色能源无处不在'
-    },
-    {
-      title: '我们的愿景',
-      desc: 'OUR VISION',
-      text: '成为全球消费者最信赖的绿色能源品牌'
-    },
-    {
-      title: '核心价值观',
-      desc: 'COMPANY VALUES',
-      text: '客户至上、开放创新、简单高效、团结协作'
-    }
-  ]
 
   const bannerStyle = {
     background: `url(${aboutResult?.pc.topImageUrl}) no-repeat no-repeat`,
@@ -42,31 +25,37 @@ function About() {
   }
 
   return (
-    <div ref={target} className="about-container">
+    <div style={{paddingTop: 60}} ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
-        <div style={bannerStyle} className="com-img"></div>
+        <div style={bannerStyle} className="com-img">
+          <div className="info-box-about">
+            <div className="title">
+              <img src={aboutResult?.pc?.logoUrl} alt="" />
+            </div>
+          </div>
+        </div>
         {/* 公司简介 */}
         <div className="container">
           <div className="section-box">
-            <div className="title">公司简介</div>
-            <div dangerouslySetInnerHTML={{__html: aboutResult?.pc.introduction}} className="company-info"></div>
+            <div style={{textAlign: 'center'}} className="title">{aboutResult?.pc?.companyTitle}</div>
+            <div style={{textAlign: 'left', lineHeight: "30px"}} dangerouslySetInnerHTML={{__html: aboutResult?.pc.introduction}} className="company-info"></div>
           </div>
         </div>
         {/* 企业文化 */}
         <div className="culture-container">
-          <div className="section-box">
-            <div className="title">企业文化</div>
+          <div className="section-box" style={{padding: 0}}>
+            <div style={{textAlign: 'center'}} className="title">{aboutResult?.pc?.cultureTitle}</div>
           </div>
           <div className="culture-wrapper">
             {
-              mockdata.map((item,index) =>  
+              aboutResult?.pc?.companyCultureVoList.map((item,index) =>  
               <div key={index} className="culture-info wow fadeInDown">
                 <div className="title">
                   {item?.title}
-                  <span>{item?.desc}</span>
+                  {/* <span>{item?.content}</span> */}
                 </div>
-                <div className="text">{item?.text}</div>
+                <div className="text">{item?.content}</div>
               </div>)
             }
           </div>
@@ -78,7 +67,7 @@ function About() {
           <div className="d-none d-md-block d-sm-block">
             <div style={{background: `url(${aboutResult?.pc.historyImageUrl}) center/cover no-repeat`}} className="development-bg">
               <div className="section-box">
-                  <div className="title">发展历程</div>
+                  <div className="title">{aboutResult?.pc?.companyHistoryTitle}</div>
               </div>
               <div className="time-box">
                 {
@@ -104,9 +93,9 @@ function About() {
         {
           size?.width <= 580 &&  
           <div className="development-bg d-block d-sm-none">
-            <div style={{background: `url(${aboutResult?.pc.historyImageUrl}) center/cover no-repeat`}}  className="development-box">
+            <div style={{background: `url(${aboutResult?.h5.historyImageUrl}) center/cover no-repeat`}}  className="development-box">
               <div className="section-box active">
-                <div className="title">发展历程</div>
+                <div className="title" style={{textAlign: 'center'}}>{aboutResult?.pc?.companyHistoryTitle}</div>
               </div>
              
               <div className="time-box-sm">

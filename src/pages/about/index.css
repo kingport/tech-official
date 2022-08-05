@@ -242,7 +242,6 @@
 @media only screen and (max-width: 767px) {
   .com-img {
     height: 238px !important;
-    /* background: url("https://www.hello-tech.com/images/banner-info901bb42b879e99dd91380cf609fe2e38.jpg") center/cover no-repeat; */
   }
 }
 
@@ -391,5 +390,49 @@
     background: #f8f8f8;
     margin-bottom: 20px;
     padding: 20px 30px;
+  }
 }
+
+.info-box-about {
+  width: auto;
+  top: 14%;
+  left: 18%;
+  color: #ff5b00;
+  position: absolute;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.com-img .info-box-about .title {
+  font-size: 46px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.com-img .info-box-about img {
+  width: 250px;
+}
+@media only screen and (max-width: 767px) {
+  .com-img .info-box-about {
+    left: 5%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .com-img .info-box-about {
+    height: auto;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .com-img .info-box-about img {
+    width: 96px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .culture-wrapper .culture-info .text {
+    padding: 0 20px;
+    text-align: center;
+  }
 }

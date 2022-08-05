@@ -1,7 +1,7 @@
 .sale-container {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: -200px;
   z-index: 9999;  
 }
 
@@ -106,6 +106,8 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .field-label {
@@ -140,4 +142,14 @@
   .form-header p:nth-of-type(3) {
     font-size: 16px;
   }
+}
+
+.buy-url {
+  color: #000;
+  text-align: center;
+  cursor: pointer;
+}
+
+.buy-url:hover {
+  color: #ff5b00;
 }

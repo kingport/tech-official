@@ -12,6 +12,7 @@ export interface IHomeResult {
     banner3: string,
     banner4: string,
     banner5: string,
+    banner6: string,
   },
   h5?: {
     banner1: string,
@@ -19,6 +20,7 @@ export interface IHomeResult {
     banner3: string,
     banner4: string,
     banner5: string,
+    banner6: string,
   },
 }
 export const getHomeResult = async (params: IGetHomeResultReq) => {
@@ -72,6 +74,7 @@ export interface IWindowResult {
   companyId: number,
   saleEnd: string,
   discount: string,
+  productTurnUrl?: any,
 }
 export const getWindowInfo = async (params: IGetWindowResultReq) => {
   const res = await axios.get(`/front/index/window/${params?.companyId}`)
@@ -89,7 +92,7 @@ export interface IFormResult {
   discount: string,
   title: string,
   logoImageUrl: string,
-  payUrl: string,
+  payUrl?: string,
   productImageUrl: string,
   productTurnUrl: string,
   companyId: number,
@@ -121,6 +124,22 @@ export interface ICompanyResult {
     introduction: any,
     topImageUrl: string,
     historyImageUrl: string
+    companyTitle: string
+    logoUrl: string
+    cultureTitle: string
+    companyCultureVoList: any[]
+    companyHistoryTitle: string
+  }
+  h5: {
+    historyVoList: [],
+    introduction: any,
+    topImageUrl: string,
+    historyImageUrl: string
+    companyTitle: string
+    logoUrl: string
+    cultureTitle: string
+    companyCultureVoList: any[]
+    companyHistoryTitle: string
   }
 }
 export const getCompanyInfo = async (params: IGetCompanyResultReq) => {
