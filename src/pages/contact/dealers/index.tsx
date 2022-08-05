@@ -60,7 +60,7 @@ export default function () {
       <div style={{ background: `url(${`https://www.hello-tech.com/images/banner-contact-a2bf9a217fac14ee0aff88337625f1af2.jpg`}) center/cover no-repeat`}} className="com-img">
         {
           size?.width > 580 && 
-          <div className="info-box"> 
+          <div className="info-box-dealers"> 
             <div className="title">商业合作</div>
             <div className="text">我们正在全球范围内招经销商和代理商，欢迎你的加入，<br />请留下你的联系方式，我们会再详细沟通</div>
           </div>

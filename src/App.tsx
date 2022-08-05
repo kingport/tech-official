@@ -14,6 +14,7 @@ import Solar from './pages/brand/solar';
 import Part from './pages/brand/part';
 import Contact from './pages/contact/index';
 import Dealers from './pages/contact/dealers';
+import Join from './pages/contact/join';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/brand/part" element={<Part />} />        
         <Route path="/contact" element={<Contact />} />        
         <Route path="/contact/dealers" element={<Dealers />} />        
+        <Route path="/contact/join" element={<Join />} />        
       </Routes>
     </div>
   )

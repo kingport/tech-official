@@ -107,12 +107,12 @@ export default function () {
       }})
     }
     if(item.subjectId === 19) {
-      navigate('/contact',{state: {
+      navigate('/contact/dealers',{state: {
         id: item.subjectId
       }})
     }
     if(item.subjectId === 20) {
-      navigate('/contact/dealers',{state: {
+      navigate('/contact/join',{state: {
         id: item.subjectId
       }})
     }

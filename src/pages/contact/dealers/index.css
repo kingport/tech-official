@@ -7,19 +7,23 @@
   min-height: 75vh;
 }
 
-.com-img .info-box {
+.com-img .info-box-dealers {
   width: auto;
+  position: absolute;
   top: 47%;
   left: 15%;
   align-items: start;
 }
 
-.com-img .info-box .title {
+.com-img .info-box-dealers .title {
   color: #ff5b00;
   margin-bottom: 24px;
+  font-size: 46px;
+  font-weight: bold;
+  text-align: left;
 }
 
-.com-img .info-box .text {
+.com-img .info-box-dealers .text {
   font-size: 18px;
   color: rgba(0, 0, 0, 0.9);
   text-align: left;
