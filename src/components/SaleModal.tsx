@@ -14,6 +14,7 @@ import { useSnackbar } from 'notistack';
 import { Message, Modal } from '@arco-design/web-react';
 import { useSize } from '../hooks/useSize';
 import gsap from 'gsap'
+import { IconMinusCircleFill } from '@arco-design/web-react/icon';
 
 export interface State extends SnackbarOrigin {
   openSnackbar: boolean;
@@ -39,6 +40,8 @@ export default function() {
 
   const initialValues = () => {
     return {
+      first_name: '',
+      email: '' 
     }
   }
 
@@ -56,7 +59,7 @@ export default function() {
     },
   })
 
-  const onSubmit = async (values:any) => {
+  const onSubmit = async (values:any) => {  
     if(values) {
       values.companyId = 1
       await mutation.mutate(values)    
@@ -67,9 +70,18 @@ export default function() {
     gsap.to('.sale-container', {right: 20, duration: 0.5})  
   }, [])
 
+  // React.useLayoutEffect(() => {
+  //   if(size?.width <= 580) {
+  //     gsap.from('.sale-container', {right: -120, duration: 0.5})  
+  //   }
+  // }, [size?.width])
+
   return (
     <div ref={target}>
-      <div className="sale-container">
+      <div onClick={ (e) => {
+        e.stopPropagation()
+        gsap.to('.sale-container', {right: 20, duration: 0.5})
+      }} className="sale-container">
         <div className="sales-content">
           <p className="sale-title">{windowResult?.title}</p>
           <p className="sale-percent">{windowResult?.discount}</p>
@@ -77,6 +89,12 @@ export default function() {
           <p className="sale-description">{windowResult?.saleEnd}</p>
           <button onClick={handleClickOpen} className="sale-btn">REVEL OFFER</button>
         </div>
+        <IconMinusCircleFill
+          onClick={ (e) => {
+            e.stopPropagation()
+            gsap.to('.sale-container', {right: -120, duration: 0.5})
+          }}
+         className='minus' style={{color: '#fff'}} />
       </div>
       <Modal
         visible={open}
@@ -104,8 +122,8 @@ export default function() {
                     formResult?.fieldList.map((item: {fieldName: string,fieldKey: string},index) => {
                       return (
                         <div className='field' key={index}>
-                          <label className='field-label' htmlFor="firstName">{item?.fieldName}*</label>
-                          <Field required className='field-input' id="firstName" name={item?.fieldKey} placeholder="" />
+                          <label className='field-label' htmlFor={item?.fieldKey}>{item?.fieldName}*</label>
+                          <Field type="text" required className='field-input' name={item?.fieldKey} placeholder="" />
                         </div>
                       )
                     })
