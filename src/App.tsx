@@ -1,7 +1,7 @@
 import './App.css'
 import './common/common.css'
 import 'swiper/css';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Home from './pages/home';
 import About from './pages/about';
 import Honor from './pages/about/honor';
@@ -20,6 +20,7 @@ import React from 'react';
 import WOW from "wow.js";
 import { AnimatedRoutes } from 'react-animated-router'; 
 import 'react-animated-router/animate.css';
+import gsap from 'gsap';
 
 function App() {
   React.useLayoutEffect(() => { 
@@ -34,6 +35,23 @@ function App() {
     })
     wow.init()
   }, []);
+
+  const location = useLocation()
+
+  React.useEffect(() => {
+    if(location.pathname === '/') {
+      new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
+        backgroundColor: "transparent",
+        color: "#fff"
+      })
+    }else {
+      new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.3, {
+        backgroundColor: "#f8f8f8",
+        color: "#000"
+      })
+    }
+    console.log(location.pathname, 'window.location.href')
+  }, [location.pathname])
   
   return (
     <div className="App">

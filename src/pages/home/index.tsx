@@ -101,11 +101,17 @@ function Home() {
   };
 
   React.useEffect(() => {
-    if (activeIndex === 0) {
-      gsap.to('.header-maim', { top: -60, duration: 0.5 });
-    } else {
-      gsap.to('.header-maim', { top: 0, duration: 0.5 });
-    }
+      if ((!homeResult?.pc?.banner6 && activeIndex === 5) || (homeResult?.pc?.banner6 && activeIndex === 6)) {
+        new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
+          backgroundColor: "transparent",
+          color: "#000"
+        })
+      }else {
+        new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
+          backgroundColor: "transparent",
+          color: "#fff"
+        })
+      }
   }, [activeIndex]);
 
   return (

@@ -191,7 +191,7 @@ export default function () {
                     color:
                       localStorage.getItem('lang') === 'cn'
                         ? '#ff5b00'
-                        : '#000',
+                        : '',
                   }}
                   className="lang"
                 >
@@ -206,8 +206,7 @@ export default function () {
                   style={{
                     color:
                       localStorage.getItem('lang') === 'en'
-                        ? '#ff5b00'
-                        : '#000',
+                        ? '#ff5b00' : ''
                   }}
                   className="lang active"
                 >
@@ -217,7 +216,8 @@ export default function () {
             </div>
             <div onClick={() => setVisible(true)} className="navbar-toggler">
               <img
-                src={`https://www.hello-tech.com/images/index-list-black68893984245e5e751475bfcb75bd2398.png`}
+                // src={`https://www.hello-tech.com/images/index-list-black68893984245e5e751475bfcb75bd2398.png`}
+                src="https://www.hello-tech.com/js/../images/index-list4a6c0abf81033c3754b2b98eb0919726.png"
                 alt="black"
               />
             </div>
