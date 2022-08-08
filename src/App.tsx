@@ -18,7 +18,8 @@ import Join from './pages/contact/join';
 import React from 'react';
 // @ts-ignore
 import WOW from "wow.js";
-
+import { AnimatedRoutes } from 'react-animated-router'; 
+import 'react-animated-router/animate.css';
 
 function App() {
   React.useLayoutEffect(() => { 
@@ -36,7 +37,8 @@ function App() {
   
   return (
     <div className="App">
-      <Routes>
+      {/* <Routes> */}
+      <AnimatedRoutes animated-router-forward="fadeInDown">
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/about/honor" element={<Honor />} />
@@ -50,7 +52,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />        
         <Route path="/contact/dealers" element={<Dealers />} />        
         <Route path="/contact/join" element={<Join />} />        
-      </Routes>
+      {/* </Routes> */}
+      </AnimatedRoutes>
     </div>
   )
 }

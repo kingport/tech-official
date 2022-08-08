@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSize } from '../../hooks/useSize';
 import { Player } from 'video-react';
+import gsap from 'gsap';
 
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
   const playerRef = React.useRef(null);
+
+  React.useEffect(() => {}, []);
 
   return (
     <div

@@ -14,7 +14,6 @@ import SaleModal from './components/SaleModal';
 import { SnackbarProvider } from 'notistack';
 import toast, { Toaster } from 'react-hot-toast';
 import './common/animate.css'
-// import 'animate.css';
 
 const queryClient = new QueryClient({
   defaultOptions:{

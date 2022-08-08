@@ -11,12 +11,14 @@ import { useHomeResult } from '../../hooks/useHomeResult';
 import Footer from '../../components/Footer';
 import { getLanguage } from '../../utils/index';
 import { useLocation, useNavigate } from 'react-router-dom';
+import gsap from 'gsap';
 
 function Home() {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
   const navigator = useNavigate();
+  const [activeIndex, setActiveIndex] = React.useState(0);
   const { data: homeResult, isLoading: homeResultLoading } = useHomeResult({
     language: getLanguage(),
     topTitleId: location?.state?.id || 1,
@@ -98,6 +100,14 @@ function Home() {
     );
   };
 
+  React.useEffect(() => {
+    if (activeIndex === 0) {
+      gsap.to('.header-maim', { top: -60, duration: 0.5 });
+    } else {
+      gsap.to('.header-maim', { top: 0, duration: 0.5 });
+    }
+  }, [activeIndex]);
+
   return (
     <div ref={target} className="home">
       <Swiper
@@ -113,6 +123,7 @@ function Home() {
         }}
         modules={[Mousewheel, Pagination]}
         className="mySwiper"
+        onSlideChange={(e: any) => setActiveIndex(e.activeIndex)}
       >
         {size?.width > 580 && (
           <SwiperSlide>
