@@ -37,7 +37,7 @@ axios.interceptors.response.use(
   (error) => {
       console.log('err:', error, error.response); // for debug
       let msg = "请求错误";
-      if (error.response && error.response.status) {
+      if (error.response && error.response.status) {        
       }
 
       // throw new Error(error);

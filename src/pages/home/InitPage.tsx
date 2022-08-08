@@ -23,6 +23,7 @@ export default function() {
           // ref={player => {
           //   this.player = player;
           // }}
+          muted
           playsInline
           poster={'https://www.hello-tech.com/en/images/banner-a-en1cfb8768761cd0123a08b1334322788d.png'}
           autoPlay

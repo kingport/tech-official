@@ -28,7 +28,7 @@ export default function () {
             {/* 荣誉资质 */}
             <div className="container">
                 <div className="section-box">
-                    <div className="title">荣誉资质</div>
+                    <div className="wow fadeInDown title">荣誉资质</div>
                     <div className="company-info">
                         <p className="wow fadeInDown" dangerouslySetInnerHTML={{ __html: honorResult?.pc?.content}}></p>
                     </div>

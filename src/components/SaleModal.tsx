@@ -3,14 +3,10 @@ import { useFieldFormResult } from '../hooks/useFieldFormResult';
 import { useWindowResult } from '../hooks/useWindowResult';
 import { getLanguage } from '../utils';
 import './saleModal.css';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
-import Dialog, { DialogProps } from '@mui/material/Dialog';
 import { Formik, Field, Form } from 'formik';
 import { useMutation } from 'react-query';
 import { postFormSumbit } from '../apis';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
-import { useSnackbar } from 'notistack';
 import { Message, Modal } from '@arco-design/web-react';
 import { useSize } from '../hooks/useSize';
 import gsap from 'gsap'
@@ -70,18 +66,15 @@ export default function() {
     gsap.to('.sale-container', {right: 20, duration: 0.5})  
   }, [])
 
-  // React.useLayoutEffect(() => {
-  //   if(size?.width <= 580) {
-  //     gsap.from('.sale-container', {right: -120, duration: 0.5})  
-  //   }
-  // }, [size?.width])
-
   return (
     <div ref={target}>
-      <div onClick={ (e) => {
-        e.stopPropagation()
-        gsap.to('.sale-container', {right: 20, duration: 0.5})
-      }} className="sale-container">
+      <div 
+        onClick={ (e) => {
+          e.stopPropagation()
+          gsap.to('.sale-container', {right: 20, duration: 0.5})
+        }} 
+        className="sale-container"
+      >
         <div className="sales-content">
           <p className="sale-title">{windowResult?.title}</p>
           <p className="sale-percent">{windowResult?.discount}</p>
@@ -94,7 +87,9 @@ export default function() {
             e.stopPropagation()
             gsap.to('.sale-container', {right: -120, duration: 0.5})
           }}
-         className='minus' style={{color: '#fff'}} />
+          className='minus' 
+          style={{color: '#fff'}} 
+        />
       </div>
       <Modal
         visible={open}
@@ -129,11 +124,17 @@ export default function() {
                     })
                   }
                   <button className='submit-btn' type="submit">TAKE ME TO MY OFFER!</button>
-                  <a onClick={() => {
-                    if(formResult?.payUrl) {
-                      window.location.href = formResult?.payUrl
-                    }
-                  }} className='buy-url' style={{marginTop: '25px'}}>No Thanks, I Want To Pay Full Price</a>
+                  <a 
+                    onClick={() => {
+                      if(formResult?.payUrl) {
+                        window.location.href = formResult?.payUrl
+                      }
+                    }} 
+                    className='buy-url' 
+                    style={{marginTop: '25px'}}
+                  >
+                    No Thanks, I Want To Pay Full Price
+                  </a>
                 </Form>
               </Formik>
             </div>

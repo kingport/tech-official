@@ -54,8 +54,8 @@ export default function () {
       }})
     }
     if(item.id === 3) {
-      navigate('/brand/storage', {state: {
-        id: item.id
+      navigate('/brand/storage',{state: {
+        id: item.subtitleVoList[0].subjectId
       }})
     }
     if(item.id === 4) {

@@ -6,8 +6,10 @@ import { useCompanyResult } from "../../hooks/useCompanyResult";
 import { useSize } from "../../hooks/useSize";
 import { getLanguage } from "../../utils";
 import HistorySwiper from "./HistorySwiper";
-
+// import gsap from "gsap";
+// import ReactWOW from 'react-wow'
 import './index.css'
+
 function About() {
   const target = React.useRef(null)
   const size = useSize(target)
@@ -18,13 +20,17 @@ function About() {
     isLoading: aboutResultLoading,
   } = useCompanyResult({language: getLanguage(), subtitleId: location?.state?.id})
 
-
   const bannerStyle = {
     background: `url(${aboutResult?.pc.topImageUrl}) no-repeat no-repeat`,
     minHeight: "100vh",
   }
 
+  React.useEffect(() => { 
+    // initAnmaiton()
+  }, [])
+
   return (
+    
     <div style={{paddingTop: 60}} ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
@@ -38,27 +44,27 @@ function About() {
         {/* 公司简介 */}
         <div className="container">
           <div className="section-box">
-            <div style={{textAlign: 'center'}} className="title">{aboutResult?.pc?.companyTitle}</div>
-            <div style={{textAlign: 'left', lineHeight: "30px"}} dangerouslySetInnerHTML={{__html: aboutResult?.pc.introduction}} className="company-info"></div>
+            <div style={{textAlign: 'center'}} className="wow fadeInDown title">{aboutResult?.pc?.companyTitle}</div>
+            <div style={{textAlign: 'left', lineHeight: "30px"}} dangerouslySetInnerHTML={{__html: aboutResult?.pc.introduction}} className="wow fadeInDown company-info"></div>
           </div>
         </div>
         {/* 企业文化 */}
         <div className="culture-container">
           <div className="section-box" style={{padding: 0}}>
-            <div style={{textAlign: 'center'}} className="title">{aboutResult?.pc?.cultureTitle}</div>
+            <div style={{textAlign: 'center'}} className="wow fadeInDown title">{aboutResult?.pc?.cultureTitle}</div>
           </div>
-          <div className="culture-wrapper">
-            {
-              aboutResult?.pc?.companyCultureVoList.map((item,index) =>  
-              <div key={index} className="culture-info wow fadeInDown">
-                <div className="title">
-                  {item?.title}
-                  {/* <span>{item?.content}</span> */}
-                </div>
-                <div className="text">{item?.content}</div>
-              </div>)
-            }
-          </div>
+            <div className="culture-wrapper">
+              {
+                aboutResult?.pc?.companyCultureVoList?.map((item,index) =>  
+                <div key={index} className="culture-info wow fadeInDown">
+                  <div className="title">
+                    {item?.title}
+                    {/* <span>{item?.content}</span> */}
+                  </div>
+                  <div className="text">{item?.content}</div>
+                </div>)
+              }
+            </div>
         </div>
         {/* 发展历程 Timeline */}
         {/* PC */}

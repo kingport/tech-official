@@ -15,8 +15,25 @@ import Part from './pages/brand/part';
 import Contact from './pages/contact/index';
 import Dealers from './pages/contact/dealers';
 import Join from './pages/contact/join';
+import React from 'react';
+// @ts-ignore
+import WOW from "wow.js";
+
 
 function App() {
+  React.useLayoutEffect(() => { 
+    const wow = new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+      live: true,
+      scrollContainer: null,
+      resetAnimation: true,
+    })
+    wow.init()
+  }, []);
+  
   return (
     <div className="App">
       <Routes>
