@@ -34,7 +34,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <SnackbarProvider maxSnack={3}>
             <Header />
             <App />
-            {window?.location.pathname !== '/' && <Footer />}
             <SaleModal />
           <Toaster />
         </SnackbarProvider>

@@ -1,6 +1,3 @@
-
-
-
 .content-main {
   min-height: 68.6vh;
 }
@@ -52,8 +49,8 @@
   object-fit: cover;
 }
 
-
-.honor-wrapper  .swiper-button-next, .swiper-button-prev {
+.honor-wrapper .swiper-button-next,
+.swiper-button-prev {
   color: rgba(0, 0, 0, 0.2) !important;
 }
 .honor-swiper-img {
@@ -127,7 +124,6 @@
   flex-basis: 94%;
 }
 
-
 @media only screen and (max-width: 767px) {
   .honor-bg .honor-info {
     flex-direction: column;
@@ -138,5 +134,21 @@
   .honor-bg {
     padding: 22px 20px;
     margin: 0px 0 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .text-box {
+    padding: 0 !important;
+    font-size: 15px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .company-info {
+    text-align: left;
+    font-size: 14px;
+    padding: 0;
+    text-align: justify !important;
   }
 }

@@ -1,27 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/bundle";
-
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/bundle';
 
 // import required modules
-import { Pagination,Navigation } from "swiper";
-import { useSize } from "../../hooks/useSize";
+import { Pagination, Navigation } from 'swiper';
+import { useSize } from '../../hooks/useSize';
 
 interface Iprops {
-  historyVoList: any
+  historyVoList: any;
 }
 
 export default function HistorySwiper(props: Iprops) {
-  const { historyVoList } = props
-  const target = React.useRef(null)
-  const size = useSize(target)
-  
-  
+  const { historyVoList } = props;
+  const target = React.useRef(null);
+  const size = useSize(target);
+
   return (
     <div ref={target} className="development-wrapper">
       <Swiper
@@ -30,27 +28,27 @@ export default function HistorySwiper(props: Iprops) {
         modules={[Pagination]}
         className="history-swiper"
       >
-        {
-          historyVoList?.map((item: {years: string, event: []},index: string) => {
+        {historyVoList?.map(
+          (item: { years: string; event: [] }, index: string) => {
             return (
               <SwiperSlide key={index}>
                 <div className="swiper-item">
                   <p className="title">{item?.years}</p>
-                  {
-                    item?.event.map((x,index) => {
-                      return (
-                        <div className="development-text" key={index}>
-                          <div className="circle"></div>
-                          <p className="description" key={x}>{x}</p>
-                        </div>
-                      )
-                    })
-                  }
+                  {item?.event.map((x, index) => {
+                    return (
+                      <div className="development-text" key={index}>
+                        <div className="circle"></div>
+                        <p className="description" key={x}>
+                          {x}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </SwiperSlide>
-            )
-          })
-        }
+            );
+          }
+        )}
       </Swiper>
     </div>
   );
