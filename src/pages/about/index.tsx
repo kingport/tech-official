@@ -36,7 +36,7 @@ function About() {
         </div>
         {/* 公司简介 */}
         <div className="container">
-          <div className="section-box">
+          <div style={{ paddingTop: 0 }} className="section-box">
             <div
               style={{ textAlign: 'center' }}
               className="wow fadeInDown title"

@@ -1,5 +1,6 @@
 .com-img {
-  background: url('https://www.hello-tech.com/images/banner-contact-bfc13756515aa581ae48dff9dc1206f3d.jpg') center/cover no-repeat;
+  background: url('https://www.hello-tech.com/images/banner-contact-bfc13756515aa581ae48dff9dc1206f3d.jpg')
+    center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +30,7 @@
 }
 
 .section-box .title {
-  margin: 96px 0;
+  /* margin: 96px 0; */
 }
 
 .form-info {
@@ -78,7 +79,7 @@
 .item-group .item-box {
   flex-basis: 25%;
   display: flex;
-  padding-bottom: 10px
+  padding-bottom: 10px;
 }
 .item-group .item-box .icon-box {
   flex-basis: 20%;
@@ -108,7 +109,7 @@
   font-size: 24px;
   font-family: Source Han Sans CN;
   font-weight: bold;
-  color: #FF5B00;
+  color: #ff5b00;
   padding-top: 32px;
   text-align: center;
 }
@@ -131,7 +132,8 @@
 .oem-box .email-box {
   width: 100%;
   height: 185px;
-  background: url("https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png") center/contain no-repeat;
+  background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png')
+    center/contain no-repeat;
   position: relative;
 }
 .oem-box .email-box .box {
@@ -145,7 +147,7 @@
   font-size: 24px;
   font-family: Source Han Sans CN;
   font-weight: bold;
-  color: #FF5B00;
+  color: #ff5b00;
   padding: 20px 0 8px 0;
   text-align: center;
 }
@@ -153,7 +155,7 @@
   font-size: 14px;
   font-family: Source Han Sans CN;
   font-weight: 500;
-  color: #FF5B00;
+  color: #ff5b00;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
@@ -167,12 +169,12 @@
 }
 @media only screen and (max-width: 767px) {
   .form-info .info-box .row-flex .row-item .text {
-      padding: 0;
-      text-indent: 2em;
-      color: #000000;
-      font-size: 14px !important;
-      line-height: 24px;
-      padding: 12px 0 17px 0;
+    padding: 0;
+    text-indent: 2em;
+    color: #000000;
+    font-size: 14px !important;
+    line-height: 24px;
+    padding: 12px 0 17px 0;
   }
 }
 @media only screen and (max-width: 767px) {

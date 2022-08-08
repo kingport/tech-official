@@ -33,11 +33,17 @@ export default function () {
       ></div>
       {/* 荣誉资质 */}
       <div className="container">
-        <div className="section-box">
-          <div className="wow fadeInDown title">荣誉资质</div>
+        <div className="section-box-honor">
+          <div
+            style={{ textAlign: 'center', margin: '0', padding: '20px 0' }}
+            className="wow fadeInDown title"
+          >
+            {honorResult?.pc?.title}
+          </div>
           <div className="company-info">
             <p
               className="wow fadeInDown"
+              style={{ textAlign: 'justify' }}
               dangerouslySetInnerHTML={{ __html: honorResult?.pc?.content }}
             ></p>
           </div>
