@@ -246,3 +246,6 @@ img {
 .video-react-video {
   height: 100%;
 }
+.vjs-poster {
+  background-size: cover;
+}

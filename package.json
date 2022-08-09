@@ -29,6 +29,7 @@
     "react-wow": "^1.0.0",
     "swiper": "^8.2.6",
     "video-react": "^0.15.0",
+    "videojs-react-enhanced": "^0.3.1",
     "vite-plugin-prettier": "0.0.4",
     "wow.js": "^1.2.2"
   },
