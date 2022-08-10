@@ -55,7 +55,6 @@ function App() {
   
   return (
     <div className="App">
-      {/* <Routes> */}
       <AnimatedRoutes animated-router-forward="fadeInDown">
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -70,7 +69,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />        
         <Route path="/contact/dealers" element={<Dealers />} />        
         <Route path="/contact/join" element={<Join />} />        
-      {/* </Routes> */}
       </AnimatedRoutes>
     </div>
   )

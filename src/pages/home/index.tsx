@@ -157,20 +157,11 @@ function Home() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div style={styleBanner5} className="banner-item">
-            {/* <div className="home-footer">
-              <Footer />
-            </div> */}
-            {/* {renderNav()} */}
-          </div>
+          <div style={styleBanner5} className="banner-item"></div>
         </SwiperSlide>
         {homeResult?.pc?.banner6 && (
           <SwiperSlide>
-            <div style={styleBanner6} className="banner-item">
-              {/* <div className="home-footer">
-                <Footer />
-              </div> */}
-              {/* {renderNav()} */}
+            <div style={styleBanner6} className="banner-item">              
             </div>
           </SwiperSlide>
         )}
