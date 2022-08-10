@@ -16,7 +16,7 @@
 
 
 /* home init style css */
-.home-init,.banner-item {
+.banner-item {
   background-size: cover;  
   height: 100vh;
   background-repeat: no-repeat no-repeat;
