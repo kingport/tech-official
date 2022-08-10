@@ -11,6 +11,7 @@ import { Message, Modal } from '@arco-design/web-react';
 import { useSize } from '../hooks/useSize';
 import gsap from 'gsap';
 import { IconMinusCircleFill } from '@arco-design/web-react/icon';
+import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
 
 export interface State extends SnackbarOrigin {
   openSnackbar: boolean;
@@ -26,14 +27,16 @@ export default function () {
     setOpen(true);
   };
 
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+
   const { data: windowResult } = useWindowResult({
     language: getLanguage(),
-    companyId: 1,
+    companyId: companyIdResult,
   });
 
   const { data: formResult } = useFieldFormResult({
     language: getLanguage(),
-    companyId: 1,
+    companyId: companyIdResult,
   });
 
   const initialValues = () => {

@@ -4,11 +4,11 @@ import { getWindowInfo, IGetWindowResultReq } from "../apis";
 import { RQ_WINDOW_INFO } from '../apis/key'
 
 export const useWindowResult = (params: IGetWindowResultReq) => {
-  const result = useQuery([RQ_WINDOW_INFO], async() => {
+  const result = useQuery([RQ_WINDOW_INFO, params], async() => {
     return getWindowInfo(params)
   },
   {
-    enabled: !isEmpty(params) && !isNil(params),
+    enabled: !!params?.companyId,
   })
   return result
 }

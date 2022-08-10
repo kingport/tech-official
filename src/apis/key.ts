@@ -31,3 +31,5 @@ export const RQ_BRAND_INFO = 'RQ_brand_info'
 export const RQ_BRAND_ACCESSORY = 'RQ_brand_accessory'
 // 获取商业合作列表
 export const RQ_STORE_LIST = 'RQ_store_list'
+// 获取公司ID
+export const RQ_COMPANY_ID = 'RQ_company_id'

@@ -12,3 +12,4 @@ export const useAccessoryResult = (params: IGetAccessoryResultReq) => {
   })
   return result
 }
+

@@ -30,7 +30,7 @@ export const getHomeResult = async (params: IGetHomeResultReq) => {
 
 // 获取全局菜单
 export interface IGetMenusResultReq {
-  companyId: number;
+  companyId: any;
   language?: string;
 }
 export interface IMenusResult {
@@ -66,7 +66,7 @@ export const getFooterUrl = async (params: IGetFooterResultReq) => {
 
 // 获取浮窗信息
 export interface IGetWindowResultReq {
-  companyId: number;
+  companyId: any;
   language?: string;
 }
 export interface IWindowResult {
@@ -83,7 +83,7 @@ export const getWindowInfo = async (params: IGetWindowResultReq) => {
 
 // 获取配置表单信息
 export interface IGetFormResultReq {
-  companyId: number;
+  companyId: any;
   language?: string;
 }
 export interface IFormResult {
@@ -359,4 +359,16 @@ export const postCooperateSumbit = async (
   cooperateParam: IPostFormResultReq
 ) => {
   return await axios.post(`/front/cooperate`, { ...cooperateParam });
+};
+
+// 获取公司ID
+export interface IGetCompanyIdResultReq {
+  domainName: string;
+}
+export interface ICompanyIdResult {
+  id: string | number;
+}
+export const getCompanyId = async (params: IGetCompanyIdResultReq) => {
+  const res = await axios.get(`/front/domain`, { params });
+  return res?.data as ICompanyIdResult | undefined;
 };

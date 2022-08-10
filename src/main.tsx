@@ -9,10 +9,9 @@ import {
 } from 'react-query'
 import './index.css'
 import "@arco-design/web-react/dist/css/arco.css";
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import SaleModal from './components/SaleModal';
 import { SnackbarProvider } from 'notistack';
-import toast, { Toaster } from 'react-hot-toast';
 import './common/animate.css'
 
 const queryClient = new QueryClient({
@@ -25,16 +24,14 @@ const queryClient = new QueryClient({
   }
 });
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <SnackbarProvider maxSnack={3}>
-            <Header />
-            <App />
-            <SaleModal />
-          <Toaster />
+          <Header />
+          <App />
+          <SaleModal />
         </SnackbarProvider>
       </BrowserRouter>
     </QueryClientProvider>

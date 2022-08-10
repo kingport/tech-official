@@ -7,6 +7,7 @@ import { getLanguage } from '../utils';
 import { Drawer, Menu } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 import gsap from 'gsap';
+import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
 const CollapseItem = Collapse.Item;
 
 interface navParams {
@@ -24,9 +25,11 @@ export default function () {
   const [selectId, setSelectId] = React.useState<any>(1);
   const [visible, setVisible] = React.useState<any>(false);
 
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+  
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
-    companyId: 1,
+    companyId: companyIdResult,
   });
 
   React.useEffect(() => {

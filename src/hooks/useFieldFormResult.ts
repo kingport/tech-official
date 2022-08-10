@@ -4,11 +4,11 @@ import { getFieldForm, IGetFormResultReq } from "../apis";
 import { RQ_FIELD_FORM } from '../apis/key'
 
 export const useFieldFormResult = (params: IGetFormResultReq) => {
-  const result = useQuery([RQ_FIELD_FORM], async() => {
+  const result = useQuery([RQ_FIELD_FORM, params], async() => {
     return getFieldForm(params)
   },
   {
-    enabled: !isEmpty(params) && !isNil(params),
+    enabled: !!params?.companyId,
   })
   return result
 }

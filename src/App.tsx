@@ -23,6 +23,7 @@ import 'react-animated-router/animate.css';
 import gsap from 'gsap';
 
 function App() {
+  
   React.useLayoutEffect(() => { 
     const wow = new WOW({
       boxClass: 'wow',
@@ -50,9 +51,8 @@ function App() {
         color: "#000"
       })
     }
-    console.log(location.pathname, 'window.location.href')
-  }, [location.pathname])
-  
+  }, [location.pathname])  
+
   return (
     <div className="App">
       <AnimatedRoutes animated-router-forward="fadeInDown">
