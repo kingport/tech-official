@@ -9,7 +9,7 @@ export default function () {
   const size = useSize(target);
 
   return (
-    <div ref={target} style={{ paddingTop: '60px' }} className="content-main">
+    <div ref={target} className="content-main">
       <div className="com-img">
         {size?.width > 580 && (
           <div className="info-box">

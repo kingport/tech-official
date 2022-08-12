@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './header.css';
 import { useMenusResult } from '../hooks/useMenusResult';
 import { useSize } from '../hooks/useSize';
@@ -24,6 +24,7 @@ export default function () {
   let navigate = useNavigate();
   const [selectId, setSelectId] = React.useState<any>(1);
   const [visible, setVisible] = React.useState<any>(false);
+  const [isHomePage, setIsHomePage] = React.useState<any>(false);
 
   const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
   
@@ -38,6 +39,16 @@ export default function () {
       gsap.to('.children-nav', { height: 0, duration: 0.5 });
     }
   }, [selectId]);
+
+  const location = useLocation()
+
+  React.useEffect(() => {
+    if(location.pathname === '/') { 
+      setIsHomePage(true)
+    }else {
+      setIsHomePage(false)
+    }
+  }, [location.pathname])  
 
   const jumpToNav = (item: navParams) => {
     // navigate(item?.path);
@@ -149,7 +160,7 @@ export default function () {
     <header
       ref={target}
       className="header-maim d-none d-md-block d-sm-block index active"
-      style={{ position: 'fixed' }}
+      style={{ position: isHomePage ? 'fixed' : 'relative' }}
     >
       <div className="container-fluid">
         <div className="header-box">

@@ -25,7 +25,7 @@ export default function () {
   });
 
   return (
-    <div ref={target} style={{ paddingTop: '60px' }} className="content-main">
+    <div ref={target} className="content-main">
       {/* banner */}
       <div
         style={{

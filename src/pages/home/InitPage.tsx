@@ -19,6 +19,7 @@ export default function () {
   const videojsOptions = {
     fluid: true,
     muted: true,
+    loop: true
   };
 
   const hideList = [

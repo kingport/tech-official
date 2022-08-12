@@ -25,7 +25,7 @@ export default function () {
   });
 
   return (
-    <div style={{ paddingTop: '60px' }} ref={target} className="content-main">
+    <div ref={target} className="content-main">
       <div
         style={{
           background: `url(${newsResult?.pc.image}) center/cover no-repeat`,

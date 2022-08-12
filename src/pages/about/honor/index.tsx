@@ -22,7 +22,7 @@ export default function () {
   });
 
   return (
-    <div style={{ paddingTop: '60px' }} className="content-main">
+    <div className="content-main">
       {/* banner */}
       <div
         style={{

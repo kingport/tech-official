@@ -21,7 +21,6 @@ function Part() {
   return (
     <div
       ref={target}
-      style={{ paddingTop: '60px' }}
       className="about-container"
     >
       <div className="content-main">

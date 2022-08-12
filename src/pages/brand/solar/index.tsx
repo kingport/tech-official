@@ -20,7 +20,6 @@ function Solar() {
 
   return (
     <div
-      style={{ paddingTop: '60px' }}
       ref={target}
       className="about-container"
     >

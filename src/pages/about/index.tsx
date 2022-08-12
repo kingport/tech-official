@@ -24,7 +24,7 @@ function About() {
   };
 
   return (
-    <div style={{ paddingTop: 60 }} ref={target} className="about-container">
+    <div ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">

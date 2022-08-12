@@ -1,5 +1,5 @@
 .header-maim {
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   right: 0;
   top: 0;
@@ -35,7 +35,6 @@
 .header-maim .header-box .header-l .logo .navbar-logo {
   display: block;
   width: 200px;
-  /* height: 60px; */
 }
 
 .header-maim .header-box .nav-box {
@@ -45,15 +44,14 @@
 }
 
 .children-nav {
-  /* position: absolute; */
+  position: absolute;
   width: 100%;
   height: 0px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* top: 60px; */
-  /* background-color: #f8f8f8; */
-  /* color: #000; */
+  /* background-color: #f8f8f8;
+  color: #000; */
   cursor: pointer;
 }
 
@@ -80,10 +78,6 @@
   justify-content: center;
   cursor: pointer;
   position: relative;
-}
-
-.header-maim .header-box .nav-box .nav-item span {
-  /* color: #fff; */
 }
 
 .header-maim .header-box .nav-box .nav-item span::before {

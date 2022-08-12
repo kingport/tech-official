@@ -40,6 +40,7 @@ function App() {
   const location = useLocation()
 
   React.useEffect(() => {
+    console.log(location.pathname, 'location.pathname')
     if(location.pathname === '/') {
       new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
         backgroundColor: "transparent",
