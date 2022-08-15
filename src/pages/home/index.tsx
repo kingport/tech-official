@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Mousewheel, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -12,6 +12,7 @@ import Footer from '../../components/Footer';
 import { getLanguage } from '../../utils/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { appContext } from '../../App'
 
 function Home():any {
   const target = React.useRef(null);
@@ -19,10 +20,12 @@ function Home():any {
   const location: any = useLocation();
   const navigator = useNavigate();
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const id = useContext(appContext)
 
+  console.log(id, 'LLLLL')
   const { data: homeResult, isLoading: homeResultLoading } = useHomeResult({
     language: getLanguage(),
-    topTitleId: location?.state?.id || 1,
+    topTitleId: location?.state?.id || id,
   });
 
   const styleBanner1 = {
@@ -172,3 +175,7 @@ function Home():any {
 }
 
 export default Home;
+function Context(Context: any) {
+  throw new Error('Function not implemented.');
+}
+

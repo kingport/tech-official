@@ -21,6 +21,12 @@ import WOW from "wow.js";
 import { AnimatedRoutes } from 'react-animated-router'; 
 import 'react-animated-router/animate.css';
 import gsap from 'gsap';
+import { useCompanyIdResult } from './hooks/useCompanyIdResult';
+import { AppStateProvider } from './AppState'
+import Header from './components/Header';
+import SaleModal from './components/SaleModal';
+
+export const appContext = React.createContext<any>(null);
 
 function App() {
   
@@ -38,6 +44,7 @@ function App() {
   }, []);
 
   const location = useLocation()
+  
 
   React.useEffect(() => {
     console.log(location.pathname, 'location.pathname')
@@ -54,23 +61,27 @@ function App() {
     }
   }, [location.pathname])  
 
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+
   return (
     <div className="App">
-      <AnimatedRoutes animated-router-forward="fadeInDown">
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/about/honor" element={<Honor />} />
-        <Route path="/about/quality" element={<Quality />} />
-        <Route path="/about/responsibility" element={<Responsibility />} />        
-        <Route path="/about/news" element={<News />} />        
-        <Route path="/about/news/:id" element={<NewsDetail />} />        
-        <Route path="/brand/storage" element={<Storage />} />        
-        <Route path="/brand/solar" element={<Solar />} />        
-        <Route path="/brand/part" element={<Part />} />        
-        <Route path="/contact" element={<Contact />} />        
-        <Route path="/contact/dealers" element={<Dealers />} />        
-        <Route path="/contact/join" element={<Join />} />        
-      </AnimatedRoutes>
+      <appContext.Provider value={companyIdResult}>
+        <AnimatedRoutes animated-router-forward="fadeInDown">
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about/honor" element={<Honor />} />
+          <Route path="/about/quality" element={<Quality />} />
+          <Route path="/about/responsibility" element={<Responsibility />} />        
+          <Route path="/about/news" element={<News />} />        
+          <Route path="/about/news/:id" element={<NewsDetail />} />        
+          <Route path="/brand/storage" element={<Storage />} />        
+          <Route path="/brand/solar" element={<Solar />} />        
+          <Route path="/brand/part" element={<Part />} />        
+          <Route path="/contact" element={<Contact />} />        
+          <Route path="/contact/dealers" element={<Dealers />} />        
+          <Route path="/contact/join" element={<Join />} />        
+        </AnimatedRoutes>
+      </appContext.Provider>
     </div>
   )
 }
