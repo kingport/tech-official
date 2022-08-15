@@ -52,7 +52,7 @@ export const getMenusResult = async (params: IGetMenusResultReq) => {
 
 // 底部友情链接
 export interface IGetFooterResultReq {
-  companyId: number;
+  companyId: any;
   language?: string;
 }
 export interface IFooterUrlResult {
@@ -71,7 +71,7 @@ export interface IGetWindowResultReq {
 }
 export interface IWindowResult {
   title: string;
-  companyId: number;
+  companyId: any;
   saleEnd: string;
   discount: string;
   productTurnUrl?: any;
@@ -94,7 +94,7 @@ export interface IFormResult {
   payUrl?: string;
   productImageUrl: string;
   productTurnUrl: string;
-  companyId: number;
+  companyId: any;
 }
 export const getFieldForm = async (params: IGetFormResultReq) => {
   const res = await axios.get(`/front/index/dialog/${params?.companyId}`);

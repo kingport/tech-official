@@ -9,11 +9,14 @@ import { getLanguage } from '../../utils';
 import HistorySwiper from './HistorySwiper';
 import './index.css';
 
-function About() {
+function About():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
 
+  if (!location?.state?.id) {
+    return window.location.href = window.location.origin
+  }
   const { data: aboutResult, isLoading: aboutResultLoading } = useCompanyResult(
     { language: getLanguage(), subtitleId: location?.state?.id }
   );

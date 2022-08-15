@@ -14,8 +14,11 @@ import { useHonorResult } from '../../../hooks/useHonorResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 
-export default function () {
+export default function():any {
   const location: any = useLocation();
+  if (!location?.state?.id) {
+    window.location.href = window.location.origin
+  }
   const { data: honorResult, isLoading: honorResultLoading } = useHonorResult({
     language: getLanguage(),
     subtitleId: location?.state?.id,

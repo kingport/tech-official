@@ -8,11 +8,14 @@ import { useAccessoryResult } from '../../../hooks/useAccessoryResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 
-function Part() {
+function Part():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-
+  
+  if (!location?.state?.id) {
+    return window.location.href = window.location.origin
+  }
   const { data: accessoryResult } = useAccessoryResult({
     language: getLanguage(),
     subtitleId: location?.state?.id,

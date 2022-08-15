@@ -13,12 +13,13 @@ import { getLanguage } from '../../utils/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 
-function Home() {
+function Home():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
   const navigator = useNavigate();
   const [activeIndex, setActiveIndex] = React.useState(0);
+
   const { data: homeResult, isLoading: homeResultLoading } = useHomeResult({
     language: getLanguage(),
     topTitleId: location?.state?.id || 1,

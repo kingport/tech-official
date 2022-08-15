@@ -7,12 +7,14 @@ import { getLanguage } from '../../../utils';
 import { useBrandInfoResult } from '../../../hooks/useBrandInfoResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
-function Solar() {
+function Solar():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const [active, setActive] = React.useState(1);
   const location: any = useLocation();
-
+  if (!location?.state?.id) {
+    return window.location.href = window.location.origin
+  }
   const { data: brandInfoResult } = useBrandInfoResult({
     language: getLanguage(),
     subtitleId: location?.state?.id,

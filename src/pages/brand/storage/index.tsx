@@ -18,11 +18,13 @@ import { getLanguage } from '../../../utils';
 import { useBrandInfoResult } from '../../../hooks/useBrandInfoResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
-function Storage() {
+function Storage():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-
+  if (!location?.state?.id) {
+    return window.location.href = window.location.origin
+  }
   const [active, setActive] = React.useState(1);
 
   const { data: brandInfoResult } = useBrandInfoResult({

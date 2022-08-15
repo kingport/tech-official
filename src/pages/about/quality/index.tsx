@@ -9,11 +9,13 @@ import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
 
-export default function () {
+export default function():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-
+  if (!location?.state?.id) {
+    return window.location.href = window.location.origin
+  }
   const {
     data: qualityResult,
     isLoading: qualityResultLoading,

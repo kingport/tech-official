@@ -1,4 +1,5 @@
 import React from 'react';
+import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
 import { useFooterUrlResult } from '../hooks/useFooterUrlResult';
 import { useSize } from '../hooks/useSize';
 import { getLanguage } from '../utils';
@@ -7,13 +8,11 @@ import './shopFooter.css';
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
 
   const {
     data: footerResult,
-    isLoading: footerResultLoading,
-    isFetching: footerResultFetching,
-    refetch: footerResultRefetch,
-  } = useFooterUrlResult({ language: getLanguage(), companyId: 1 });
+  } = useFooterUrlResult({ language: getLanguage(), companyId: companyIdResult });
 
   return (
     <div ref={target} className="footer-main">
