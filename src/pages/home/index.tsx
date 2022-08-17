@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mousewheel, Pagination, Scrollbar, A11y } from 'swiper';
+import React, { useContext } from 'react';
+import { Mousewheel, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -8,10 +8,10 @@ import InitPage from './InitPage';
 import { useSize } from '../../hooks/useSize';
 import { useHomeResult } from '../../hooks/useHomeResult';
 
-import Footer from '../../components/Footer';
 import { getLanguage } from '../../utils/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
+import { appContext } from '../../App'
 
 function Home():any {
   const target = React.useRef(null);
@@ -19,10 +19,11 @@ function Home():any {
   const location: any = useLocation();
   const navigator = useNavigate();
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const domain = useContext(appContext)
 
   const { data: homeResult, isLoading: homeResultLoading } = useHomeResult({
     language: getLanguage(),
-    topTitleId: location?.state?.id || 1,
+    topTitleId: location?.state?.id || domain?.id,
   });
 
   const styleBanner1 = {
@@ -59,46 +60,29 @@ function Home():any {
   const renderNav = () => {
     return (
       <div className="btn-wrap">
-        <a
-          onClick={() =>
-            navigator('/brand/storage', {
-              state: {
-                id: 16,
-              },
-            })
-          }
-          className="btn-a"
-        >
-          {localStorage.getItem('lang') === 'en'
-            ? 'Portable Power Station'
-            : '便携储能'}
-        </a>
-        <a
-          onClick={() =>
-            navigator('/brand/solar', {
-              state: {
-                id: 17,
-              },
-            })
-          }
-          className="btn-a"
-        >
-          {localStorage.getItem('lang') === 'en' ? 'Solar Panel' : '太阳能板'}
-        </a>
-        <a
-          onClick={() =>
-            navigator('/brand/part', {
-              state: {
-                id: 18,
-              },
-            })
-          }
-          className="btn-a"
-        >
-          {localStorage.getItem('lang') === 'en' ? 'Accessories' : '配件'}
-        </a>
+        {
+
+          homeResult?.brandListVoList.map((x:any) => {
+            return (
+              <a
+                key={x.id}
+                onClick={() => {
+                  navigator(x.path, {
+                      state: {
+                        id: x.id,
+                      },
+                    })
+                  }
+                }
+                className="btn-a"
+              >
+               {x.brandName}
+              </a>
+            )
+          })
+        }
       </div>
-    );
+    )
   };
 
   React.useEffect(() => {
@@ -172,3 +156,5 @@ function Home():any {
 }
 
 export default Home;
+
+

@@ -27,22 +27,26 @@ export default function () {
     setOpen(true);
   };
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   const { data: windowResult } = useWindowResult({
     language: getLanguage(),
-    companyId: companyIdResult,
+    companyId: companyIdResult?.id,
   });
 
   const { data: formResult } = useFieldFormResult({
     language: getLanguage(),
-    companyId: companyIdResult,
+    companyId: companyIdResult?.id,
   });
+
+  const [productId, setProductId] = React.useState<any>(0);
+  const [productImg,setProductImg] = React.useState('')
 
   const initialValues = () => {
     return {
       first_name: '',
       email: '',
+      brandId: ''
     };
   };
 
@@ -62,14 +66,16 @@ export default function () {
 
   const onSubmit = async (values: any) => {
     if (values) {
-      values.companyId = 1;
+      console.log(values, 'MMM')
+      values.companyId = companyIdResult?.id;
       await mutation.mutate(values);
     }
   };
 
   React.useLayoutEffect(() => {
     gsap.to('.sale-container', { right: 20, duration: 0.5 });
-  }, []);
+    setProductImg(formResult?.productVoList[0]?.imageUrl)
+  }, [formResult]);
 
   return (
     <div ref={target}>
@@ -80,7 +86,7 @@ export default function () {
         }}
         className="sale-container"
       >
-        <div className="sales-content">
+        <div style={{background: companyIdResult?.theme}} className="sales-content">
           <p className="sale-title">{windowResult?.title}</p>
           <p className="sale-percent">{windowResult?.discount}</p>
           <p className="sale-description">sale Ends:</p>
@@ -111,12 +117,40 @@ export default function () {
             <div className="form-header">
               <img src={formResult?.logoImageUrl} />
               <p>{formResult?.title} 🎉</p>
-              <p>{formResult?.discount}</p>
+              <p style={{color: companyIdResult?.theme}}>{formResult?.discount}</p>
               <p>When You Join Our Email List</p>
             </div>
             <div className="form">
               <Formik initialValues={initialValues} onSubmit={onSubmit}>
                 <Form className="form-horizontal">
+                  <div className="field" key={'brandId'}>
+                    <label
+                      className="field-label"
+                      htmlFor={'brandId'}
+                      style={{color: companyIdResult?.theme}}
+                    >
+                      Product*
+                    </label>
+                    <Field
+                      as="select"
+                      required
+                      className="field-input"
+                      name={'brandId'}
+                      placeholder=""
+                      onChange={(e:any) => {
+                        const imgurl = formResult?.productVoList.find((x) => x.brandId*1 === e.target.value*1).imageUrl
+                        setProductImg(imgurl)
+                      }}
+                    >
+                      {
+                        formResult?.productVoList?.map((x:any,index:any) => {
+                          return (
+                            <option key={index} value={x.brandId}>{x.brandName}</option>
+                          )
+                        })
+                      }
+                    </Field>
+                  </div>
                   {formResult?.fieldList.map(
                     (item: { fieldName: string; fieldKey: string }, index) => {
                       return (
@@ -138,7 +172,7 @@ export default function () {
                       );
                     }
                   )}
-                  <button className="submit-btn" type="submit">
+                  <button style={{background: companyIdResult?.theme}} className="submit-btn" type="submit">
                     TAKE ME TO MY OFFER!
                   </button>
                   <a
@@ -158,7 +192,7 @@ export default function () {
           </div>
           {size?.width > 580 && (
             <div className="form-r">
-              <img src={formResult?.productImageUrl} />
+              <img src={productImg} />
             </div>
           )}
         </div>

@@ -7,7 +7,7 @@
 
 .sales-content {
   padding: 15px;
-  background: #ff5b00;
+  /* background: #ff5b00; */
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
 .form-header p:nth-of-type(2) {
   font-weight: bold;
   font-size: 36px;
-  color: #ff5b00;
+  /* color: #ff5b00; */
   padding: 10px 0;
 }
 
@@ -101,7 +101,7 @@
 .submit-btn {
   height: 40px;
   color: #fff;
-  background-color: #ff5b00;
+  /* background-color: #ff5b00; */
   border-radius: 8px;
   border: none;
   font-size: 16px;
@@ -109,7 +109,7 @@
 }
 
 .field-label {
-  color: #ff5b00;
+  /* color: #ff5b00; */
 }
 
 .field-input {
@@ -121,8 +121,6 @@
 }
 
 .field-input:focus-visible {
-  /* color: #ff5b00;
-  border-color: #ff5b00; */
 }
 
 .form-r img {

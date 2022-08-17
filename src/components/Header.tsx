@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './header.css';
 import { useMenusResult } from '../hooks/useMenusResult';
@@ -8,6 +8,7 @@ import { Drawer, Menu } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 import gsap from 'gsap';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
+import { appContext } from '../App';
 const CollapseItem = Collapse.Item;
 
 interface navParams {
@@ -26,11 +27,11 @@ export default function () {
   const [visible, setVisible] = React.useState<any>(false);
   const [isHomePage, setIsHomePage] = React.useState<any>(false);
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
   
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
-    companyId: companyIdResult,
+    companyId: companyIdResult?.id,
   });
 
   React.useEffect(() => {
@@ -50,110 +51,130 @@ export default function () {
     }
   }, [location.pathname])  
 
-  const jumpToNav = (item: navParams) => {
-    // navigate(item?.path);
+  const jumpToNav = (item: any) => {
+    if(item.subjectId) {
+      return navigate(item?.path, {
+        state: {
+          id: item?.subjectId,
+        }
+      });
+    }
 
+    if(item.id && item.subtitleVoList) {
+      return navigate(item?.path, {
+        state: {
+          id: item?.subtitleVoList[0].subjectId,
+        }
+      });
+    }else {
+      return navigate(item?.path, {
+        state: {
+          id: item?.id,
+        }
+      });
+    }
+    
     // 一级菜单
-    if (item.id === 1) {
-      navigate('/', {
-        state: {
-          id: item.id,
-        },
-      });
-    }
-    if (item.id === 2) {
-      navigate('/about', {
-        state: {
-          id: item.subtitleVoList[0].subjectId,
-        },
-      });
-    }
-    if (item.id === 3) {
-      navigate('/brand/storage', {
-        state: {
-          id: item.subtitleVoList[0].subjectId,
-        },
-      });
-    }
-    if (item.id === 4) {
-      navigate('/contact', {
-        state: {
-          id: item.subtitleVoList[0].subjectId,
-        },
-      });
-    }
+    // if (item.id === 1) {
+    //   navigate('/', {
+    //     state: {
+    //       id: item.id,
+    //     },
+    //   });
+    // }
+    // if (item.id === 2) {
+    //   navigate('/about', {
+    //     state: {
+    //       id: item.subtitleVoList[0].subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.id === 3) {
+    //   navigate('/brand/storage', {
+    //     state: {
+    //       id: item.subtitleVoList[0].subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.id === 4) {
+    //   navigate('/contact', {
+    //     state: {
+    //       id: item.subtitleVoList[0].subjectId,
+    //     },
+    //   });
+    // }
 
-    // 二级菜单
-    if (item.subjectId === 11) {
-      navigate('/about', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 12) {
-      navigate('/about/honor', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 13) {
-      navigate('/about/quality', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 14) {
-      navigate('/about/responsibility', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 15) {
-      navigate('/about/news', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 16) {
-      navigate('/brand/storage', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 17) {
-      navigate('/brand/solar', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 18) {
-      navigate('/brand/part', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 19) {
-      navigate('/contact/dealers', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
-    if (item.subjectId === 20) {
-      navigate('/contact/join', {
-        state: {
-          id: item.subjectId,
-        },
-      });
-    }
+    // // 二级菜单
+    // if (item.subjectId === 11) {
+    //   navigate('/about', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 12) {
+    //   navigate('/about/honor', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 13) {
+    //   navigate('/about/quality', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 14) {
+    //   navigate('/about/responsibility', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 15) {
+    //   navigate('/about/news', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 16) {
+    //   navigate('/brand/storage', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 17) {
+    //   navigate('/brand/solar', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 18) {
+    //   navigate('/brand/part', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 19) {
+    //   navigate('/contact/dealers', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
+    // if (item.subjectId === 20) {
+    //   navigate('/contact/join', {
+    //     state: {
+    //       id: item.subjectId,
+    //     },
+    //   });
+    // }
   };
 
   return (

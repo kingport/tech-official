@@ -55,9 +55,9 @@ export default function():any {
       {/* 轮播 */}
       <div className="honor-wrapper">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-          {honorResult?.pc?.bannerImageList?.map((x) => {
+          {honorResult?.pc?.bannerImageList?.map((x,index) => {
             return (
-              <SwiperSlide key={x} className="honor-swiper-img">
+              <SwiperSlide key={index} className="honor-swiper-img">
                 <img src={x} />
               </SwiperSlide>
             );
@@ -73,9 +73,9 @@ export default function():any {
       >
         <div className="honor-info">
           <div className="info-item">
-            {honorResult?.pc?.eventList?.map((x) => {
+            {honorResult?.pc?.eventList?.map((x,index) => {
               return (
-                <div className="text-box wow fadeInDown">
+                <div key={index} className="text-box wow fadeInDown">
                   <div className="icon">
                     <img src="https://www.hello-tech.com/images/honor-icon.png" />
                   </div>

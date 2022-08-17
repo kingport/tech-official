@@ -42,9 +42,9 @@ export default function():any {
           <div className="title">{qualityResult?.pc?.ecoTitle}</div>
         </div>
         <div className="row-imgs">
-          {qualityResult?.pc.qualityPolicyList.map((x: any) => {
+          {qualityResult?.pc.qualityPolicyList.map((x: any,index) => {
             return (
-              <div key={x} className="row-item">
+              <div key={index} className="row-item">
                 <div className="img-box wow fadeIn">
                   <img src={x.image} alt="" />
                 </div>

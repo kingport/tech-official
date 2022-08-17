@@ -23,6 +23,7 @@ export interface IHomeResult {
     banner5: string;
     banner6: string;
   };
+  brandListVoList: any[]
 }
 export const getHomeResult = async (params: IGetHomeResultReq) => {
   const res = await axios.get('/front/index/find', { params });
@@ -96,6 +97,7 @@ export interface IFormResult {
   productImageUrl: string;
   productTurnUrl: string;
   companyId: any;
+  productVoList: any[]
 }
 export const getFieldForm = async (params: IGetFormResultReq) => {
   const res = await axios.get(`/front/index/dialog/${params?.companyId}`);
@@ -368,6 +370,7 @@ export interface IGetCompanyIdResultReq {
 }
 export interface ICompanyIdResult {
   id: string | number;
+  theme: string;
 }
 export const getCompanyId = async (params: IGetCompanyIdResultReq) => {
   const res = await axios.get(`/front/domain`, { params });

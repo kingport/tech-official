@@ -1,8 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSize } from '../../hooks/useSize';
-// import { Player } from 'video-react';
-import gsap from 'gsap';
-import videojs from 'video.js';
 import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
 
@@ -10,8 +7,6 @@ export default function (props:any) {
   const { video } = props
   const target = React.useRef(null);
   const size = useSize(target);
-
-  console.log(video, 'video')
 
   const playerOptions: VREPlayer.IPlayerOptions = {
     src: video,
@@ -40,7 +35,7 @@ export default function (props:any) {
       ref={target}
       className="home-init"
     >
-      {size?.width > 580 && (
+      {size?.width > 580 && video &&  (
         <VREPlayer
           playerOptions={playerOptions}
           videojsOptions={videojsOptions}
