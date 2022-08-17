@@ -8,7 +8,7 @@ import './shopFooter.css';
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   const {
     data: footerResult,

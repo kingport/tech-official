@@ -28,7 +28,7 @@ export default function () {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const location: any = useLocation();
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "106.13.197.84" : window.location.hostname});
+  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
   const { data: storeListResult } = useStoreListResult({
     language: getLanguage(),
     subtitleId: location?.state?.id,
