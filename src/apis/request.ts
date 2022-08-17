@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { Notification } from '@arco-design/web-react';
 
+
 const axios = Axios.create({
   // baseURL: 'http://106.13.197.84/api',
   baseURL: '/api',

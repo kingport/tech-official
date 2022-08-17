@@ -134,7 +134,7 @@ function Home():any {
       >
         {size?.width > 580 && (
           <SwiperSlide>
-            <InitPage />
+            <InitPage video={homeResult?.pc?.video} />
           </SwiperSlide>
         )}
         <SwiperSlide>

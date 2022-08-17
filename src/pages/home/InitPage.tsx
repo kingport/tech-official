@@ -6,12 +6,15 @@ import videojs from 'video.js';
 import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
 
-export default function () {
+export default function (props:any) {
+  const { video } = props
   const target = React.useRef(null);
   const size = useSize(target);
 
+  console.log(video, 'video')
+
   const playerOptions: VREPlayer.IPlayerOptions = {
-    src: 'https://htoss-online.oss-cn-hangzhou.aliyuncs.com/Jackery36477a56af8da.mp4',
+    src: video,
     controls: false, 
     autoplay: "play",
   };

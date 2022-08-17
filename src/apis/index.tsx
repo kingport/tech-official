@@ -13,6 +13,7 @@ export interface IHomeResult {
     banner4: string;
     banner5: string;
     banner6: string;
+    video: string;
   };
   h5?: {
     banner1: string;
