@@ -4,11 +4,11 @@ import { getHonorInfo, IGetHonorResultReq } from "../apis";
 import { RQ_COMPANY_INFO } from '../apis/key'
 
 export const useHonorResult = (params: IGetHonorResultReq) => {
-  const result = useQuery([RQ_COMPANY_INFO], async() => {
+  const result = useQuery([RQ_COMPANY_INFO,params], async() => {
     return getHonorInfo(params)
   },
   {
-    enabled: !isEmpty(params) && !isNil(params),
+    enabled: !!params?.subtitleId,
   })
   return result
 }

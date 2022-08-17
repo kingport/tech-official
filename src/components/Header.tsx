@@ -9,6 +9,8 @@ import { Collapse, Divider } from '@arco-design/web-react';
 import gsap from 'gsap';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
 import { appContext } from '../App';
+import styled from '@emotion/styled'
+
 const CollapseItem = Collapse.Item;
 
 interface navParams {
@@ -19,6 +21,27 @@ interface navParams {
   subtitleVoList?: any;
 }
 
+const NavItem = styled.span`
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: ${props => (props.color)};
+    transition: 0.3s ease;
+  }
+`
+
+const ChildrenTitle = styled.div`
+  &:hover {
+    color: ${props => props.color};
+  }
+`
+
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
@@ -27,7 +50,7 @@ export default function () {
   const [visible, setVisible] = React.useState<any>(false);
   const [isHomePage, setIsHomePage] = React.useState<any>(false);
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
   
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
@@ -72,109 +95,7 @@ export default function () {
           id: item?.id,
         }
       });
-    }
-    
-    // 一级菜单
-    // if (item.id === 1) {
-    //   navigate('/', {
-    //     state: {
-    //       id: item.id,
-    //     },
-    //   });
-    // }
-    // if (item.id === 2) {
-    //   navigate('/about', {
-    //     state: {
-    //       id: item.subtitleVoList[0].subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.id === 3) {
-    //   navigate('/brand/storage', {
-    //     state: {
-    //       id: item.subtitleVoList[0].subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.id === 4) {
-    //   navigate('/contact', {
-    //     state: {
-    //       id: item.subtitleVoList[0].subjectId,
-    //     },
-    //   });
-    // }
-
-    // // 二级菜单
-    // if (item.subjectId === 11) {
-    //   navigate('/about', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 12) {
-    //   navigate('/about/honor', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 13) {
-    //   navigate('/about/quality', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 14) {
-    //   navigate('/about/responsibility', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 15) {
-    //   navigate('/about/news', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 16) {
-    //   navigate('/brand/storage', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 17) {
-    //   navigate('/brand/solar', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 18) {
-    //   navigate('/brand/part', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 19) {
-    //   navigate('/contact/dealers', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
-    // if (item.subjectId === 20) {
-    //   navigate('/contact/join', {
-    //     state: {
-    //       id: item.subjectId,
-    //     },
-    //   });
-    // }
+    }    
   };
 
   return (
@@ -209,7 +130,7 @@ export default function () {
                   className="nav-item nav-item-main"
                   key={nav.id}
                 >
-                  <span className="nav-item-a">{nav.title}</span>
+                  <NavItem color={companyIdResult?.theme} className="nav-item-a">{nav.title}</NavItem>
                 </div>
               ))}
             </div>
@@ -225,7 +146,7 @@ export default function () {
                   style={{
                     color:
                       localStorage.getItem('lang') === 'cn'
-                        ? '#ff5b00'
+                        ? companyIdResult?.theme
                         : '',
                   }}
                   className="lang"
@@ -241,7 +162,7 @@ export default function () {
                   style={{
                     color:
                       localStorage.getItem('lang') === 'en'
-                        ? '#ff5b00' : ''
+                        ? companyIdResult?.theme : ''
                   }}
                   className="lang active"
                 >
@@ -270,13 +191,14 @@ export default function () {
             .find((x: any) => x.id === selectId)
             ?.subtitleVoList?.map((k: any, index: any) => {
               return (
-                <div
+                <ChildrenTitle
                   onClick={() => jumpToNav(k)}
                   className="children-title"
                   key={index}
+                  color={companyIdResult?.theme}
                 >
                   {k.title}
-                </div>
+                </ChildrenTitle>
               );
             })}
         </div>

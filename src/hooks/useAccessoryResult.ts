@@ -4,11 +4,11 @@ import { getAccessory, IGetAccessoryResultReq } from "../apis";
 import { RQ_BRAND_ACCESSORY } from '../apis/key'
 
 export const useAccessoryResult = (params: IGetAccessoryResultReq) => {
-  const result = useQuery([RQ_BRAND_ACCESSORY], async() => {
+  const result = useQuery([RQ_BRAND_ACCESSORY,params], async() => {
     return getAccessory(params)
   },
   {
-    enabled: !isEmpty(params) && !isNil(params),
+    enabled: !!params?.subtitleId,
   })
   return result
 }

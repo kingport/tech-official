@@ -4,11 +4,11 @@ import { getNews, IGetNewsResultReq } from "../apis";
 import { RQ_NEWS_EVENTS } from '../apis/key'
 
 export const useNewsResult = (params: IGetNewsResultReq) => {
-  const result = useQuery([RQ_NEWS_EVENTS], async() => {
+  const result = useQuery([RQ_NEWS_EVENTS,params], async() => {
     return getNews(params)
   },
   {
-    enabled: !isEmpty(params) && !isNil(params),
+    enabled: !!params?.subtitleId,
   })
   return result
 }

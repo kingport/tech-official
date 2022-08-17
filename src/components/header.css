@@ -60,7 +60,7 @@
 }
 
 .children-nav .children-title:hover {
-  color: #ff5b00;
+  /* color: #ff5b00; */
 }
 
 /* header-content */
@@ -81,7 +81,7 @@
 }
 
 .header-maim .header-box .nav-box .nav-item span::before {
-  content: "";
+  /* content: "";
   display: block;
   position: absolute;
   bottom: -5px;
@@ -90,7 +90,7 @@
   height: 3px;
   border-radius: 3px;
   background-color: #ff5b00;
-  transition: 0.3s ease;
+  transition: 0.3s ease; */
 }
 
 .header-maim .header-box .nav-box .nav-item span:hover::before {

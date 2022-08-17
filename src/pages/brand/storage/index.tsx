@@ -1,5 +1,5 @@
 // 便携储能
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ShopFooter from '../../../components/ShopFooter';
 import { useSize } from '../../../hooks/useSize';
 
@@ -18,18 +18,37 @@ import { getLanguage } from '../../../utils';
 import { useBrandInfoResult } from '../../../hooks/useBrandInfoResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
+import { appContext } from '../../../App';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 function Storage():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
+  
+  let pathId = ''
   if (!location?.state?.id) {
-    return window.location.href = window.location.origin
+    const domain = useContext(appContext)
+    const { data: menusResult } = useMenusResult({
+      language: getLanguage(),
+      companyId: domain?.id,
+    });
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
   }
+
+  
   const [active, setActive] = React.useState(1);
 
   const { data: brandInfoResult } = useBrandInfoResult({
     language: getLanguage(),
-    subtitleId: location?.state?.id,
+    subtitleId: location?.state?.id || pathId,
   });
 
   return (

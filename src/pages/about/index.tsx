@@ -1,9 +1,12 @@
 // 公司简介
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { appContext } from '../../App';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
 import { useCompanyResult } from '../../hooks/useCompanyResult';
+import { useHomeResult } from '../../hooks/useHomeResult';
+import { useMenusResult } from '../../hooks/useMenusResult';
 import { useSize } from '../../hooks/useSize';
 import { getLanguage } from '../../utils';
 import HistorySwiper from './HistorySwiper';
@@ -14,11 +17,28 @@ function About():any {
   const size = useSize(target);
   const location: any = useLocation();
 
+  const domain = useContext(appContext)
+
+  const { data: menusResult } = useMenusResult({
+    language: getLanguage(),
+    companyId: domain?.id,
+  });
+
+  let pathId = ''
   if (!location?.state?.id) {
-    return window.location.href = window.location.origin
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
   }
-  const { data: aboutResult, isLoading: aboutResultLoading } = useCompanyResult(
-    { language: getLanguage(), subtitleId: location?.state?.id }
+  
+  const { data: aboutResult } = useCompanyResult(
+    { language: getLanguage(), subtitleId: location?.state?.id || pathId }
   );
 
   const bannerStyle = {

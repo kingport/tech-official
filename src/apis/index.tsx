@@ -22,8 +22,10 @@ export interface IHomeResult {
     banner4: string;
     banner5: string;
     banner6: string;
+    video: string;
   };
-  brandListVoList: any[]
+
+  brandListVoList: any;
 }
 export const getHomeResult = async (params: IGetHomeResultReq) => {
   const res = await axios.get('/front/index/find', { params });

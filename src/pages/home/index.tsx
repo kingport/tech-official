@@ -21,7 +21,7 @@ function Home():any {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const domain = useContext(appContext)
 
-  const { data: homeResult, isLoading: homeResultLoading } = useHomeResult({
+  const { data: homeResult } = useHomeResult({
     language: getLanguage(),
     topTitleId: location?.state?.id || domain?.id,
   });
@@ -62,7 +62,7 @@ function Home():any {
       <div className="btn-wrap">
         {
 
-          homeResult?.brandListVoList.map((x:any) => {
+          homeResult?.brandListVoList?.map((x:any) => {
             return (
               <a
                 key={x.id}

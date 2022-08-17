@@ -1,9 +1,11 @@
 // 质量方针
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { appContext } from '../../../App';
 import Footer from '../../../components/Footer';
 
 import ShopFooter from '../../../components/ShopFooter';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 import { useQualityResult } from '../../../hooks/useQualityResult';
 import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
@@ -12,18 +14,31 @@ import './index.css';
 export default function():any {
   const target = React.useRef(null);
   const size = useSize(target);
-  const location: any = useLocation();
+  const location: any = useLocation();  
+
+  let pathId = ''
   if (!location?.state?.id) {
-    return window.location.href = window.location.origin
+    const domain = useContext(appContext)
+    const { data: menusResult } = useMenusResult({
+      language: getLanguage(),
+      companyId: domain?.id,
+    });
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
   }
+
   const {
     data: qualityResult,
-    isLoading: qualityResultLoading,
-    isFetching: qualityResultFetching,
-    refetch: qualityResultRefetch,
   } = useQualityResult({
     language: getLanguage(),
-    subtitleId: location?.state?.id,
+    subtitleId: location?.state?.id || pathId,
   });
 
   return (

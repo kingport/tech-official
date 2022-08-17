@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ShopFooter from '../../../components/ShopFooter';
 import './index.css';
 
@@ -21,6 +21,8 @@ import { useSnackbar } from 'notistack';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
+import { appContext } from '../../../App';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 
 export default function () {
   const target = React.useRef(null);
@@ -28,10 +30,29 @@ export default function () {
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const location: any = useLocation();
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+
+  let pathId = ''
+  if (!location?.state?.id) {
+    const domain = useContext(appContext)
+    const { data: menusResult } = useMenusResult({
+      language: getLanguage(),
+      companyId: domain?.id,
+    });
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
+  }
+  
   const { data: storeListResult } = useStoreListResult({
     language: getLanguage(),
-    subtitleId: location?.state?.id,
+    subtitleId: location?.state?.id || pathId,
   });
 
   const mutation = useMutation(postCooperateSumbit, {

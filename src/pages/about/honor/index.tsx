@@ -1,6 +1,6 @@
 // 荣誉资质
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import ShopFooter from '../../../components/ShopFooter';
@@ -13,15 +13,33 @@ import { getLanguage } from '../../../utils';
 import { useHonorResult } from '../../../hooks/useHonorResult';
 import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
+import { appContext } from '../../../App';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 
 export default function():any {
   const location: any = useLocation();
-  if (!location?.state?.id) {
-    window.location.href = window.location.origin
-  }
-  const { data: honorResult, isLoading: honorResultLoading } = useHonorResult({
+  
+  const domain = useContext(appContext)
+  const { data: menusResult } = useMenusResult({
     language: getLanguage(),
-    subtitleId: location?.state?.id,
+    companyId: domain?.id,
+  });
+  let pathId = ''
+  if (!location?.state?.id) {
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
+  }
+
+  const { data: honorResult } = useHonorResult({
+    language: getLanguage(),
+    subtitleId: location?.state?.id || pathId,
   });
 
   return (

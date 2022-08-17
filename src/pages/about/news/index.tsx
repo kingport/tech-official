@@ -1,25 +1,62 @@
 // 新闻内容
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { appContext } from '../../../App';
 import Footer from '../../../components/Footer';
 import ShopFooter from '../../../components/ShopFooter';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 import { useNewsEventResult } from '../../../hooks/useNewsEventResult';
 import { useNewsResult } from '../../../hooks/useNewsResult';
 import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
+import styled from '@emotion/styled';
+import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
 
+
+
+const NewBox = styled.a`
+  &:hover {
+    .news-info .news-title {
+      color: ${props => props.color}
+    }
+    .news-icon .iconfont {
+      color: ${props => props.color}
+    }
+  }
+
+`
 export default function():any {
   const target = React.useRef(null);
   const size = useSize(target);
   let navigate = useNavigate();
   const location: any = useLocation();
+  
+  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  
+  
+  let pathId = ''
   if (!location?.state?.id) {
-    return window.location.href = window.location.origin
+    const domain = useContext(appContext)
+    const { data: menusResult } = useMenusResult({
+      language: getLanguage(),
+      companyId: domain?.id,
+    });
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
   }
+
+
   const { data: newsResult } = useNewsResult({
     language: getLanguage(),
-    subtitleId: location?.state?.id,
+    subtitleId: location?.state?.id || pathId,
   });
   const { data: newsEventResult } = useNewsEventResult({
     language: getLanguage(),
@@ -43,9 +80,10 @@ export default function():any {
           <div className="news-wrapper">
             {newsEventResult?.rows.map((x: any, index) => {
               return (
-                <a
+                <NewBox
                   className="news-box wow fadeInDown"
                   key={index}
+                  color={companyIdResult?.theme}
                   onClick={() => navigate(`/about/news/${x.pc.id}`)}
                 >
                   <div className="news-l">
@@ -71,7 +109,7 @@ export default function():any {
                       </div>
                     </div>
                   </div>
-                </a>
+                </NewBox>
               );
             })}
           </div>

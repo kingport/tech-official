@@ -27,7 +27,7 @@ export default function () {
     setOpen(true);
   };
 
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   const { data: windowResult } = useWindowResult({
     language: getLanguage(),
@@ -66,7 +66,6 @@ export default function () {
 
   const onSubmit = async (values: any) => {
     if (values) {
-      console.log(values, 'MMM')
       values.companyId = companyIdResult?.id;
       await mutation.mutate(values);
     }
