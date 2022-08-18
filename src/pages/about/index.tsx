@@ -1,4 +1,5 @@
 // 公司简介
+import styled from '@emotion/styled';
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { appContext } from '../../App';
@@ -12,6 +13,19 @@ import { getLanguage } from '../../utils';
 import HistorySwiper from './HistorySwiper';
 import './index.css';
 
+
+const TimeItem = styled.div`
+  &::after {
+   background: ${props => props.color};
+  }
+  &:not(:last-child)::before {
+   background: ${props => props.color};
+  }
+`
+const ArrowRight = styled.div`
+  border-top: 2px solid ${props => props.color};
+  border-right: 2px solid ${props => props.color};
+`
 function About():any {
   const target = React.useRef(null);
   const size = useSize(target);
@@ -90,7 +104,7 @@ function About():any {
                   {item?.title}
                   {/* <span>{item?.content}</span> */}
                 </div>
-                <div className="text">{item?.content}</div>
+                <div style={{color: domain?.theme}} className="text">{item?.content}</div>
               </div>
             ))}
           </div>
@@ -116,17 +130,16 @@ function About():any {
                     const isLast =
                       index + 1 === aboutResult?.pc.historyVoList.length;
                     return (
-                      <div
+                      <TimeItem
                         key={index}
-                        className={`time-item wow fadeInDown ${
-                          isLast ? 'active' : ''
-                        }`}
+                        className={`time-item wow fadeInDown`}
+                        color={domain?.theme}
                       >
                         <div className="time-title">
                           {item?.years}
-                          {isLast && <div className="arrow-right"></div>}
+                          {isLast && <ArrowRight color={domain?.theme} className="arrow-right"></ArrowRight>}
                         </div>
-                      </div>
+                      </TimeItem>
                     );
                   }
                 )}
@@ -171,7 +184,7 @@ function About():any {
           </div>
         )}
         {/* 发展历程 轮播*/}
-        <HistorySwiper historyVoList={aboutResult?.pc.historyVoList} />
+        <HistorySwiper historyVoList={aboutResult?.pc.historyVoList} domain={domain} />
         {/* shopFooter */}
         <ShopFooter />
         <Footer />

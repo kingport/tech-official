@@ -13,10 +13,11 @@ import { useSize } from '../../hooks/useSize';
 
 interface Iprops {
   historyVoList: any;
+  domain: any;
 }
 
 export default function HistorySwiper(props: Iprops) {
-  const { historyVoList } = props;
+  const { historyVoList, domain } = props;
   const target = React.useRef(null);
   const size = useSize(target);
 
@@ -33,7 +34,7 @@ export default function HistorySwiper(props: Iprops) {
             return (
               <SwiperSlide key={index}>
                 <div className="swiper-item">
-                  <p className="title">{item?.years}</p>
+                  <p style={{color: domain?.theme}} className="title">{item?.years}</p>
                   {item?.event.map((x, index) => {
                     return (
                       <div className="development-text" key={index}>

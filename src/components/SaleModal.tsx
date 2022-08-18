@@ -12,10 +12,23 @@ import { useSize } from '../hooks/useSize';
 import gsap from 'gsap';
 import { IconMinusCircleFill } from '@arco-design/web-react/icon';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
+import styled from '@emotion/styled';
 
 export interface State extends SnackbarOrigin {
   openSnackbar: boolean;
 }
+
+
+const SaleBtn = styled.button`
+  &:hover {
+    color: ${props => props.color}
+  }
+`
+const BuyUrl = styled.a`
+ &:hover {
+    color: ${props => props.color}
+  }
+`
 
 export default function () {
   const target = React.useRef(null);
@@ -39,7 +52,6 @@ export default function () {
     companyId: companyIdResult?.id,
   });
 
-  const [productId, setProductId] = React.useState<any>(0);
   const [productImg,setProductImg] = React.useState('')
 
   const initialValues = () => {
@@ -90,9 +102,9 @@ export default function () {
           <p className="sale-percent">{windowResult?.discount}</p>
           <p className="sale-description">sale Ends:</p>
           <p className="sale-description">{windowResult?.saleEnd}</p>
-          <button onClick={handleClickOpen} className="sale-btn">
+          <SaleBtn color={companyIdResult?.theme} onClick={handleClickOpen} className="sale-btn">
             REVEL OFFER
-          </button>
+          </SaleBtn>
         </div>
         <IconMinusCircleFill
           onClick={(e) => {
@@ -157,6 +169,7 @@ export default function () {
                           <label
                             className="field-label"
                             htmlFor={item?.fieldKey}
+                            style={{color: companyIdResult?.theme}}
                           >
                             {item?.fieldName}*
                           </label>
@@ -174,7 +187,7 @@ export default function () {
                   <button style={{background: companyIdResult?.theme}} className="submit-btn" type="submit">
                     TAKE ME TO MY OFFER!
                   </button>
-                  <a
+                  <BuyUrl
                     onClick={() => {
                       if (formResult?.payUrl) {
                         window.location.href = formResult?.payUrl;
@@ -182,9 +195,10 @@ export default function () {
                     }}
                     className="buy-url"
                     style={{ marginTop: '25px' }}
+                    color={companyIdResult?.theme}
                   >
                     No Thanks, I Want To Pay Full Price
-                  </a>
+                  </BuyUrl>
                 </Form>
               </Formik>
             </div>

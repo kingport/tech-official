@@ -20,14 +20,22 @@ import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
+import styled from '@emotion/styled';
+
+
+const TextItem = styled.div`
+  &::before {
+    background: ${props => props.color}
+  }
+`
 function Storage():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
+  const domain = useContext(appContext)
   
   let pathId = ''
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
@@ -86,9 +94,9 @@ function Storage():any {
                       {brandInfoResult?.pc?.productList[0]?.descList?.map(
                         (x, index) => {
                           return (
-                            <div key={index} className="text-item">
+                            <TextItem color={domain?.theme} key={index} className="text-item">
                               {x}
-                            </div>
+                            </TextItem>
                           );
                         }
                       )}
@@ -129,7 +137,7 @@ function Storage():any {
                       >
                         <div className="tips-wrapper">
                           <div className="tips-icon">
-                            <i></i>
+                            <i style={{ background: active === current ? domain?.theme : ''}}></i>
                           </div>
                           <div className="tips-title">{x.title}</div>
                         </div>
@@ -153,12 +161,12 @@ function Storage():any {
                         <div className="info-item">
                           <div className="item-l">
                             <div className="number">{`0${current}`}</div>
-                            <div className="title">
+                            <div  className="title">
                               {brandInfoResult?.pc.title}
                             </div>
                           </div>
                           <div className="item-r">
-                            <div className="title">{x.title}</div>
+                            <div style={{color: domain?.theme}} className="title">{x.title}</div>
                             <div className="text">{x.subtitle}</div>
                           </div>
                         </div>

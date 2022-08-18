@@ -73,7 +73,6 @@
   content: "";
   width: 8px;
   height: 8px;
-  background: #ff5b00;
   border-radius: 50px;
   margin-right: 10px;
 }
@@ -193,7 +192,6 @@
   -webkit-animation: scalepulse 1.3s linear 0s infinite both;
   animation: scalepulse 1.3s linear 0s infinite both;
   transform: translate3d(-50%, -50%, 0) scale(1);
-  background: #ff5900;
 }
 
 .com-wrapper .com-tips .com-tips-item.active .tips-icon::after, .com-wrapper .com-tips .com-tips-item:hover .tips-icon::after {
@@ -265,7 +263,6 @@
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #ff5b00;
 }
 
 .com-wrapper .com-info .info-item .item-r .text {
