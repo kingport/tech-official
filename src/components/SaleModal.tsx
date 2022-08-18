@@ -53,6 +53,7 @@ export default function () {
   });
 
   const [productImg,setProductImg] = React.useState('')
+  const [productId,setProductId] = React.useState('')
 
   const initialValues = () => {
     return {
@@ -79,6 +80,7 @@ export default function () {
   const onSubmit = async (values: any) => {
     if (values) {
       values.companyId = companyIdResult?.id;
+      values.brandId = productId
       await mutation.mutate(values);
     }
   };
@@ -86,6 +88,7 @@ export default function () {
   React.useLayoutEffect(() => {
     gsap.to('.sale-container', { right: 20, duration: 0.5 });
     setProductImg(formResult?.productVoList[0]?.imageUrl)
+    setProductId(formResult?.productVoList[0]?.brandId)
   }, [formResult]);
 
   return (
@@ -143,15 +146,18 @@ export default function () {
                       Product*
                     </label>
                     <Field
+                      type="text"
                       as="select"
-                      required
                       className="field-input"
                       name={'brandId'}
                       placeholder=""
+                      value={productId}
                       onChange={(e:any) => {
                         const imgurl = formResult?.productVoList.find((x) => x.brandId*1 === e.target.value*1).imageUrl
                         setProductImg(imgurl)
+                        setProductId(e.target.value)
                       }}
+                      required
                     >
                       {
                         formResult?.productVoList?.map((x:any,index:any) => {
