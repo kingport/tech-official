@@ -25,6 +25,11 @@
   justify-content: end;
   position: relative;
 }
+.banner-item img {
+  width: 100% !important;
+  height: 100%;
+  padding: 0 !important;
+}
 
 .home-footer {
   height: 10vh;

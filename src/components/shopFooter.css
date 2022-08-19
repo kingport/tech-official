@@ -42,23 +42,19 @@
   height: 70px;
   margin: 0 auto;
 }
-.footer-main .mall-wrapper .mall-box .make-a-box .make-a .img.tmall-img {
+/* .footer-main .mall-wrapper .mall-box .make-a-box .make-a .img.tmall-img {
   background: url("https://www.hello-tech.com/images/tmall0285dc995f14995d93cc212518e28f43.png") center center no-repeat;
 }
 
 .footer-main .mall-wrapper .mall-box .make-a-box .make-a .img.jd-img {
   background: url("https://www.hello-tech.com/images/jd7e537e8d003ae3a5fd195050f4d58526.png") center center no-repeat;
-}
+} */
 
 .footer-main .qrcode-box {
   max-width: 100px;
 }
 
-@media (min-width: 768px) {
-  .d-md-block {
-    display: block !important;
-  }
-}
+
 
 @media (min-width: 1200px) {
   .container {
@@ -66,11 +62,6 @@
   }
 }
 
-/* @media (min-width: 576px) {
-  .d-sm-none {
-    display: none !important;
-  }
-} */
 
 @media only screen and (max-width: 767px) {
   .footer-main {

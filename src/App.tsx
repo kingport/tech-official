@@ -22,6 +22,7 @@ import { AnimatedRoutes } from 'react-animated-router';
 import 'react-animated-router/animate.css';
 import gsap from 'gsap';
 import { useCompanyIdResult } from './hooks/useCompanyIdResult';
+import { useDocumentTitle } from './hooks/useDocumentTitle';
 
 export const appContext = React.createContext<any>(null);
 
@@ -48,7 +49,7 @@ function App() {
     if(location.pathname === '/') {
       new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
         backgroundColor: "transparent",
-        color: "#fff"
+        color: "#000"
       })
     }else {
       new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.3, {
@@ -57,6 +58,7 @@ function App() {
       })
     }
   }, [location.pathname])  
+  useDocumentTitle(location.pathname === '/' ? 'Home' : location.pathname.replaceAll("/", ' ').toUpperCase())
 
   const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 

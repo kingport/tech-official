@@ -8,7 +8,7 @@ import './shopFooter.css';
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
-  const { data: companyIdResult, isLoading: companyIdResultLoading } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   const {
     data: footerResult,
@@ -21,10 +21,10 @@ export default function () {
           <div className="mall-wrapper">
             <div className="container">
               <div className="mall-box">
-                <div className="mall-l">
-                  <div className="make-box">
+                <div style={{width: '100%'}} className="mall-l">
+                  <div style={{width: '100%'}} className="make-box">
                     <div className="make-item">
-                      <div className="make-a-box">
+                      <div style={{justifyContent: 'space-between'}} className="make-a-box">
                         {footerResult?.bottomUrlVoList.map(
                           (
                             item: { imageUrl: string; turnUrl: string },
@@ -32,10 +32,11 @@ export default function () {
                           ) => {
                             return (
                               <a
-                                className="make-a d-none d-md-block d-sm-block"
+                                className="make-a d-none d-sm-block"
                                 href={item?.turnUrl}
                                 key={index}
                                 target="_blank"
+                                style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                               >
                                 <div className="logo-item">
                                   <img src={item?.imageUrl} alt="" />
@@ -44,32 +45,7 @@ export default function () {
                             );
                           }
                         )}
-                        <div className="make-a d-block d-sm-none">
-                          <div className="qrcode-box">
-                            <img src="" alt="" />
-                          </div>
-                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="mall-r">
-                  <div className="footer-logo">
-                    <div className="logo-item d-block d-sm-none">
-                      <a href="http://www.dx2.cn" target="_blank">
-                        <img
-                          src="https://www.hello-tech.com/images/jackery-logo0bf0f38cddab4b996df749e7ecdf3792.png"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="logo-item">
-                      <a href="https://www.jackery.com" target="_blank">
-                        <img
-                          src="/images/jackery-logo0bf0f38cddab4b996df749e7ecdf3792.png"
-                          alt=""
-                        />
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -115,14 +91,14 @@ export default function () {
                     <img src={footerResult?.quickCode} alt="" />
                   </a>
                 </div>
-                <div className="logo-item">
+                {/* <div className="logo-item">
                   <a href="https://www.jackery.com" target="_blank">
                     <img
                       src="https://www.hello-tech.com/images/jackery-logo0bf0f38cddab4b996df749e7ecdf3792.png"
                       alt=""
                     />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

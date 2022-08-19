@@ -9,7 +9,7 @@
   /* body 左侧 padding */
   --body-left-padding: var(--header-right-left-padding);
   /* 文本颜色 */
-  --text-color: #fff;
+  --text-color: #000;
   /* 主要颜色 */
   --primary-color: #1c073e;
   /* 次要颜色 */

@@ -26,37 +26,6 @@ function Home():any {
     topTitleId: location?.state?.id || domain?.id,
   });
 
-  const styleBanner1 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner1 : homeResult?.h5?.banner1
-    })`,
-  };
-  const styleBanner2 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner2 : homeResult?.h5?.banner2
-    })`,
-  };
-  const styleBanner3 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner3 : homeResult?.h5?.banner3
-    })`,
-  };
-  const styleBanner4 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner4 : homeResult?.h5?.banner4
-    })`,
-  };
-  const styleBanner5 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner5 : homeResult?.h5?.banner5
-    })`,
-  };
-  const styleBanner6 = {
-    backgroundImage: `url(${
-      size?.width > 580 ? homeResult?.pc?.banner6 : homeResult?.h5?.banner6
-    })`,
-  };
-
   const renderNav = () => {
     return (
       <div className="btn-wrap">
@@ -94,63 +63,73 @@ function Home():any {
       }else {
         new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
           backgroundColor: "transparent",
-          color: "#fff"
+          color: "#000"
         })
       }
   }, [activeIndex]);
 
   return (
     <div ref={target} className="home">
-      <Swiper
-        direction={'vertical'}
-        speed={1000}
-        slidesPerView={1}
-        spaceBetween={0}
-        // 禁止点击
-        simulateTouch={false}
-        mousewheel={{
-          // 滚轮灵明度
-          sensitivity: 100,
-        }}
-        modules={[Mousewheel, Pagination]}
-        className="mySwiper"
-        onSlideChange={(e: any) => setActiveIndex(e.activeIndex)}
-      >
-        {size?.width > 580 && (
+      {
+        homeResult?.pc && 
+          <Swiper
+          direction={'vertical'}
+          speed={1000}
+          slidesPerView={1}
+          spaceBetween={0}
+          // 禁止点击
+          simulateTouch={false}
+          mousewheel={{
+            // 滚轮灵明度
+            sensitivity: 100,
+          }}
+          modules={[Mousewheel, Pagination]}
+          className="mySwiper"
+          onSlideChange={(e: any) => setActiveIndex(e.activeIndex)}
+        >
+          {size?.width > 580 && (
+            <SwiperSlide>
+              <InitPage video={homeResult?.pc?.video} />
+            </SwiperSlide>
+          )}
           <SwiperSlide>
-            <InitPage video={homeResult?.pc?.video} />
-          </SwiperSlide>
-        )}
-        <SwiperSlide>
-          <div style={styleBanner1} className="banner-item">
-            {renderNav()}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={styleBanner2} className="banner-item">
-            {renderNav()}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={styleBanner3} className="banner-item">
-            {renderNav()}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={styleBanner4} className="banner-item">
-            {renderNav()}
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div style={styleBanner5} className="banner-item"></div>
-        </SwiperSlide>
-        {homeResult?.pc?.banner6 && (
-          <SwiperSlide>
-            <div style={styleBanner6} className="banner-item">              
+            <div className="banner-item">
+              <img src={size?.width > 580 ? homeResult?.pc?.banner1 : homeResult?.h5?.banner1} />
+              {renderNav()}
             </div>
           </SwiperSlide>
-        )}
-      </Swiper>
+          <SwiperSlide>
+            <div className="banner-item">
+              <img src={size?.width > 580 ? homeResult?.pc?.banner2 : homeResult?.h5?.banner2} />
+              {renderNav()}
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="banner-item">
+              <img src={size?.width > 580 ? homeResult?.pc?.banner3 : homeResult?.h5?.banner3} />
+              {renderNav()}
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="banner-item">
+            <img src={size?.width > 580 ? homeResult?.pc?.banner4 : homeResult?.h5?.banner4} />
+              {renderNav()}
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="banner-item">
+              <img src={size?.width > 580 ? homeResult?.pc?.banner5 : homeResult?.h5?.banner5} />
+            </div>
+          </SwiperSlide>
+          {homeResult?.pc?.banner6 && (
+            <SwiperSlide>
+              <div className="banner-item">  
+                <img src={size?.width > 580 ? homeResult?.pc?.banner6 : homeResult?.h5?.banner6} />
+              </div>
+            </SwiperSlide>
+          )}
+        </Swiper>
+      }
     </div>
   );
 }
