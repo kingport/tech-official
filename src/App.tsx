@@ -15,7 +15,7 @@ import Part from './pages/brand/part';
 import Contact from './pages/contact/index';
 import Dealers from './pages/contact/dealers';
 import Join from './pages/contact/join';
-import React from 'react';
+import React, { useState } from 'react';
 // @ts-ignore
 import WOW from "wow.js";
 import { AnimatedRoutes } from 'react-animated-router'; 
@@ -23,6 +23,7 @@ import 'react-animated-router/animate.css';
 import gsap from 'gsap';
 import { useCompanyIdResult } from './hooks/useCompanyIdResult';
 import { useDocumentTitle } from './hooks/useDocumentTitle';
+import SaleModal from './components/SaleModal';
 
 export const appContext = React.createContext<any>(null);
 
@@ -42,10 +43,9 @@ function App() {
   }, []);
 
   const location = useLocation()
-  
+  const [show,setShow] = useState(false)
 
   React.useEffect(() => {
-    console.log(location.pathname, 'location.pathname')
     if(location.pathname === '/') {
       new gsap.core.Tween(['.container-fluid', '.children-nav'], 0.1, {
         backgroundColor: "transparent",
@@ -57,9 +57,15 @@ function App() {
         color: "#000"
       })
     }
-  }, [location.pathname])  
-  useDocumentTitle(location.pathname === '/' ? 'Home' : location.pathname.replaceAll("/", ' ').toUpperCase())
 
+    if(location.pathname.includes('brand')) {
+      setShow(false)
+    }else {
+      setShow(true)
+    }
+  }, [location.pathname])  
+  
+  useDocumentTitle(location.pathname === '/' ? 'Home' : location?.pathname?.replace(new RegExp("/","gm")," ").toUpperCase())
   const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   return (
@@ -80,6 +86,7 @@ function App() {
           <Route path="/contact/dealers" element={<Dealers />} />        
           <Route path="/contact/join" element={<Join />} />        
         </AnimatedRoutes>
+        {show && <SaleModal />}
       </appContext.Provider>
     </div>
   )

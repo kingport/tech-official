@@ -280,7 +280,6 @@ export default function () {
           slidesPerView={size?.width > 580 ? 3 : 1}
           spaceBetween={40}
           modules={[Pagination, Autoplay]}
-          // navigation={true}
           autoplay={{
             delay: 1500,
             disableOnInteraction: false,
