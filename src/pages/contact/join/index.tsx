@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { appContext } from '../../../App';
 import Footer from '../../../components/Footer';
 import ShopFooter from '../../../components/ShopFooter';
+import SvgIcon from '../../../components/SvgIcon';
 import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
@@ -102,10 +103,7 @@ export default function () {
                     <div className="item-group">
                       <div className="item-box wow fadeInDown">
                         <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-a62ce2f415dc2c415f08895c0100a0224.png"
-                            alt=""
-                          />
+                          {domain && <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='beach' />}                           
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px', color: domain?.theme}}  className="type-title">{isEn ?`Five social insurance and one housing fund`:"五险一金"}</div>
@@ -118,10 +116,7 @@ export default function () {
                       </div>
                       <div className="item-box wow fadeInDown">
                         <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-beaa16293a1ce1fac5eb669050905a829.png"
-                            alt=""
-                          />
+                          <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='computer' />                          
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? `periodic physical examination` : `定期体检`}</div>
@@ -130,10 +125,7 @@ export default function () {
                       </div>
                       <div className="item-box wow fadeInDown">
                         <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-c4a43e08cf924333d7957286bb816119e.png"
-                            alt=""
-                          />
+                          <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='sailing' />                          
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? "paid annual leave" : "带薪年假"}</div>
@@ -145,11 +137,8 @@ export default function () {
                         </div>
                       </div>
                       <div className="item-box wow fadeInDown">
-                        <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-db0224b6432be709179cd288c1f407788.png"
-                            alt=""
-                          />
+                        <div className="icon-box">                        
+                          <SvgIcon style={{width: '40px',height: '30px'}} color={domain?.theme} name='landscape' />                          
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? 'Company party travel' : '员工旅行'}</div>
@@ -158,10 +147,7 @@ export default function () {
                       </div>
                       <div className="item-box wow fadeInDown">
                         <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-e1d7e5478b41286bca9bc3c8b3c4021c2.png"
-                            alt=""
-                          />
+                          <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='cake' />                         
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? `Snacks and afternoon tea` : `零食下午茶`}</div>
@@ -173,11 +159,8 @@ export default function () {
                         </div>
                       </div>
                       <div className="item-box wow fadeInDown">
-                        <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-f78f54ac49651e01da4304861c90d7214.png"
-                            alt=""
-                          />
+                        <div className="icon-box">                        
+                          <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='schedule' />                          
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? 'Holiday benefits' : '节日福利'}</div>
@@ -189,11 +172,8 @@ export default function () {
                         </div>
                       </div>
                       <div className="item-box wow fadeInDown">
-                        <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-g9245b2700078f5d146930f72b7f6b866.png"
-                            alt=""
-                          />
+                        <div className="icon-box">                        
+                          <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='workspace' />                          
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? 'The annual bonus' : '年终奖'}</div>
@@ -206,10 +186,7 @@ export default function () {
                       </div>
                       <div className="item-box wow fadeInDown">
                         <div className="icon-box">
-                          <img
-                            src="https://www.hello-tech.com/images/join-h72f5868dcb0e7c0e14a98f5c7f1449c7.png"
-                            alt=""
-                          />
+                        <SvgIcon style={{width: '30px',height: '30px'}} color={domain?.theme} name='today' />
                         </div>
                         <div className="type-box">
                           <div style={{fontSize: 14,lineHeight: '16px',color: domain?.theme}} className="type-title">{isEn ? 'Weekends rest' : '双休'}</div>

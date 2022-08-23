@@ -31,6 +31,7 @@
     "video-react": "^0.15.0",
     "videojs-react-enhanced": "^0.3.1",
     "vite-plugin-prettier": "0.0.4",
+    "vite-plugin-svg-icons": "^2.0.1",
     "wow.js": "^1.2.2"
   },
   "devDependencies": {

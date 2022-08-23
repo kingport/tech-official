@@ -2,8 +2,6 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
-// import { useStoreListResult } from '../../hooks/useStoreListResult';
-// import { getLanguage } from '../../utils';
 import './index.css';
 
 export default function () {
@@ -40,7 +38,6 @@ export default function () {
                 alt=""
               />
             </div>
-            {/* <div className="d-block d-sm-none"><img src="images/contact-a-sm1e9bdbf82992b080a9803cad4dc908a8.png" alt="" /></div> */}
           </div>
           {/*  */}
           <div className="contact-item wow fadeInDown">
@@ -76,7 +73,6 @@ export default function () {
                   <img src="https://www.hello-tech.com/images/concat-bd3326f50e1f0e80bea2db398f02c377a.jpg" />
                 </a>
               </div>
-              {/* <div className="d-block d-sm-none"><a className="map" href="http://api.map.baidu.com/marker?location=22.681452,113.990941&amp;title=深圳市华宝新能源股份有限公司&amp;output=html"><img src="images/contact-hbc87006c896011fc3d1378c7a8c206543.png" alt="" /></a></div> */}
               <div className="madia-head wow fadeInDown">
                 <div className="title">深圳市华宝新能源股份有限公司</div>
                 <div className="line"></div>

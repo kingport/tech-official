@@ -13,6 +13,7 @@ import "@arco-design/web-react/dist/css/arco.css";
 import SaleModal from './components/SaleModal';
 import { SnackbarProvider } from 'notistack';
 import './common/animate.css'
+import 'virtual:svg-icons-register';
 
 const queryClient = new QueryClient({
   defaultOptions:{

@@ -29,12 +29,12 @@ export default function () {
   const size = useSize(target);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const location: any = useLocation();
+  const domain = useContext(appContext)
 
   const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
 
   let pathId = ''
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
@@ -101,7 +101,7 @@ export default function () {
       >
         {size?.width > 580 && (
           <div className="info-box-dealers">
-            <div className="title">{isEn ? 'BUSINESS COOPERATION' : "商业合作"}</div>
+            <div style={{color: domain?.theme}} className="title">{isEn ? 'BUSINESS COOPERATION' : "商业合作"}</div>
             <div className="text">
               {
                 isEn ? `We are recruiting distributors and agents worldwide,
@@ -129,7 +129,7 @@ export default function () {
           <Form className="com-form" id="form">
             {size?.width > 580 && (
               <div className="d-none d-md-block d-sm-block">
-                <div className="form-title wow fadeInDown">
+                <div style={{color: domain?.theme}} className="form-title wow fadeInDown">
                  {isEn ? `SEND YOUR EMAIL OR FILL IN THE FOLLOWING "INQUIRY FORM" FOR MORE INFORMATION` : '欢迎发送邮件或填写下方“咨询表”获取更多信息'} 
                 </div>
               </div>
@@ -137,8 +137,8 @@ export default function () {
             {size?.width <= 580 && (
               <div className="d-block d-sm-none">
                 <div className="business-header-sm wow fadeInDown">
-                  <div className="title">{isEn ? 'BUSINESS COOPERATION' : "商业合作"}</div>
-                  <div className="subtitle">
+                  <div style={{color: domain?.theme}} className="title">{isEn ? 'BUSINESS COOPERATION' : "商业合作"}</div>
+                  <div style={{color: domain?.theme}} className="subtitle">
                   {
                   isEn ? 
                     `We are recruiting distributors and agents worldwide,
@@ -156,34 +156,29 @@ export default function () {
                 <div className="business-email-box wow fadeInDown">
                   <div className="email-box">
                     <div className="box">
-                      <div className="title">
+                      <div style={{color: domain?.theme}} className="title">
                         {
                           isEn ? `Send your email or fill in the following "inquiry form" for more information` : '欢迎发送邮件或填写下方“咨询表”获取更多信息'
                         }
                       </div>
-                      {/* <div className="subtitle">
-                        经销加盟联系邮箱
-                        <br />
-                        sales@hello-tech.com
-                        <br /> 期待与您合作，互利共赢{' '}
-                      </div> */}
                     </div>
                   </div>
                 </div>
               </div>
             )}
             <div className="form-info wow fadeInDown">
-              <div className="info-box">
+              <div style={{paddingTop: 100}} className="info-box">
                 <div className="row-form row-flex">
                   <div className="form-item">
                     <label>
-                      <div className="type">{isEn ? `Email address` : '电子邮箱'}</div>
+                      <div style={{color: domain?.theme}} className="type">{isEn ? `Email address` : '电子邮箱'}</div>
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos">
                           <img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" />
                         </div>
                         <Field
+                          style={{borderColor: domain?.theme}}
                           required
                           className="email"
                           name="email"
@@ -194,13 +189,14 @@ export default function () {
                   </div>
                   <div className="form-item">
                     <label>
-                      <div className="type">{isEn ? 'Phone' : "联系电话"}</div>
+                      <div style={{color: domain?.theme}} className="type">{isEn ? 'Phone' : "联系电话"}</div>
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos">
                           <img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" />
                         </div>
                         <Field
+                          style={{borderColor: domain?.theme}}
                           required
                           className="phone"
                           name="phone"
@@ -213,13 +209,14 @@ export default function () {
                 <div className="row-form">
                   <div className="form-item">
                     <label>
-                      <div className="type">{isEn ? 'Consultation content' : "咨询内容"}</div>
+                      <div style={{color: domain?.theme}} className="type">{isEn ? 'Consultation content' : "咨询内容"}</div>
                       <div className="input">
                         {/* @ts-ignore */}
                         <div className="icon-pos">
                           <img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" />
                         </div>
                         <Field
+                          style={{borderColor: domain?.theme}}
                           as={'textarea'}
                           required
                           className="description"
@@ -235,10 +232,7 @@ export default function () {
                   {size?.width > 580 && (
                     <div className="d-none d-md-block d-sm-block">
                       <div className="form-btn">
-                        <button type="submit">
-                          <div className="icon">
-                            <img src="https://www.hello-tech.com/images/icon-submit905db2b91e8886c73463d3baac6e8016.png" />
-                          </div>
+                        <button  style={{color: domain?.theme,borderColor: domain?.theme}} type="submit">                          
                           {isEn ? `Submit` : '提交咨询'}
                         </button>
                       </div>
@@ -247,10 +241,7 @@ export default function () {
                   {size?.width <= 580 && (
                     <div className="d-block d-sm-none">
                       <div className="form-btn-sm">
-                        <button type="submit">
-                          <div className="icon">
-                            <img src="https://www.hello-tech.com/images/icon-submit-whited9dba3b183484245df6107d0d3e1a603.png" />
-                          </div>
+                        <button type="submit">                          
                           {isEn ? `Submit` : '提交咨询'}
                         </button>
                       </div>
@@ -261,7 +252,7 @@ export default function () {
             </div>
             {size?.width > 580 && (
               <div className="d-none d-md-block d-sm-block">
-                <div className="text-box wow fadeInDown">
+                <div style={{color: domain?.theme}} className="text-box wow fadeInDown">
                   {
                     isEn ? `If you want to be our distributor, please email to sales@jackery.com and hope for your cooperation.` : '经销加盟联系邮箱sales@hello-tech.com，期待与您合作，互利共赢。'
                   }
@@ -301,7 +292,7 @@ export default function () {
       </div>
       {/* shopFooter */}
       <ShopFooter />
-      {/*  */}
+      {/* footer */}
       <Footer />
     </div>
   );
