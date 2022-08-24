@@ -82,7 +82,7 @@ function App() {
           <Route path="/brand/storage" element={<Storage />} />        
           <Route path="/brand/solar" element={<Solar />} />        
           <Route path="/brand/part" element={<Part />} />        
-          <Route path="/contact" element={<Contact />} />        
+          <Route path="/contact" element={<Dealers />} />        
           <Route path="/contact/dealers" element={<Dealers />} />        
           <Route path="/contact/join" element={<Join />} />        
         </AnimatedRoutes>

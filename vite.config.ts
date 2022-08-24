@@ -21,7 +21,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://106.13.197.84:8082',
+        // target: 'http://106.13.197.84:8082',
+        target: 'https://www.keeplive.xyz',        
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

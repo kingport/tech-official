@@ -378,3 +378,31 @@ export const getCompanyId = async (params: IGetCompanyIdResultReq) => {
   const res = await axios.get(`/front/domain`, { params });
   return res?.data as ICompanyIdResult | undefined;
 };
+
+// 获取商业合作信息
+export interface IGetCooperateInfoResultReq {
+  subtitleId?: number;
+  language?: string;
+}
+export interface ICooperateInfoResult {
+  pc: any,
+  h5: any
+}
+export const getCooperateInfo= async (params: IGetCooperateInfoResultReq) => {
+  const res = await axios.get(`/front/cooperate`, { params });
+  return res?.data as ICooperateInfoResult | undefined;
+};
+
+// 获取精英加盟信息
+export interface IGetEliteResultReq {
+  subtitleId?: number;
+  language?: string;
+}
+export interface IEliteResult {
+  pc: any,
+  h5: any
+}
+export const getEliteInfo= async (params: IGetEliteResultReq) => {
+  const res = await axios.get(`/front/elite`, { params });
+  return res?.data as IEliteResult | undefined;
+};

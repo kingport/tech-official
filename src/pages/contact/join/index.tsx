@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import { appContext } from '../../../App';
 import Footer from '../../../components/Footer';
 import ShopFooter from '../../../components/ShopFooter';
 import SvgIcon from '../../../components/SvgIcon';
+import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
+import { useEliteInfoResult } from '../../../hooks/useEliteInfoResult';
+import { useMenusResult } from '../../../hooks/useMenusResult';
 import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
@@ -11,12 +15,39 @@ export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
   const isEn = getLanguage() === 'en';
+  const location: any = useLocation();
 
   const domain = useContext(appContext)
-  
+
+  let pathId = ''
+  if (!location?.state?.id) {
+    const { data: menusResult } = useMenusResult({
+      language: getLanguage(),
+      companyId: domain?.id,
+    });
+    menusResult?.pc?.topTitleVoList.map((x) => {
+      if(x.subtitleVoList) {
+        x.subtitleVoList.map((k:any) => {
+          if(k.path === window.location.pathname) {
+            pathId = k.subjectId
+          }
+        })
+      }
+    })
+  }  
+
+  const { data: eliteInfoResult } = useEliteInfoResult({
+    language: getLanguage(),
+    subtitleId: location?.state?.id || pathId,
+  });
+
   return (
     <div ref={target} className="content-main">
-      <div className="com-img">
+      <div
+        style={{
+          background: `url(${eliteInfoResult?.pc?.topImage}) center/cover no-repeat`,
+        }}
+        className="com-img">
         {size?.width > 580 && (
           <div className="info-box">
             <div style={{color: domain?.theme}} className="title">{isEn ? `JOIN US` : '精英加盟'}</div>
@@ -49,7 +80,11 @@ export default function () {
                 '我们会依据不同的员工职业发展路径规划，提供定制化、全方位、多角度的培训计划，并落实到公司制度、日常运作以及资源保障的各个层面。'
               }
               </div>
-              <div className="email-box">
+              <div 
+                style={{
+                  background: `url(${eliteInfoResult?.pc?.textImage}) center/contain no-repeat`,
+                }} 
+                className="email-box">
                 <div className="box">
                   <div style={{color: domain?.theme}} className="titles">{isEn ? `WELFARE BENEFITS` : '福利待遇'}</div>
                   <div className="subtitles">
@@ -65,7 +100,7 @@ export default function () {
             style={{
               background:
                 size?.width > 580
-                  ? `url(${'https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png'}) center bottom/contain no-repeat`
+                  ? `url(${eliteInfoResult?.pc?.textImage}) center bottom/contain no-repeat`
                   : 'none',
             }}
             className="form-info"

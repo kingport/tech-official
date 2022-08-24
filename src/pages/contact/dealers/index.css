@@ -58,7 +58,7 @@ form {
   align-items: center;
   justify-content: center;
   height: 750px;
-  background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png') center bottom/contain no-repeat;
+  /* background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png') center bottom/contain no-repeat; */
 }
 
 .form-info .info-box {

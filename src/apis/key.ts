@@ -33,3 +33,7 @@ export const RQ_BRAND_ACCESSORY = 'RQ_brand_accessory'
 export const RQ_STORE_LIST = 'RQ_store_list'
 // 获取公司ID
 export const RQ_COMPANY_ID = 'RQ_company_id'
+// 获取商业合作
+export const RQ_COOPERATE = 'RQ_cooperate'
+// 获取精英加盟
+export const RQ_ELITE = 'RQ_elite'

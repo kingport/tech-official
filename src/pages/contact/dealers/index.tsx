@@ -23,6 +23,7 @@ import Footer from '../../../components/Footer';
 import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
 import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
+import { useCooperateInfoResult } from '../../../hooks/useCooperateInfoResult';
 
 export default function () {
   const target = React.useRef(null);
@@ -48,9 +49,9 @@ export default function () {
         })
       }
     })
-  }
-  
-  const { data: storeListResult } = useStoreListResult({
+  }  
+
+  const { data: cooperateInfoResult } = useCooperateInfoResult({
     language: getLanguage(),
     subtitleId: location?.state?.id || pathId,
   });
@@ -95,7 +96,7 @@ export default function () {
       {/* banner图 */}
       <div
         style={{
-          background: `url(${`https://www.hello-tech.com/images/banner-contact-a2bf9a217fac14ee0aff88337625f1af2.jpg`}) center/cover no-repeat`,
+          background: `url(${cooperateInfoResult?.pc?.topImage}) center/cover no-repeat`,
         }}
         className="com-img"
       >
@@ -166,7 +167,9 @@ export default function () {
                 </div>
               </div>
             )}
-            <div className="form-info wow fadeInDown">
+            <div style={{
+               background: `url(${cooperateInfoResult?.pc?.textImage}) center bottom/contain no-repeat`,
+            }} className="form-info wow fadeInDown">
               <div style={{paddingTop: 100}} className="info-box">
                 <div className="row-form row-flex">
                   <div className="form-item">
@@ -277,7 +280,7 @@ export default function () {
           }}
           className="history-swiper"
         >
-          {storeListResult?.pc.imageList.map((item: any, index) => {
+          {cooperateInfoResult?.pc.imageList.map((item: any, index:any) => {
             return (
               <SwiperSlide key={index}>
                 <a className="product-box">

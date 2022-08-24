@@ -1,6 +1,4 @@
 .com-img {
-  background: url('https://www.hello-tech.com/images/banner-contact-bfc13756515aa581ae48dff9dc1206f3d.jpg')
-    center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +40,6 @@
   align-items: center;
   justify-content: center;
   height: 750px;
-  /* background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png') center bottom/contain no-repeat; */
 }
 .form-info .info-box {
   flex-basis: 80.5%;
@@ -132,8 +129,8 @@
 .oem-box .email-box {
   width: 100%;
   height: 185px;
-  background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png')
-    center/contain no-repeat;
+  /* background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png')
+    center/contain no-repeat; */
   position: relative;
 }
 .oem-box .email-box .box {
