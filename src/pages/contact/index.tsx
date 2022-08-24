@@ -2,12 +2,14 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
+import { getLanguage } from '../../utils';
 import './index.css';
 
 export default function () {
   // const location: any = useLocation()
   const navigator = useNavigate();
   // const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: location?.state?.id})
+  const isEn = getLanguage() === 'en';
 
   return (
     <div className="content-main">
@@ -21,9 +23,9 @@ export default function () {
           {/*  */}
           <div className="contact-item wow fadeInDown">
             <div className="info-box">
-              <div className="title">商业合作</div>
+              <div className="title">{isEn ? <div>BUSINESS<br />COOPERATION</div> : '商业合作'}</div>
               <a onClick={() => navigator('/contact/dealers')} className="text">
-                <span>获取联系方式</span>
+                <span>{isEn ? 'Get the contact details' : '获取联系方式'}</span>
                 <div className="icon">
                   <img
                     src="https://www.hello-tech.com/images/more26b3fb19a67970f8a4cfd333c2144d54.png"
@@ -42,9 +44,9 @@ export default function () {
           {/*  */}
           <div className="contact-item wow fadeInDown">
             <div className="info-box">
-              <div className="title">精英加盟</div>
+              <div className="title">{isEn ? 'JOIN US' : '精英加盟'}</div>
               <a className="text" onClick={() => navigator('/contact/join')}>
-                <span>获取联系方式</span>
+                <span>{isEn ? 'Get the contact details' : '获取联系方式'}</span>
                 <div className="icon">
                   <img
                     src="https://www.hello-tech.com/images/more26b3fb19a67970f8a4cfd333c2144d54.png"
@@ -74,7 +76,7 @@ export default function () {
                 </a>
               </div>
               <div className="madia-head wow fadeInDown">
-                <div className="title">深圳市华宝新能源股份有限公司</div>
+                <div className="title"></div>
                 <div className="line"></div>
               </div>
             </div>
