@@ -86,19 +86,12 @@ export default function () {
                 </div>
               </div>
               <div className="footer-logo-sm">
-                <div className="logo-item">
+                {/* <div className="logo-item">
                   <a href="" target="_blank">
                     <img src={footerResult?.quickCode} alt="" />
                   </a>
                 </div>
-                {/* <div className="logo-item">
-                  <a href="https://www.jackery.com" target="_blank">
-                    <img
-                      src="https://www.hello-tech.com/images/jackery-logo0bf0f38cddab4b996df749e7ecdf3792.png"
-                      alt=""
-                    />
-                  </a>
-                </div> */}
+                 */}
               </div>
             </div>
           </div>
