@@ -47,10 +47,11 @@ export default function():any {
       <div
         style={{
           minHeight: '100vh',
-          background: `url(${qualityResult?.pc?.topImage}) center/cover no-repeat`,
         }}
         className="com-img"
-      ></div>
+      >
+        <img src={qualityResult?.pc?.topImage} alt="" />
+      </div>
       {/* 质量方针 */}
       <div className="container">
         <div className="section-box">
@@ -268,12 +269,9 @@ export default function():any {
         </div>
       </div>
       {/* banner 图 */}
-      <div
-        style={{
-          background: `url(${qualityResult?.pc?.bottomImage}) center/cover no-repeat`,
-        }}
-        className="com-img com-img-footer"
-      ></div>
+      <div className="com-img com-img-footer">
+        <img src={qualityResult?.pc?.bottomImage} alt="" />
+      </div>
       {/* 环境方针 */}
       <div className="container-fluid">
         <div className="section-box">

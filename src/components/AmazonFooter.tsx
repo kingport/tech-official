@@ -32,7 +32,7 @@ export default function(props:any) {
               </Menu>
             }
           >
-          <Button style={{background: domain?.theme,marginRight: '100px'}} type='primary'>{'BUY NOW'}</Button>
+          <Button shape="round" size="large" style={{background: domain?.theme,marginRight: '100px',fontSize: 20, fontWeight: 'bold'}} type='primary'>{'BUY NOW'}</Button>
         </Dropdown>
       </div>
     </div>

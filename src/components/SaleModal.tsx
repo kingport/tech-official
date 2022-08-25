@@ -53,7 +53,7 @@ export default function () {
   });
 
   const [productImg,setProductImg] = React.useState('')
-  const [productId,setProductId] = React.useState('')
+  const [productId,setProductId] = React.useState(0)
 
   const initialValues = () => {
     return {
@@ -130,8 +130,12 @@ export default function () {
           <div className="form-l">
             <div className="form-header">
               <img src={formResult?.logoImageUrl} />
-              <p>{formResult?.title} 🎉</p>
-              <p style={{color: companyIdResult?.theme}}>{formResult?.discount}</p>
+              <p>{formResult?.productVoList.find((x) => x.brandId*1 === productId*1)?.title} 🎉</p>
+              {
+                productId && 
+               <p style={{color: companyIdResult?.theme}}>{formResult?.productVoList.find((x) => x.brandId*1 === productId*1).discount}</p>
+
+              }
               <p>When You Join Our Email List</p>
             </div>
             <div className="form">
@@ -191,7 +195,7 @@ export default function () {
                     }
                   )}
                   <button style={{background: companyIdResult?.theme}} className="submit-btn" type="submit">
-                    TAKE ME TO MY OFFER!
+                    Buy on amazon
                   </button>
                   <BuyUrl
                     onClick={() => {
@@ -203,7 +207,7 @@ export default function () {
                     style={{ marginTop: '25px' }}
                     color={companyIdResult?.theme}
                   >
-                    No Thanks, I Want To Pay Full Price
+                    Buy on Riwuct
                   </BuyUrl>
                 </Form>
               </Formik>

@@ -4,9 +4,10 @@
   z-index: 999;
   background-color: #fff;
   width: 100%;
-  padding: 20px;
+  padding: 10px 600px;
   -webkit-box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47); 
-box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47);
+  box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47);
+  
 }
 .amazon-item {
   display: flex;
@@ -22,12 +23,12 @@ box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47);
 }
 
 .description {
-  font-size: 20px;
+  font-size: 16px;
   padding-left: 12px;
 }
 
 .price {
-  font-size: 20px;
+  font-size: 14px;
   padding-left: 12px;
 }
 
