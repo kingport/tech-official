@@ -9,15 +9,16 @@ import { useLocation } from 'react-router-dom';
 import Footer from '../../../components/Footer';
 import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
+import AmazonFooter from '../../../components/AmazonFooter';
 
 function Part():any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
+  const domain = useContext(appContext)
   
   let pathId = ''
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
@@ -84,6 +85,7 @@ function Part():any {
         {/* shopFooter */}
         <ShopFooter />
         <Footer />
+        <AmazonFooter brandInfoResult={accessoryResult} domain={domain} />
       </div>
     </div>
   );

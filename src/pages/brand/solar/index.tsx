@@ -10,7 +10,16 @@ import Footer from '../../../components/Footer';
 import { useMenusResult } from '../../../hooks/useMenusResult';
 import { appContext } from '../../../App';
 import styled from '@emotion/styled';
+import AmazonFooter from '../../../components/AmazonFooter';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
+// import required modules
+import { Pagination, Autoplay } from 'swiper';
 const TextItem = styled.div`
   &::before {
       background: ${props => props.color}
@@ -52,12 +61,9 @@ function Solar():any {
     >
       <div className="content-main">
         {/* banner 背景图 */}
-        <div
-          style={{
-            background: `url(${brandInfoResult?.pc?.image}) center/cover no-repeat`,
-          }}
-          className="com-img-storage"
-        ></div>
+        <div className="com-img">
+          <img src={brandInfoResult?.pc?.image} alt="" />
+        </div>
         {/* 产品 */}
         <div className="d-none d-md-block d-sm-block">
           <div className="container">
@@ -189,9 +195,41 @@ function Solar():any {
             </div>
           </div>
         )}
+        {/* 产品轮播 */}
+        <div
+          style={{ background: '#fff' }}
+          className="development-wrapper-storage"
+        >
+          <Swiper
+            slidesPerView={size?.width > 580 ? 3 : 1}
+            spaceBetween={40}
+            modules={[Pagination, Autoplay]}
+            // navigation={true}
+            autoplay={{
+              delay: 1500,
+              disableOnInteraction: false,
+            }}
+            className="history-swiper"
+          >
+            {brandInfoResult?.pc?.slideList?.map((item: any, index) => {
+              return (
+                <SwiperSlide key={index}>
+                  <a className="product-box">
+                    <div className="product-img">
+                      <img src={item?.image} />
+                    </div>
+                    <p className="product-title">{item?.title}</p>
+                    <p className="product-text">{item?.content}</p>
+                  </a>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
         {/* shopFooter */}
         <ShopFooter />
         <Footer />
+        <AmazonFooter brandInfoResult={brandInfoResult} domain={domain} />
       </div>
     </div>
   );

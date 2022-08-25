@@ -257,7 +257,7 @@ export default function () {
               <div className="d-none d-md-block d-sm-block">
                 <div style={{color: domain?.theme}} className="text-box wow fadeInDown">
                   {
-                    isEn ? `If you want to be our distributor, please email to sales@jackery.com and hope for your cooperation.` : '经销加盟联系邮箱sales@hello-tech.com，期待与您合作，互利共赢。'
+                    isEn ? `If you want to be our distributor, please email to ${cooperateInfoResult?.pc?.email} and hope for your cooperation.` : `经销加盟联系邮箱${cooperateInfoResult?.pc?.email}，期待与您合作，互利共赢。`
                   }
                 </div>
               </div>

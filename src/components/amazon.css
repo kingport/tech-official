@@ -1,8 +1,12 @@
 .amazon-footer {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 0;
   z-index: 999;
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  -webkit-box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47); 
+box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47);
 }
 .amazon-item {
   display: flex;
@@ -19,13 +23,12 @@
 
 .description {
   font-size: 20px;
-  font-weight: 700;  
   padding-left: 12px;
 }
 
 .price {
   font-size: 20px;
-  font-weight: 700;
+  padding-left: 12px;
 }
 
 .card-custom-hover-style {

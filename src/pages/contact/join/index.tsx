@@ -88,7 +88,7 @@ export default function () {
                 <div className="box">
                   <div style={{color: domain?.theme}} className="titles">{isEn ? `WELFARE BENEFITS` : '福利待遇'}</div>
                   <div className="subtitles">
-                    {isEn ? <>Hello Tech welcome you to join us,<br /> please send your resume to hr@jackery.com</> : <>华宝新能欢迎您的加入，请联系：<br /> hr@hello-tech.com<br /></>}                    
+                    {isEn ? <>Hello Tech welcome you to join us,<br /> please send your resume to {eliteInfoResult?.pc?.email}</> : <>华宝新能欢迎您的加入，请联系：<br /> {eliteInfoResult?.pc?.email}<br /></>}                    
                   </div>
                 </div>
               </div>
@@ -244,7 +244,7 @@ export default function () {
             style={{ paddingBottom: 100,color: domain?.theme }}
             className="text-box wow fadeInDown"
           >
-            {isEn ? `Hello Tech welcome you to join us, please send your resume to hr@jackery.com` : `华宝新能欢迎您的加入，请联系：hr@hello-tech.com`}
+            {isEn ? `Hello Tech welcome you to join us, please send your resume to ${eliteInfoResult?.pc?.email}` : `华宝新能欢迎您的加入，请联系：${eliteInfoResult?.pc?.email}`}
           </div>
         )}
       </div>
