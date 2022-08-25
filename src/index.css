@@ -242,7 +242,7 @@ img {
   border-color: transparent !important;
 }
 .arco-divider-horizontal  {
-  border-bottom: none !important;
+  /* border-bottom: none !important; */
 }
 .video-react-video {
   height: 100%;

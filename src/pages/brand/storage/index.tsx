@@ -21,6 +21,7 @@ import Footer from '../../../components/Footer';
 import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
 import styled from '@emotion/styled';
+import AmazonFooter from '../../../components/AmazonFooter';
 
 
 const TextItem = styled.div`
@@ -272,6 +273,7 @@ function Storage():any {
         {/* shopFooter */}
         <ShopFooter />
         <Footer />
+        <AmazonFooter brandInfoResult={brandInfoResult} domain={domain} />
       </div>
     </div>
   );
