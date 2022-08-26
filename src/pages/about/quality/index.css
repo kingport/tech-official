@@ -377,7 +377,6 @@
 
 @media only screen and (max-width: 767px) {
   .row-store-m .store-text .title {
-    font-family: Source Han Sans CN;
     color: #000000;
     opacity: 0.9;
     font-size: 18px;
@@ -422,7 +421,6 @@
   font-size: 38px;
   font-weight: bold;
   color: #000000;
-  font-family: Source Han Sans CN;
 }
 
 .type-box {
@@ -433,6 +431,7 @@
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 100px;
+  padding-bottom: 30px;
 }
 
 .type-box .type-item:not(:last-child) {

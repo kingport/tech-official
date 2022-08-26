@@ -101,7 +101,6 @@
 }
 .oem-box .title {
   font-size: 24px;
-  font-family: Source Han Sans CN;
   font-weight: bold;
   padding-top: 32px;
   text-align: center;
@@ -114,7 +113,6 @@
 }
 .oem-box .subtitle {
   font-size: 14px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
   color: #000000;
   opacity: 0.9;
@@ -136,14 +134,12 @@
 }
 .oem-box .email-box .box .titles {
   font-size: 24px;
-  font-family: Source Han Sans CN;
   font-weight: bold;
   padding: 20px 0 8px 0;
   text-align: center;
 }
 .oem-box .email-box .box .subtitles {
   font-size: 14px;
-  font-family: Source Han Sans CN;
   font-weight: 500;
   text-align: center;
 }

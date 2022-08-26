@@ -155,13 +155,11 @@ button:disabled {
 
 .business-header-sm .title {
   font-size: 24px;
-  font-family: Source Han Sans CN;
   font-weight: bold;
 }
 
 .business-header-sm .subtitle {
   font-size: 14px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
   color: #000000;
   opacity: 0.9;
@@ -191,7 +189,6 @@ button:disabled {
 
 .business-email-box .email-box .box .title {
   font-size: 16px;
-  font-family: Source Han Sans CN;
   font-weight: bold;
   flex-wrap: wrap;
   padding-bottom: 10px;
@@ -199,7 +196,6 @@ button:disabled {
 
 .business-email-box .email-box .box .subtitle {
   font-size: 12px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
 }
 
