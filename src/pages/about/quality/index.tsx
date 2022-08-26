@@ -50,7 +50,7 @@ export default function():any {
         }}
         className="com-img"
       >
-        <img src={qualityResult?.pc?.topImage} alt="" />
+        <img style={{width: '100%'}} src={qualityResult?.pc?.topImage} alt="" />
       </div>
       {/* 质量方针 */}
       <div className="container">
@@ -270,7 +270,7 @@ export default function():any {
       </div>
       {/* banner 图 */}
       <div className="com-img com-img-footer">
-        <img src={qualityResult?.pc?.bottomImage} alt="" />
+        <img style={{width: '100%'}}  src={qualityResult?.pc?.bottomImage} alt="" />
       </div>
       {/* 环境方针 */}
       <div className="container-fluid">

@@ -62,7 +62,7 @@ function Solar():any {
       <div className="content-main">
         {/* banner 背景图 */}
         <div className="com-img">
-          <img src={brandInfoResult?.pc?.image} alt="" />
+          <img style={{width: '100%'}}  src={brandInfoResult?.pc?.image} alt="" />
         </div>
         {/* 产品 */}
         <div className="d-none d-md-block d-sm-block">
