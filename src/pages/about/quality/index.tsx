@@ -42,7 +42,7 @@ export default function():any {
   });
 
   return (
-    <div ref={target} className="content-main">
+    <div ref={target} className="content-main-quality">
       {/* banner */}
       <div
         style={{

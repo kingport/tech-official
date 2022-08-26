@@ -194,7 +194,7 @@ function Storage():any {
                     <div className="info-item-sm">
                       <div className="number">
                         {`0${current}`}
-                        <span>{x.title}</span>
+                        <span style={{color: domain?.theme}}>{x.title}</span>
                       </div>
                       <div className="subtitle">{x.subtitle}</div>
                     </div>

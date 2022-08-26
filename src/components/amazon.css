@@ -19,7 +19,6 @@
   width: 60px;
   height: auto;
   border-radius: 4px;
-  /* min-height: 100px; */
 }
 
 .description {
@@ -39,4 +38,22 @@
 
 .card-custom-hover-style:hover {
   transform: translateY(-4px);
+}
+.buy-now {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  .amazon-footer {
+    padding: 10px;
+  }
+  .buy-now  {
+    font-size: 12px;
+  }
+  .description {
+    font-size: 12px;
+  }
+  .price {
+    font-size: 12px;
+  }
 }

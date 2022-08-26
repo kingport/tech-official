@@ -1,4 +1,4 @@
-.com-img {
+.com-img-join {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,6 @@
   color: #fff;
 }
 .com-img .info-box .title {
-  color: #ff5b00;
 }
 .com-img .info-box .title {
   font-size: 46px;
@@ -57,7 +56,6 @@
 .row-flex .title {
   font-size: 24px;
   font-weight: bold;
-  color: #ff5b00;
   text-align: center;
 }
 .row-flex .text {
@@ -91,7 +89,6 @@
 }
 .item-group .item-box .type-box .type-title {
   font-size: 18px;
-  color: #ff5b00;
   margin-bottom: 10px;
   font-weight: bold;
 }
@@ -106,7 +103,6 @@
   font-size: 24px;
   font-family: Source Han Sans CN;
   font-weight: bold;
-  color: #ff5b00;
   padding-top: 32px;
   text-align: center;
 }
@@ -129,8 +125,6 @@
 .oem-box .email-box {
   width: 100%;
   height: 185px;
-  /* background: url('https://www.hello-tech.com/images/letter-bg2c0261315592068a94c83925f9824615.png')
-    center/contain no-repeat; */
   position: relative;
 }
 .oem-box .email-box .box {
@@ -144,7 +138,6 @@
   font-size: 24px;
   font-family: Source Han Sans CN;
   font-weight: bold;
-  color: #ff5b00;
   padding: 20px 0 8px 0;
   text-align: center;
 }
@@ -152,7 +145,6 @@
   font-size: 14px;
   font-family: Source Han Sans CN;
   font-weight: 500;
-  color: #ff5b00;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {

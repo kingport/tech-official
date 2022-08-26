@@ -295,7 +295,6 @@
 
 @media only screen and (max-width: 767px) {
   .storage-info {
-    /* margin-top: 50px; */
     background: #f8f8f8;
   }
 }
@@ -328,7 +327,6 @@
   font-size: 18px;
   font-family: Source Han Sans CN;
   font-weight: 500;
-  color: #FF5B00;
   margin-left: 10px;
 }
 
@@ -367,7 +365,6 @@
   align-items: center;
   justify-content: space-around;
   background: #ffff;
-  /* margin-bottom: 80px; */
   padding: 80px 185px;
 }
 

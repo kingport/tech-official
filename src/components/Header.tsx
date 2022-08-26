@@ -8,8 +8,8 @@ import { Drawer, Menu } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 import gsap from 'gsap';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
-import { appContext } from '../App';
 import styled from '@emotion/styled'
+import menuIcon from '../assets/menu.png'
 
 const CollapseItem = Collapse.Item;
 
@@ -90,7 +90,7 @@ export default function () {
         }
       });
     }else {
-      return navigate(item?.path, {
+      return navigate('/', {
         state: {
           id: item?.id,
         }
@@ -172,7 +172,7 @@ export default function () {
             </div>
             <div onClick={() => setVisible(true)} className="navbar-toggler">
               <img
-                src="https://www.hello-tech.com/js/../images/index-list4a6c0abf81033c3754b2b98eb0919726.png"
+                src={menuIcon}
                 alt="black"
               />
             </div>

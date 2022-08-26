@@ -6,7 +6,6 @@ import { appContext } from '../../App';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
 import { useCompanyResult } from '../../hooks/useCompanyResult';
-import { useHomeResult } from '../../hooks/useHomeResult';
 import { useMenusResult } from '../../hooks/useMenusResult';
 import { useSize } from '../../hooks/useSize';
 import { getLanguage } from '../../utils';
@@ -62,7 +61,7 @@ function About():any {
 
   return (
     <div ref={target} className="about-container">
-      <div className="content-main">
+      <div className="content-main-about">
         {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">
           <div className="info-box-about">
@@ -168,14 +167,15 @@ function About():any {
                     const isLast =
                       index + 1 === aboutResult?.pc.historyVoList.length;
                     return (
-                      <div
+                      <TimeItem
                         key={index}
                         className={`time-item wow fadeInDown ${
                           isLast ? 'active' : ''
                         }`}
+                        color={domain?.theme}
                       >
                         <div className="time-title">{item?.years}</div>
-                      </div>
+                      </TimeItem>
                     );
                   }
                 )}

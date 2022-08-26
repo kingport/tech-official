@@ -92,7 +92,7 @@ export default function () {
   const isEn = getLanguage() === 'en';
 
   return (
-    <div ref={target} className="content-main">
+    <div ref={target} className="content-main-dealers">
       {/* banner图 */}
       <div
         style={{
@@ -155,7 +155,10 @@ export default function () {
                   </div>
                 </div>
                 <div className="business-email-box wow fadeInDown">
-                  <div className="email-box">
+                  <div style={{
+                    border: `3px solid ${domain?.theme}`,
+                    borderRadius: "50px"      
+                  }} className="email-box">
                     <div className="box">
                       <div style={{color: domain?.theme}} className="title">
                         {
@@ -168,9 +171,10 @@ export default function () {
               </div>
             )}
             <div style={{
-               background: `url(${cooperateInfoResult?.pc?.textImage}) center bottom/contain no-repeat`,
+              border: `5px solid ${domain?.theme}`,
+              borderRadius: "50px"      
             }} className="form-info wow fadeInDown">
-              <div style={{paddingTop: 100}} className="info-box">
+              <div style={{paddingTop: size?.width > 580 ? 100 : 0}} className="info-box">
                 <div className="row-form row-flex">
                   <div className="form-item">
                     <label>
@@ -181,7 +185,7 @@ export default function () {
                           <img src="https://www.hello-tech.com/images/icon-email32138356288f847c44d6f23c323b0efb.png" />
                         </div>
                         <Field
-                          style={{borderColor: domain?.theme}}
+                          style={{border:`1px solid ${domain?.theme}`}}
                           required
                           className="email"
                           name="email"
@@ -199,7 +203,7 @@ export default function () {
                           <img src="https://www.hello-tech.com/images/icon-tel7e447f4e2eded844b45d0225abdbabfd.png" />
                         </div>
                         <Field
-                          style={{borderColor: domain?.theme}}
+                          style={{border:`1px solid ${domain?.theme}`}}
                           required
                           className="phone"
                           name="phone"
@@ -219,7 +223,7 @@ export default function () {
                           <img src="https://www.hello-tech.com/images/icon-msg3b18b506527cf1b06d810a1edee387fb.png" />
                         </div>
                         <Field
-                          style={{borderColor: domain?.theme}}
+                          style={{border:`1px solid ${domain?.theme}`}}
                           as={'textarea'}
                           required
                           className="description"
@@ -244,7 +248,7 @@ export default function () {
                   {size?.width <= 580 && (
                     <div className="d-block d-sm-none">
                       <div className="form-btn-sm">
-                        <button type="submit">                          
+                        <button style={{backgroundColor: domain?.theme}} type="submit">                          
                           {isEn ? `Submit` : '提交咨询'}
                         </button>
                       </div>

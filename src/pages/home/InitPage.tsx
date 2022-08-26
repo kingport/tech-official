@@ -27,7 +27,7 @@ export default function (props:any) {
   ]
 
   const resources = {    
-    poster: 'https://www.hello-tech.com/en/images/banner-a-en1cfb8768761cd0123a08b1334322788d.png'
+    poster: ''
   }
 
   return (

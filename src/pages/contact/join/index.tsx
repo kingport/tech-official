@@ -4,7 +4,6 @@ import { appContext } from '../../../App';
 import Footer from '../../../components/Footer';
 import ShopFooter from '../../../components/ShopFooter';
 import SvgIcon from '../../../components/SvgIcon';
-import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
 import { useEliteInfoResult } from '../../../hooks/useEliteInfoResult';
 import { useMenusResult } from '../../../hooks/useMenusResult';
 import { useSize } from '../../../hooks/useSize';
@@ -42,7 +41,7 @@ export default function () {
   });
 
   return (
-    <div ref={target} className="content-main">
+    <div ref={target} className="content-main-join">
       <div
         style={{
           background: `url(${eliteInfoResult?.pc?.topImage}) center/cover no-repeat`,
@@ -82,13 +81,14 @@ export default function () {
               </div>
               <div 
                 style={{
-                  background: `url(${eliteInfoResult?.pc?.textImage}) center/contain no-repeat`,
+                  border: `3px solid ${domain?.theme}`,
+                  borderRadius: "50px"  
                 }} 
                 className="email-box">
                 <div className="box">
                   <div style={{color: domain?.theme}} className="titles">{isEn ? `WELFARE BENEFITS` : '福利待遇'}</div>
-                  <div className="subtitles">
-                    {isEn ? <>Hello Tech welcome you to join us,<br /> please send your resume to {eliteInfoResult?.pc?.email}</> : <>华宝新能欢迎您的加入，请联系：<br /> {eliteInfoResult?.pc?.email}<br /></>}                    
+                  <div style={{color: domain?.theme}} className="subtitles">
+                    {isEn ? <>welcome you to join us,<br /> please send your resume to {eliteInfoResult?.pc?.email}</> : <>欢迎您的加入，请联系：<br /> {eliteInfoResult?.pc?.email}<br /></>}                    
                   </div>
                 </div>
               </div>
@@ -98,10 +98,12 @@ export default function () {
         <div className="join-box">
           <div
             style={{
-              background:
-                size?.width > 580
-                  ? `url(${eliteInfoResult?.pc?.textImage}) center bottom/contain no-repeat`
-                  : 'none',
+              // background:
+              //   size?.width > 580
+              //     ? `url(${eliteInfoResult?.pc?.textImage}) center bottom/contain no-repeat`
+              //     : 'none',
+              border: size?.width > 580 ? `5px solid ${domain?.theme}` : 'none',
+              borderRadius: "50px"  
             }}
             className="form-info"
           >
@@ -244,7 +246,7 @@ export default function () {
             style={{ paddingBottom: 100,color: domain?.theme }}
             className="text-box wow fadeInDown"
           >
-            {isEn ? `Hello Tech welcome you to join us, please send your resume to ${eliteInfoResult?.pc?.email}` : `华宝新能欢迎您的加入，请联系：${eliteInfoResult?.pc?.email}`}
+            {isEn ? `welcome you to join us, please send your resume to ${eliteInfoResult?.pc?.email}` : `欢迎您的加入，请联系：${eliteInfoResult?.pc?.email}`}
           </div>
         )}
       </div>
