@@ -65,6 +65,10 @@ body {
   overflow: auto;
 }
 
+body iframe {
+  bottom: 80px !important;
+}
+
 a {
   /* link 颜色单独设置 */
   color: var(--text-color);
@@ -252,4 +256,12 @@ img {
 }
 .vjs-fluid {
   height: 100vh !important;
+}
+
+.arco-dropdown-menu {
+  border: 1px solid transparent !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.arco-dropdown-menu-item, .arco-dropdown-menu-pop-header {
+  height: auto !important;
 }

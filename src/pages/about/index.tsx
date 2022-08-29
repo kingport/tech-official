@@ -55,7 +55,6 @@ function About():any {
   );
 
   const bannerStyle = {
-    background: `url(${aboutResult?.pc.topImageUrl}) no-repeat no-repeat`,
     minHeight: '100vh',
   };
 
@@ -64,11 +63,7 @@ function About():any {
       <div className="content-main-about">
         {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">
-          <div className="info-box-about">
-            <div className="title">
-              <img src={aboutResult?.pc?.logoUrl} alt="" />
-            </div>
-          </div>
+          <img style={{width: '100%'}} src={aboutResult?.pc?.topImageUrl} alt="" />
         </div>
         {/* 公司简介 */}
         <div className="container">
@@ -151,7 +146,7 @@ function About():any {
           <div className="development-bg d-block d-sm-none">
             <div
               style={{
-                background: `url(${aboutResult?.h5.historyImageUrl}) center/cover no-repeat`,
+                background: `url(${aboutResult?.h5?.historyImageUrl}) center/cover no-repeat`,
               }}
               className="development-box"
             >

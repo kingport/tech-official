@@ -7,7 +7,7 @@ import { Formik, Field, Form } from 'formik';
 import { useMutation } from 'react-query';
 import { postFormSumbit } from '../apis';
 import Snackbar, { SnackbarOrigin } from '@mui/material/Snackbar';
-import { Message, Modal } from '@arco-design/web-react';
+import { Message, Modal, Button } from '@arco-design/web-react';
 import { useSize } from '../hooks/useSize';
 import gsap from 'gsap';
 import { IconMinusCircleFill } from '@arco-design/web-react/icon';
@@ -24,7 +24,7 @@ const SaleBtn = styled.button`
     color: ${props => props.color}
   }
 `
-const BuyUrl = styled.a`
+const BuyUrl = styled(Button)`
  &:hover {
     color: ${props => props.color}
   }
@@ -91,6 +91,14 @@ export default function () {
     setProductId(formResult?.productVoList[0]?.brandId)
   }, [formResult]);
 
+  React.useEffect(() => {
+    if(open) {
+      gsap.to('.sale-container', { right: -120, duration: 0.5 });      
+    } else {
+      gsap.to('.sale-container', { right: 20, duration: 0.5 });
+    }
+  }, [open])
+
   return (
     <div ref={target}>
       <div
@@ -129,7 +137,12 @@ export default function () {
         <div className="form-container">
           <div className="form-l">
             <div className="form-header">
-              <img src={formResult?.logoImageUrl} />
+              {
+                size?.width > 580 && <img src={formResult?.logoImageUrl} />
+              }
+              {
+                size?.width < 580 && productImg &&  <img style={{width: '100%', height: '100px'}} src={productImg} />
+              }
               <p>{formResult?.productVoList.find((x) => x.brandId*1 === productId*1)?.title} 🎉</p>
               {
                 productId && 
@@ -198,6 +211,8 @@ export default function () {
                     Buy on amazon
                   </button>
                   <BuyUrl
+                    shape='round'
+                    type="primary"
                     onClick={() => {
                       if (formResult?.payUrl) {
                         window.location.href = formResult?.payUrl;

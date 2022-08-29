@@ -1,12 +1,15 @@
 import { Button, Dropdown, Menu,Drawer, Divider } from "@arco-design/web-react";
+import { IconFire, IconSend } from "@arco-design/web-react/icon";
 import React, { useState } from "react";
+import { useSize } from "../hooks/useSize";
 import './amazon.css'
 export default function(props:any) {
   const {brandInfoResult,domain} = props
-  const [visible, setVisible] = useState(false);
-  const [hasClose, setClose] = useState(true);
+  const target = React.useRef(null);
+  const size = useSize(target);
+
   return (
-    <div className="amazon-footer">
+    <div ref={target} className="amazon-footer">
       {/* 亚马逊 */}
       <div className="amazon-item">
         <div style={{display: 'flex', alignItems: 'center'}}>
@@ -17,18 +20,25 @@ export default function(props:any) {
           </div>            
         </div>
         <Dropdown
+            position="top"
+            trigger={size?.width > 580 ? 'hover' : 'click'}
             droplist={
               <Menu>
                 <Menu.Item
                   onClick={() => {
                     window.open(brandInfoResult?.pc?.amazonUrl)
                   }}
-                 key='1'>Amazon</Menu.Item>
+                  className="amazon"                  
+                 key='1'>
+                <IconSend style={{color: domain?.theme, fontSize: 32,paddingRight: 10}}  />  Amazon
+                </Menu.Item>
                 <Menu.Item
+                  className="amazon"                  
                   onClick={() => {
                     window.open(brandInfoResult?.pc?.independentUrl)
                   }}
-                 key='2'>Riwuct</Menu.Item>
+                 key='2'>
+                  <IconFire style={{color: domain?.theme, fontSize: 32, paddingRight: 10}} />Riwuct</Menu.Item>
               </Menu>
             }
           >

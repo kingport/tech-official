@@ -165,4 +165,10 @@
   .sale-description {
     font-size: 14px;
   }
+  .form-header p:nth-of-type(1) {
+    font-size: 16px;
+  }
+  .form-container {
+    display: block;
+  }
 }
