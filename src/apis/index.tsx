@@ -363,7 +363,7 @@ export interface IFormSumbitResult {}
 export const postCooperateSumbit = async (
   cooperateParam: IPostFormResultReq
 ) => {
-  return await axios.post(`/front/cooperate`, { ...cooperateParam });
+  return await axios.post(`/front/cooperate/save`, { ...cooperateParam });
 };
 
 // 获取公司ID

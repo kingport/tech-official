@@ -83,7 +83,7 @@ export default function () {
   // @ts-ignore
   const onSubmit = async (values: any, { setSubmitting, resetForm }) => {
     if (values) {
-      values.companyId = companyIdResult;
+      values.companyId = companyIdResult?.id;
       await mutation.mutate(values);
       resetForm();
     }
@@ -171,10 +171,10 @@ export default function () {
               </div>
             )}
             <div style={{
-              border: `5px solid ${domain?.theme}`,
+              border: size?.width > 580 ? `5px solid ${domain?.theme}` : 'none',
               borderRadius: "50px"      
             }} className="form-info wow fadeInDown">
-              <div style={{paddingTop: size?.width > 580 ? 100 : 0}} className="info-box">
+              <div className="info-box">
                 <div className="row-form row-flex">
                   <div className="form-item">
                     <label>
@@ -239,7 +239,7 @@ export default function () {
                   {size?.width > 580 && (
                     <div className="d-none d-md-block d-sm-block">
                       <div className="form-btn">
-                        <button  style={{color: domain?.theme,borderColor: domain?.theme}} type="submit">                          
+                        <button  style={{color: domain?.theme,border: `1px solid ${domain?.theme}`}} type="submit">                          
                           {isEn ? `Submit` : '提交咨询'}
                         </button>
                       </div>
