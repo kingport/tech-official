@@ -63,6 +63,7 @@ body {
   /* 文本颜色 */
   color: var(--text-color);
   overflow: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body iframe {

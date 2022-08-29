@@ -216,6 +216,7 @@ export default function():any {
                       className="middle-img"
                       src={qualityResult?.pc.productImage}
                       alt=""
+                      style={{margin: '50px auto'}}
                     />
                   </div>
                 </div>
