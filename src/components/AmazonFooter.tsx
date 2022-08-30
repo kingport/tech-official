@@ -1,12 +1,18 @@
-import { Button, Dropdown, Menu } from '@arco-design/web-react';
+import { Avatar, Button, Dropdown, Menu } from '@arco-design/web-react';
 import { IconFire, IconSend } from '@arco-design/web-react/icon';
 import React, { useState } from 'react';
 import { useSize } from '../hooks/useSize';
 import './amazon.css';
+import gsap from 'gsap';
+
 export default function (props: any) {
   const { brandInfoResult, domain } = props;
   const target = React.useRef(null);
   const size = useSize(target);
+
+  React.useEffect(() => {
+    gsap.to('.amazon-footer', { bottom: 0, duration: 1 });
+  }, []);
 
   return (
     <div ref={target} className="amazon-footer">
@@ -28,38 +34,25 @@ export default function (props: any) {
           trigger={size?.width > 580 ? 'hover' : 'click'}
           droplist={
             <Menu>
-              <Menu.Item
-                onClick={() => {
-                  window.open(brandInfoResult?.pc?.amazonUrl);
-                }}
-                className="amazon"
-                key="1"
-              >
-                <IconSend
-                  style={{
-                    color: domain?.theme,
-                    fontSize: 32,
-                    paddingRight: 10,
-                  }}
-                />{' '}
-                Amazon
-              </Menu.Item>
-              <Menu.Item
-                className="amazon"
-                onClick={() => {
-                  window.open(brandInfoResult?.pc?.independentUrl);
-                }}
-                key="2"
-              >
-                <IconFire
-                  style={{
-                    color: domain?.theme,
-                    fontSize: 32,
-                    paddingRight: 10,
-                  }}
-                />
-                Riwuct
-              </Menu.Item>
+              {brandInfoResult?.pc?.brandButtonVoList.map(
+                (x: any, index: any) => {
+                  return (
+                    <Menu.Item
+                      onClick={() => {
+                        window.open(x.turnUrl);
+                      }}
+                      className="amazon"
+                      key={index}
+                    >
+                      <Avatar size={24}>
+                        <img alt="avatar" src={x?.buttonUrl} />
+                      </Avatar>
+                      &nbsp;
+                      {x?.buttonDesc}
+                    </Menu.Item>
+                  );
+                }
+              )}
             </Menu>
           }
         >

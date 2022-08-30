@@ -1,13 +1,12 @@
 .amazon-footer {
   position: fixed;
-  bottom: 0;
+  bottom: -100px;
   z-index: 999;
   background-color: #fff;
   width: 100%;
   padding: 10px 600px;
-  -webkit-box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47); 
-  box-shadow: -2px -7px 16px -4px rgba(0,0,0,0.47);
-  
+  -webkit-box-shadow: -2px -7px 16px -4px rgba(0, 0, 0, 0.47);
+  box-shadow: -2px -7px 16px -4px rgba(0, 0, 0, 0.47);
 }
 .amazon-item {
   display: flex;
@@ -47,7 +46,7 @@
   .amazon-footer {
     padding: 10px;
   }
-  .buy-now  {
+  .buy-now {
     font-size: 12px;
   }
   .description {
