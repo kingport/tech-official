@@ -1,40 +1,84 @@
-import { Button, Dropdown, Menu,Drawer, Divider } from "@arco-design/web-react";
-import React, { useState } from "react";
-import './amazon.css'
-export default function(props:any) {
-  const {brandInfoResult,domain} = props
-  const [visible, setVisible] = useState(false);
-  const [hasClose, setClose] = useState(true);
+import { Avatar, Button, Dropdown, Menu } from '@arco-design/web-react';
+import { IconFire, IconSend } from '@arco-design/web-react/icon';
+import React, { useState } from 'react';
+import { useSize } from '../hooks/useSize';
+import './amazon.css';
+import gsap from 'gsap';
+import { getLanguage } from '../utils';
+
+export default function (props: any) {
+  const { brandInfoResult, domain } = props;
+  const target = React.useRef(null);
+  const size = useSize(target);
+  const isEn = getLanguage() === 'en';
+
+  React.useEffect(() => {
+    gsap.to('.amazon-footer', { bottom: 0, duration: 1 });
+  }, []);
+
   return (
-    <div className="amazon-footer">
+    <div ref={target} className="amazon-footer">
       {/* 亚马逊 */}
       <div className="amazon-item">
-        <div style={{display: 'flex', alignItems: 'center'}}>
-          <img className="amazon-img" src={brandInfoResult?.pc?.productIcon} />
-          <div style={{display: 'flex', flexDirection: 'column'}}>
-            <span className="description">{brandInfoResult?.pc?.productDesc}</span>
-            <span style={{color: domain?.theme}} className="price">{brandInfoResult?.pc?.price}</span>
-          </div>            
+        <div style={{ paddingRight: '32px' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <img
+              className="amazon-img"
+              src={brandInfoResult?.pc?.productIcon}
+            />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <span className="description">
+                {brandInfoResult?.pc?.productDesc}
+              </span>
+              <span style={{ color: domain?.theme }} className="price">
+                {brandInfoResult?.pc?.price}
+              </span>
+            </div>
+          </div>
         </div>
         <Dropdown
-            droplist={
-              <Menu>
-                <Menu.Item
-                  onClick={() => {
-                    window.open(brandInfoResult?.pc?.amazonUrl)
-                  }}
-                 key='1'>Amazon</Menu.Item>
-                <Menu.Item
-                  onClick={() => {
-                    window.open(brandInfoResult?.pc?.independentUrl)
-                  }}
-                 key='2'>Riwuct</Menu.Item>
-              </Menu>
-            }
+          position="top"
+          trigger={size?.width > 580 ? 'hover' : 'click'}
+          droplist={
+            <Menu>
+              {brandInfoResult?.pc?.brandButtonVoList.map(
+                (x: any, index: any) => {
+                  return (
+                    <Menu.Item
+                      onClick={() => {
+                        window.open(x.turnUrl);
+                      }}
+                      className="amazon"
+                      key={index}
+                    >
+                      <Avatar size={24}>
+                        <img alt="avatar" src={x?.buttonUrl} />
+                      </Avatar>
+                      &nbsp;
+                      {x?.buttonDesc}
+                    </Menu.Item>
+                  );
+                }
+              )}
+            </Menu>
+          }
+        >
+          <Button
+            className={'buy-now'}
+            shape="round"
+            size="large"
+            style={{ background: domain?.theme, fontWeight: 'bold' }}
+            type="primary"
           >
-          <Button shape="round" size="large" style={{background: domain?.theme,marginRight: '100px',fontSize: 20, fontWeight: 'bold'}} type='primary'>{'BUY NOW'}</Button>
+            {isEn ? 'BUY NOW' : '购买'}
+          </Button>
         </Dropdown>
       </div>
     </div>
-  )
+  );
 }

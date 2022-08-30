@@ -54,14 +54,11 @@
   max-width: 100px;
 }
 
-
-
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
   }
 }
-
 
 @media only screen and (max-width: 767px) {
   .footer-main {
@@ -98,12 +95,17 @@
   justify-content: center;
   flex-direction: column;
   font-size: 12px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
   color: #666666;
 }
 
-.footer-main .mall-wrapper-sm .mall-box-sm .make-a-box .make-a-sm .logo-item-sm img {
+.footer-main
+  .mall-wrapper-sm
+  .mall-box-sm
+  .make-a-box
+  .make-a-sm
+  .logo-item-sm
+  img {
   width: 64px;
   height: 40px;
 }
@@ -114,7 +116,6 @@
   justify-content: center;
   flex-direction: column;
   font-size: 12px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
   color: #666666;
 }
@@ -122,6 +123,7 @@
 .footer-main .mall-wrapper-sm .mall-box-sm .make-a-box .make-a-sm img {
   width: 100px;
   height: 55px;
+  /* height: 35px; */
 }
 
 .footer-main .mall-wrapper-sm .mall-box-sm .make-a-box .make-a-sm span {
@@ -134,7 +136,6 @@
   justify-content: center;
   flex-direction: column;
   font-size: 12px;
-  font-family: Source Han Sans CN;
   font-weight: 400;
   color: #666666;
 }
@@ -146,12 +147,21 @@
   padding: 10px 0 32px 0;
 }
 
-.footer-main .mall-wrapper-sm .mall-box-sm .footer-logo-sm .logo-item:first-child img {
+.footer-main
+  .mall-wrapper-sm
+  .mall-box-sm
+  .footer-logo-sm
+  .logo-item:first-child
+  img {
   width: 56px;
   height: 56px;
 }
 
-.footer-main .mall-wrapper-sm .mall-box-sm .footer-logo-sm .logo-item:last-child {
+.footer-main
+  .mall-wrapper-sm
+  .mall-box-sm
+  .footer-logo-sm
+  .logo-item:last-child {
   width: 119px;
   height: 47px;
 }

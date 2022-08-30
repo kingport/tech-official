@@ -11,35 +11,33 @@ import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
 
-export default function():any {
+export default function (): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-  
 
-  let pathId = ''
+  let pathId = '';
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
+    const domain = useContext(appContext);
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
     });
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
 
-  const { data: responsibilityResult } =
-    useResponsibilityResult({
-      language: getLanguage(),
-      subtitleId: location?.state?.id || pathId,
-    });
+  const { data: responsibilityResult } = useResponsibilityResult({
+    language: getLanguage(),
+    subtitleId: location?.state?.id || pathId,
+  });
 
   return (
     <div ref={target} className="content-main">

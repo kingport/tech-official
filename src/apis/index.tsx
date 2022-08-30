@@ -79,9 +79,11 @@ export interface IWindowResult {
   saleEnd: string;
   discount: string;
   productTurnUrl?: any;
+  pc: any;
+  h5: any;
 }
 export const getWindowInfo = async (params: IGetWindowResultReq) => {
-  const res = await axios.get(`/front/index/window/${params?.companyId}`);
+  const res = await axios.get(`/front/index/window/`, { params });
   return res?.data as IWindowResult | undefined;
 };
 
@@ -91,7 +93,8 @@ export interface IGetFormResultReq {
   language?: string;
 }
 export interface IFormResult {
-  fieldList: [];
+  pc: any;
+  h5: any;
   discount: string;
   title: string;
   logoImageUrl: string;
@@ -99,10 +102,10 @@ export interface IFormResult {
   productImageUrl: string;
   productTurnUrl: string;
   companyId: any;
-  productVoList: any[]
+  productVoList: any[];
 }
 export const getFieldForm = async (params: IGetFormResultReq) => {
-  const res = await axios.get(`/front/index/dialog/${params?.companyId}`);
+  const res = await axios.get(`/front/index/dialog/`, { params });
   return res?.data as IFormResult | undefined;
 };
 
@@ -363,7 +366,7 @@ export interface IFormSumbitResult {}
 export const postCooperateSumbit = async (
   cooperateParam: IPostFormResultReq
 ) => {
-  return await axios.post(`/front/cooperate`, { ...cooperateParam });
+  return await axios.post(`/front/cooperate/save`, { ...cooperateParam });
 };
 
 // 获取公司ID
@@ -385,10 +388,10 @@ export interface IGetCooperateInfoResultReq {
   language?: string;
 }
 export interface ICooperateInfoResult {
-  pc: any,
-  h5: any
+  pc: any;
+  h5: any;
 }
-export const getCooperateInfo= async (params: IGetCooperateInfoResultReq) => {
+export const getCooperateInfo = async (params: IGetCooperateInfoResultReq) => {
   const res = await axios.get(`/front/cooperate`, { params });
   return res?.data as ICooperateInfoResult | undefined;
 };
@@ -399,10 +402,10 @@ export interface IGetEliteResultReq {
   language?: string;
 }
 export interface IEliteResult {
-  pc: any,
-  h5: any
+  pc: any;
+  h5: any;
 }
-export const getEliteInfo= async (params: IGetEliteResultReq) => {
+export const getEliteInfo = async (params: IGetEliteResultReq) => {
   const res = await axios.get(`/front/elite`, { params });
   return res?.data as IEliteResult | undefined;
 };

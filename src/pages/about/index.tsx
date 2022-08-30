@@ -6,70 +6,68 @@ import { appContext } from '../../App';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
 import { useCompanyResult } from '../../hooks/useCompanyResult';
-import { useHomeResult } from '../../hooks/useHomeResult';
 import { useMenusResult } from '../../hooks/useMenusResult';
 import { useSize } from '../../hooks/useSize';
 import { getLanguage } from '../../utils';
 import HistorySwiper from './HistorySwiper';
 import './index.css';
 
-
 const TimeItem = styled.div`
   &::after {
-   background: ${props => props.color};
+    background: ${(props) => props.color};
   }
   &:not(:last-child)::before {
-   background: ${props => props.color};
+    background: ${(props) => props.color};
   }
-`
+`;
 const ArrowRight = styled.div`
-  border-top: 2px solid ${props => props.color};
-  border-right: 2px solid ${props => props.color};
-`
-function About():any {
+  border-top: 2px solid ${(props) => props.color};
+  border-right: 2px solid ${(props) => props.color};
+`;
+function About(): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
 
-  const domain = useContext(appContext)
+  const domain = useContext(appContext);
 
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
     companyId: domain?.id,
   });
 
-  let pathId = ''
+  let pathId = '';
   if (!location?.state?.id) {
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
-  
-  const { data: aboutResult } = useCompanyResult(
-    { language: getLanguage(), subtitleId: location?.state?.id || pathId }
-  );
+
+  const { data: aboutResult } = useCompanyResult({
+    language: getLanguage(),
+    subtitleId: location?.state?.id || pathId,
+  });
 
   const bannerStyle = {
-    background: `url(${aboutResult?.pc.topImageUrl}) no-repeat no-repeat`,
     minHeight: '100vh',
   };
 
   return (
     <div ref={target} className="about-container">
-      <div className="content-main">
+      <div className="content-main-about">
         {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">
-          <div className="info-box-about">
-            <div className="title">
-              <img src={aboutResult?.pc?.logoUrl} alt="" />
-            </div>
-          </div>
+          <img
+            style={{ width: '100%' }}
+            src={aboutResult?.pc?.topImageUrl}
+            alt=""
+          />
         </div>
         {/* 公司简介 */}
         <div className="container">
@@ -104,7 +102,9 @@ function About():any {
                   {item?.title}
                   {/* <span>{item?.content}</span> */}
                 </div>
-                <div style={{color: domain?.theme}} className="text">{item?.content}</div>
+                <div style={{ color: domain?.theme }} className="text">
+                  {item?.content}
+                </div>
               </div>
             ))}
           </div>
@@ -137,7 +137,12 @@ function About():any {
                       >
                         <div className="time-title">
                           {item?.years}
-                          {isLast && <ArrowRight color={domain?.theme} className="arrow-right"></ArrowRight>}
+                          {isLast && (
+                            <ArrowRight
+                              color={domain?.theme}
+                              className="arrow-right"
+                            ></ArrowRight>
+                          )}
                         </div>
                       </TimeItem>
                     );
@@ -152,7 +157,7 @@ function About():any {
           <div className="development-bg d-block d-sm-none">
             <div
               style={{
-                background: `url(${aboutResult?.h5.historyImageUrl}) center/cover no-repeat`,
+                background: `url(${aboutResult?.h5?.historyImageUrl}) center/cover no-repeat`,
               }}
               className="development-box"
             >
@@ -168,14 +173,15 @@ function About():any {
                     const isLast =
                       index + 1 === aboutResult?.pc.historyVoList.length;
                     return (
-                      <div
+                      <TimeItem
                         key={index}
                         className={`time-item wow fadeInDown ${
                           isLast ? 'active' : ''
                         }`}
+                        color={domain?.theme}
                       >
                         <div className="time-title">{item?.years}</div>
-                      </div>
+                      </TimeItem>
                     );
                   }
                 )}
@@ -184,7 +190,10 @@ function About():any {
           </div>
         )}
         {/* 发展历程 轮播*/}
-        <HistorySwiper historyVoList={aboutResult?.pc.historyVoList} domain={domain} />
+        <HistorySwiper
+          historyVoList={aboutResult?.pc.historyVoList}
+          domain={domain}
+        />
         {/* shopFooter */}
         <ShopFooter />
         <Footer />

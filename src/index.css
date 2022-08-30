@@ -33,6 +33,7 @@
 *::after {
   /* 设定字体 */
   /* font-family: 'Montserrat', sans-serif; */
+  font-family: 'Roboto', sans-serif;
   /* 设定 box-sizing 模式 */
   box-sizing: border-box;
   margin: 0;
@@ -62,7 +63,15 @@ body {
   /* 文本颜色 */
   color: var(--text-color);
   overflow: auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+@media only screen and (max-width: 767px) {
+  body iframe {
+    left: 5px !important;
+    bottom: 80px !important;
+  }
 }
 
 a {
@@ -242,7 +251,7 @@ img {
   border-color: transparent !important;
 }
 .arco-divider-horizontal  {
-  /* border-bottom: none !important; */
+  border-bottom: none !important;
 }
 .video-react-video {
   height: 100%;
@@ -252,4 +261,12 @@ img {
 }
 .vjs-fluid {
   height: 100vh !important;
+}
+
+.arco-dropdown-menu {
+  border: 1px solid transparent !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.arco-dropdown-menu-item, .arco-dropdown-menu-pop-header {
+  height: auto !important;
 }

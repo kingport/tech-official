@@ -8,11 +8,17 @@ import './shopFooter.css';
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
-  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({
+    domainName:
+      window.location.hostname === 'localhost'
+        ? 'test.wangdingkun.xyz'
+        : window.location.hostname,
+  });
 
-  const {
-    data: footerResult,
-  } = useFooterUrlResult({ language: getLanguage(), companyId: companyIdResult?.id });
+  const { data: footerResult } = useFooterUrlResult({
+    language: getLanguage(),
+    companyId: companyIdResult?.id,
+  });
 
   return (
     <div ref={target} className="footer-main">
@@ -21,10 +27,13 @@ export default function () {
           <div className="mall-wrapper">
             <div className="container">
               <div className="mall-box">
-                <div style={{width: '100%'}} className="mall-l">
-                  <div style={{width: '100%'}} className="make-box">
+                <div style={{ width: '100%' }} className="mall-l">
+                  <div style={{ width: '100%' }} className="make-box">
                     <div className="make-item">
-                      <div style={{justifyContent: 'space-between'}} className="make-a-box">
+                      <div
+                        style={{ justifyContent: 'space-between' }}
+                        className="make-a-box"
+                      >
                         {footerResult?.bottomUrlVoList.map(
                           (
                             item: { imageUrl: string; turnUrl: string },
@@ -36,7 +45,11 @@ export default function () {
                                 href={item?.turnUrl}
                                 key={index}
                                 target="_blank"
-                                style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
                               >
                                 <div className="logo-item">
                                   <img src={item?.imageUrl} alt="" />
@@ -86,12 +99,6 @@ export default function () {
                 </div>
               </div>
               <div className="footer-logo-sm">
-                {/* <div className="logo-item">
-                  <a href="" target="_blank">
-                    <img src={footerResult?.quickCode} alt="" />
-                  </a>
-                </div>
-                 */}
               </div>
             </div>
           </div>

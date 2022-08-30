@@ -12,3 +12,9 @@
 }
 
 
+@media only screen and (max-width: 767px) {
+  .footer {
+    padding-bottom: 0;
+    font-size: 12px;
+  }
+}

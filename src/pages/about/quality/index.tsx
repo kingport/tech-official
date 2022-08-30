@@ -11,38 +11,36 @@ import { useSize } from '../../../hooks/useSize';
 import { getLanguage } from '../../../utils';
 import './index.css';
 
-export default function():any {
+export default function (): any {
   const target = React.useRef(null);
   const size = useSize(target);
-  const location: any = useLocation();  
+  const location: any = useLocation();
 
-  let pathId = ''
+  let pathId = '';
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
+    const domain = useContext(appContext);
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
     });
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
 
-  const {
-    data: qualityResult,
-  } = useQualityResult({
+  const { data: qualityResult } = useQualityResult({
     language: getLanguage(),
     subtitleId: location?.state?.id || pathId,
   });
 
   return (
-    <div ref={target} className="content-main">
+    <div ref={target} className="content-main-quality">
       {/* banner */}
       <div
         style={{
@@ -50,7 +48,11 @@ export default function():any {
         }}
         className="com-img"
       >
-        <img src={qualityResult?.pc?.topImage} alt="" />
+        <img
+          style={{ width: '100%' }}
+          src={qualityResult?.pc?.topImage}
+          alt=""
+        />
       </div>
       {/* 质量方针 */}
       <div className="container">
@@ -58,7 +60,7 @@ export default function():any {
           <div className="title">{qualityResult?.pc?.ecoTitle}</div>
         </div>
         <div className="row-imgs">
-          {qualityResult?.pc.qualityPolicyList.map((x: any,index) => {
+          {qualityResult?.pc.qualityPolicyList.map((x: any, index) => {
             return (
               <div key={index} className="row-item">
                 <div className="img-box wow fadeIn">
@@ -216,6 +218,7 @@ export default function():any {
                       className="middle-img"
                       src={qualityResult?.pc.productImage}
                       alt=""
+                      style={{ margin: '50px auto' }}
                     />
                   </div>
                 </div>
@@ -270,7 +273,11 @@ export default function():any {
       </div>
       {/* banner 图 */}
       <div className="com-img com-img-footer">
-        <img src={qualityResult?.pc?.bottomImage} alt="" />
+        <img
+          style={{ width: '100%' }}
+          src={qualityResult?.pc?.bottomImage}
+          alt=""
+        />
       </div>
       {/* 环境方针 */}
       <div className="container-fluid">
