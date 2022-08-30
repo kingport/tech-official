@@ -8,8 +8,8 @@ import { Drawer, Menu } from '@arco-design/web-react';
 import { Collapse, Divider } from '@arco-design/web-react';
 import gsap from 'gsap';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
-import styled from '@emotion/styled'
-import menuIcon from '../assets/menu.png'
+import styled from '@emotion/styled';
+import menuIcon from '../assets/menu.png';
 
 const CollapseItem = Collapse.Item;
 
@@ -23,7 +23,7 @@ interface navParams {
 
 const NavItem = styled.span`
   &::before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     bottom: -5px;
@@ -31,16 +31,16 @@ const NavItem = styled.span`
     width: 0%;
     height: 3px;
     border-radius: 3px;
-    background-color: ${props => (props.color)};
+    background-color: ${(props) => props.color};
     transition: 0.3s ease;
   }
-`
+`;
 
 const ChildrenTitle = styled.div`
   &:hover {
-    color: ${props => props.color};
+    color: ${(props) => props.color};
   }
-`
+`;
 
 export default function () {
   const target = React.useRef(null);
@@ -50,8 +50,13 @@ export default function () {
   const [visible, setVisible] = React.useState<any>(false);
   const [isHomePage, setIsHomePage] = React.useState<any>(false);
 
-  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
-  
+  const { data: companyIdResult } = useCompanyIdResult({
+    domainName:
+      window.location.hostname === 'localhost'
+        ? 'test.wangdingkun.xyz'
+        : window.location.hostname,
+  });
+
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
     companyId: companyIdResult?.id,
@@ -64,38 +69,38 @@ export default function () {
     }
   }, [selectId]);
 
-  const location = useLocation()
+  const location = useLocation();
 
   React.useEffect(() => {
-    if(location.pathname === '/') { 
-      setIsHomePage(true)
-    }else {
-      setIsHomePage(false)
+    if (location.pathname === '/') {
+      setIsHomePage(true);
+    } else {
+      setIsHomePage(false);
     }
-  }, [location.pathname])  
+  }, [location.pathname]);
 
   const jumpToNav = (item: any) => {
-    if(item.subjectId) {
+    if (item.subjectId) {
       return navigate(item?.path, {
         state: {
           id: item?.subjectId,
-        }
+        },
       });
     }
 
-    if(item.id && item.subtitleVoList) {
+    if (item.id && item.subtitleVoList) {
       return navigate(item?.path, {
         state: {
           id: item?.subtitleVoList[0].subjectId,
-        }
+        },
       });
-    }else {
+    } else {
       return navigate('/', {
         state: {
           id: item?.id,
-        }
+        },
       });
-    }    
+    }
   };
 
   return (
@@ -130,7 +135,12 @@ export default function () {
                   className="nav-item nav-item-main"
                   key={nav.id}
                 >
-                  <NavItem color={companyIdResult?.theme} className="nav-item-a">{nav.title}</NavItem>
+                  <NavItem
+                    color={companyIdResult?.theme}
+                    className="nav-item-a"
+                  >
+                    {nav.title}
+                  </NavItem>
                 </div>
               ))}
             </div>
@@ -162,7 +172,8 @@ export default function () {
                   style={{
                     color:
                       localStorage.getItem('lang') === 'en'
-                        ? companyIdResult?.theme : ''
+                        ? companyIdResult?.theme
+                        : '',
                   }}
                   className="lang active"
                 >
@@ -171,10 +182,7 @@ export default function () {
               </div>
             </div>
             <div onClick={() => setVisible(true)} className="navbar-toggler">
-              <img
-                src={menuIcon}
-                alt="black"
-              />
+              <img src={menuIcon} alt="black" />
             </div>
           </div>
         </div>

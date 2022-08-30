@@ -13,46 +13,46 @@ import './index.css';
 import styled from '@emotion/styled';
 import { useCompanyIdResult } from '../../../hooks/useCompanyIdResult';
 
-
-
 const NewBox = styled.a`
   &:hover {
     .news-info .news-title {
-      color: ${props => props.color}
+      color: ${(props) => props.color};
     }
     .news-icon .iconfont {
-      color: ${props => props.color}
+      color: ${(props) => props.color};
     }
   }
-
-`
-export default function():any {
+`;
+export default function (): any {
   const target = React.useRef(null);
   const size = useSize(target);
   let navigate = useNavigate();
   const location: any = useLocation();
-  
-  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
-  
-  
-  let pathId = ''
+
+  const { data: companyIdResult } = useCompanyIdResult({
+    domainName:
+      window.location.hostname === 'localhost'
+        ? 'test.wangdingkun.xyz'
+        : window.location.hostname,
+  });
+
+  let pathId = '';
   if (!location?.state?.id) {
-    const domain = useContext(appContext)
+    const domain = useContext(appContext);
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
     });
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
-
 
   const { data: newsResult } = useNewsResult({
     language: getLanguage(),

@@ -14,7 +14,7 @@ export default function (props: any) {
 
   return (
     <div className="content-main">
-      <div  className="container">
+      <div className="container">
         <div
           className="news-head"
           dangerouslySetInnerHTML={{

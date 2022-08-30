@@ -13,34 +13,43 @@ import gsap from 'gsap';
 import { IconMinusCircleFill } from '@arco-design/web-react/icon';
 import { useCompanyIdResult } from '../hooks/useCompanyIdResult';
 import styled from '@emotion/styled';
+import Draggable from 'react-draggable';
 
 export interface State extends SnackbarOrigin {
   openSnackbar: boolean;
 }
 
-
 const SaleBtn = styled.button`
   &:hover {
-    color: ${props => props.color}
+    color: ${(props) => props.color};
   }
-`
+`;
 const BuyUrl = styled(Button)`
- &:hover {
-    color: ${props => props.color}
+  &:hover {
+    color: ${(props) => props.color};
   }
-`
+`;
 
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
 
   const [open, setOpen] = React.useState(false);
+  const [isDragging, setIsDragging] = React.useState<any>(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpen = (e: any) => {
+    // e.stopPropagation();
+    if (!isDragging) {
+      setOpen(true);
+    }
   };
 
-  const { data: companyIdResult } = useCompanyIdResult({domainName: window.location.hostname === 'localhost' ? "test.wangdingkun.xyz" : window.location.hostname});
+  const { data: companyIdResult } = useCompanyIdResult({
+    domainName:
+      window.location.hostname === 'localhost'
+        ? 'test.wangdingkun.xyz'
+        : window.location.hostname,
+  });
 
   const { data: windowResult } = useWindowResult({
     language: getLanguage(),
@@ -52,14 +61,14 @@ export default function () {
     companyId: companyIdResult?.id,
   });
 
-  const [productImg,setProductImg] = React.useState('')
-  const [productId,setProductId] = React.useState(0)
+  const [productImg, setProductImg] = React.useState('');
+  const [productId, setProductId] = React.useState(0);
 
   const initialValues = () => {
     return {
       first_name: '',
       email: '',
-      brandId: ''
+      brandId: '',
     };
   };
 
@@ -80,51 +89,98 @@ export default function () {
   const onSubmit = async (values: any) => {
     if (values) {
       values.companyId = companyIdResult?.id;
-      values.brandId = productId
+      values.brandId = productId;
       await mutation.mutate(values);
     }
   };
 
   React.useLayoutEffect(() => {
     gsap.to('.sale-container', { right: 20, duration: 0.5 });
-    setProductImg(formResult?.productVoList[0]?.imageUrl)
-    setProductId(formResult?.productVoList[0]?.brandId)
+
+    // if(size?.width > 580 ) {
+    //   gsap.to('.sale-container', { left: 20, right: 'auto', duration: 0.5 });
+    // }else {
+    // }
+    setProductImg(formResult?.productVoList[0]?.imageUrl);
+    setProductId(formResult?.productVoList[0]?.brandId);
   }, [formResult]);
 
   React.useEffect(() => {
-    if(open) {
-      gsap.to('.sale-container', { right: -120, duration: 0.5 });      
+    if (open) {
+      gsap.to('.sale-container', { right: -120, duration: 0.5 });
+
+      // if(size?.width > 580 ) {
+      // }else {
+      //   gsap.to('.sale-container', { right: -120, duration: 0.5 });
+      // }
     } else {
       gsap.to('.sale-container', { right: 20, duration: 0.5 });
+
+      // if(size?.width > 580 ) {
+      // }else {
+      //   gsap.to('.sale-container', { right: 20, duration: 0.5 });
+      // }
     }
-  }, [open])
+  }, [open]);
+
+  const eventControl = (event: { type: any }, info: any) => {
+    if (event.type === 'mousemove' || event.type === 'touchmove') {
+      setIsDragging(true);
+    }
+
+    if (event.type === 'mouseup' || event.type === 'touchend') {
+      setTimeout(() => {
+        setIsDragging(false);
+      }, 100);
+    }
+  };
 
   return (
-    <div ref={target}>
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-          gsap.to('.sale-container', { right: 20, duration: 0.5 });
-        }}
-        className="sale-container"
-      >
-        <div style={{background: companyIdResult?.theme}} className="sales-content">
-          <p className="sale-title">{windowResult?.title}</p>
-          <p className="sale-percent">{windowResult?.discount}</p>
-          <p className="sale-description">sale Ends:</p>
-          <p className="sale-description">{windowResult?.saleEnd}</p>
-          <SaleBtn color={companyIdResult?.theme} onClick={handleClickOpen} className="sale-btn">
-            REVEL OFFER
-          </SaleBtn>
-        </div>
-        <IconMinusCircleFill
-          onClick={(e) => {
-            e.stopPropagation();
-            gsap.to('.sale-container', { right: -120, duration: 0.5 });
-          }}
-          className="minus"
-          style={{ color: '#fff' }}
-        />
+    <>
+      <div ref={target}>
+        <Draggable
+          bounds={{ top: -600, left: 0, right: 0, bottom: 0 }}
+          handle=".sales-content"
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              gsap.to('.sale-container', { right: 20, duration: 0.5 });
+              // if(size?.width > 580 ) {
+              // }else {
+              //   gsap.to('.sale-container', { right: 20, left: 'none',duration: 0.5 });
+              // }
+            }}
+            className="sale-container"
+            style={{ background: companyIdResult?.theme }}
+          >
+            <div className="sales-content">
+              <p className="sale-title">{windowResult?.title}</p>
+              <p className="sale-percent">{windowResult?.discount}</p>
+              <p className="sale-description">sale Ends:</p>
+              <p className="sale-description">{windowResult?.saleEnd}</p>
+            </div>
+            <SaleBtn
+              color={companyIdResult?.theme}
+              onClick={handleClickOpen}
+              className="sale-btn"
+            >
+              REVEL OFFER
+            </SaleBtn>
+            <IconMinusCircleFill
+              onClick={(e) => {
+                e.stopPropagation();
+                gsap.to('.sale-container', { right: -120, duration: 0.5 });
+                // if(size?.width > 580 ) {
+                // }else {
+                //   gsap.to('.sale-container', { right: -120,left: 'none', duration: 0.5 });
+                // }
+              }}
+              className="minus"
+              style={{ color: '#fff' }}
+            />
+          </div>
+        </Draggable>
       </div>
       <Modal
         visible={open}
@@ -137,18 +193,30 @@ export default function () {
         <div className="form-container">
           <div className="form-l">
             <div className="form-header">
-              {
-                size?.width > 580 && <img src={formResult?.logoImageUrl} />
-              }
-              {
-                size?.width < 580 && productImg &&  <img style={{width: '100%', height: '100px'}} src={productImg} />
-              }
-              <p>{formResult?.productVoList.find((x) => x.brandId*1 === productId*1)?.title} 🎉</p>
-              {
-                productId && 
-               <p style={{color: companyIdResult?.theme}}>{formResult?.productVoList.find((x) => x.brandId*1 === productId*1).discount}</p>
-
-              }
+              {size?.width > 580 && <img src={formResult?.logoImageUrl} />}
+              {size?.width < 580 && productImg && (
+                <img
+                  style={{ width: '100%', height: '100px' }}
+                  src={productImg}
+                />
+              )}
+              <p>
+                {
+                  formResult?.productVoList.find(
+                    (x) => x.brandId * 1 === productId * 1
+                  )?.title
+                }{' '}
+                🎉
+              </p>
+              {productId && (
+                <p style={{ color: companyIdResult?.theme }}>
+                  {
+                    formResult?.productVoList.find(
+                      (x) => x.brandId * 1 === productId * 1
+                    ).discount
+                  }
+                </p>
+              )}
               <p>When You Join Our Email List</p>
             </div>
             <div className="form">
@@ -158,7 +226,7 @@ export default function () {
                     <label
                       className="field-label"
                       htmlFor={'brandId'}
-                      style={{color: companyIdResult?.theme}}
+                      style={{ color: companyIdResult?.theme }}
                     >
                       Product*
                     </label>
@@ -169,20 +237,22 @@ export default function () {
                       name={'brandId'}
                       placeholder=""
                       value={productId}
-                      onChange={(e:any) => {
-                        const imgurl = formResult?.productVoList.find((x) => x.brandId*1 === e.target.value*1).imageUrl
-                        setProductImg(imgurl)
-                        setProductId(e.target.value)
+                      onChange={(e: any) => {
+                        const imgurl = formResult?.productVoList.find(
+                          (x) => x.brandId * 1 === e.target.value * 1
+                        ).imageUrl;
+                        setProductImg(imgurl);
+                        setProductId(e.target.value);
                       }}
                       required
                     >
-                      {
-                        formResult?.productVoList?.map((x:any,index:any) => {
-                          return (
-                            <option key={index} value={x.brandId}>{x.brandName}</option>
-                          )
-                        })
-                      }
+                      {formResult?.productVoList?.map((x: any, index: any) => {
+                        return (
+                          <option key={index} value={x.brandId}>
+                            {x.brandName}
+                          </option>
+                        );
+                      })}
                     </Field>
                   </div>
                   {formResult?.fieldList.map(
@@ -192,7 +262,7 @@ export default function () {
                           <label
                             className="field-label"
                             htmlFor={item?.fieldKey}
-                            style={{color: companyIdResult?.theme}}
+                            style={{ color: companyIdResult?.theme }}
                           >
                             {item?.fieldName}*
                           </label>
@@ -207,11 +277,15 @@ export default function () {
                       );
                     }
                   )}
-                  <button style={{background: companyIdResult?.theme}} className="submit-btn" type="submit">
+                  <button
+                    style={{ background: companyIdResult?.theme }}
+                    className="submit-btn"
+                    type="submit"
+                  >
                     Buy on amazon
                   </button>
                   <BuyUrl
-                    shape='round'
+                    shape="round"
                     type="primary"
                     onClick={() => {
                       if (formResult?.payUrl) {
@@ -235,6 +309,6 @@ export default function () {
           )}
         </div>
       </Modal>
-    </div>
+    </>
   );
 }

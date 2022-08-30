@@ -23,7 +23,17 @@ export default function () {
           {/*  */}
           <div className="contact-item wow fadeInDown">
             <div className="info-box">
-              <div className="title">{isEn ? <div>BUSINESS<br />COOPERATION</div> : '商业合作'}</div>
+              <div className="title">
+                {isEn ? (
+                  <div>
+                    BUSINESS
+                    <br />
+                    COOPERATION
+                  </div>
+                ) : (
+                  '商业合作'
+                )}
+              </div>
               <a onClick={() => navigator('/contact/dealers')} className="text">
                 <span>{isEn ? 'Get the contact details' : '获取联系方式'}</span>
                 <div className="icon">

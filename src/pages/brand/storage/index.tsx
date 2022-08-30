@@ -23,36 +23,34 @@ import { useMenusResult } from '../../../hooks/useMenusResult';
 import styled from '@emotion/styled';
 import AmazonFooter from '../../../components/AmazonFooter';
 
-
 const TextItem = styled.div`
   &::before {
-    background: ${props => props.color}
+    background: ${(props) => props.color};
   }
-`
-function Storage():any {
+`;
+function Storage(): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-  const domain = useContext(appContext)
-  
-  let pathId = ''
+  const domain = useContext(appContext);
+
+  let pathId = '';
   if (!location?.state?.id) {
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
     });
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
 
-  
   const [active, setActive] = React.useState(1);
 
   const { data: brandInfoResult } = useBrandInfoResult({
@@ -61,10 +59,7 @@ function Storage():any {
   });
 
   return (
-    <div
-      ref={target}
-      className="about-container"
-    >
+    <div ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
         <div
@@ -95,7 +90,11 @@ function Storage():any {
                       {brandInfoResult?.pc?.productList[0]?.descList?.map(
                         (x, index) => {
                           return (
-                            <TextItem color={domain?.theme} key={index} className="text-item">
+                            <TextItem
+                              color={domain?.theme}
+                              key={index}
+                              className="text-item"
+                            >
                               {x}
                             </TextItem>
                           );
@@ -138,7 +137,12 @@ function Storage():any {
                       >
                         <div className="tips-wrapper">
                           <div className="tips-icon">
-                            <i style={{ background: active === current ? domain?.theme : ''}}></i>
+                            <i
+                              style={{
+                                background:
+                                  active === current ? domain?.theme : '',
+                              }}
+                            ></i>
                           </div>
                           <div className="tips-title">{x.title}</div>
                         </div>
@@ -162,12 +166,17 @@ function Storage():any {
                         <div className="info-item">
                           <div className="item-l">
                             <div className="number">{`0${current}`}</div>
-                            <div  className="title">
+                            <div className="title">
                               {brandInfoResult?.pc.title}
                             </div>
                           </div>
                           <div className="item-r">
-                            <div style={{color: domain?.theme}} className="title">{x.title}</div>
+                            <div
+                              style={{ color: domain?.theme }}
+                              className="title"
+                            >
+                              {x.title}
+                            </div>
                             <div className="text">{x.subtitle}</div>
                           </div>
                         </div>
@@ -194,7 +203,7 @@ function Storage():any {
                     <div className="info-item-sm">
                       <div className="number">
                         {`0${current}`}
-                        <span style={{color: domain?.theme}}>{x.title}</span>
+                        <span style={{ color: domain?.theme }}>{x.title}</span>
                       </div>
                       <div className="subtitle">{x.subtitle}</div>
                     </div>

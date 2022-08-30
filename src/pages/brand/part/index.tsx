@@ -11,39 +11,36 @@ import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
 import AmazonFooter from '../../../components/AmazonFooter';
 
-function Part():any {
+function Part(): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-  const domain = useContext(appContext)
-  
-  let pathId = ''
+  const domain = useContext(appContext);
+
+  let pathId = '';
   if (!location?.state?.id) {
     const { data: menusResult } = useMenusResult({
       language: getLanguage(),
       companyId: domain?.id,
     });
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
-  
+
   const { data: accessoryResult } = useAccessoryResult({
     language: getLanguage(),
     subtitleId: location?.state?.id || pathId,
   });
 
   return (
-    <div
-      ref={target}
-      className="about-container"
-    >
+    <div ref={target} className="about-container">
       <div className="content-main">
         {/* banner 背景图 */}
         <div

@@ -1,22 +1,19 @@
 .sale-container {
   position: fixed;
-  bottom: 100px;
-  right: -200px;
-  z-index: 9999;  
+  bottom: 20px;
+  z-index: 9999;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 2px 17px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 2px 17px 2px rgba(0, 0, 0, 0.3);
 }
 
 .sales-content {
-  padding: 20px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  -webkit-box-shadow: -1px 2px 17px 2px rgba(0,0,0,0.3); 
-  box-shadow: -1px 2px 17px 2px rgba(0,0,0,0.3);
 }
-
-
 
 .sale-btn {
   width: 100%;
@@ -124,7 +121,7 @@
   height: 100%;
 }
 
-@media screen and (max-width: 580px)  {
+@media screen and (max-width: 580px) {
   .form-header {
     padding: 0;
   }
@@ -156,10 +153,9 @@
 
 @media only screen and (max-width: 767px) {
   .sales-content {
-    padding: 12px;
     font-size: 12px;
   }
-  .sale-percent  {
+  .sale-percent {
     font-size: 20px;
   }
   .sale-description {

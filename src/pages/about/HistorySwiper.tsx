@@ -34,7 +34,9 @@ export default function HistorySwiper(props: Iprops) {
             return (
               <SwiperSlide key={index}>
                 <div className="swiper-item">
-                  <p style={{color: domain?.theme}} className="title">{item?.years}</p>
+                  <p style={{ color: domain?.theme }} className="title">
+                    {item?.years}
+                  </p>
                   {item?.event.map((x, index) => {
                     return (
                       <div className="development-text" key={index}>

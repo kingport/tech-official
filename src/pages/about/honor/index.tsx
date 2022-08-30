@@ -1,5 +1,4 @@
 // 荣誉资质
-
 import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -16,25 +15,25 @@ import Footer from '../../../components/Footer';
 import { appContext } from '../../../App';
 import { useMenusResult } from '../../../hooks/useMenusResult';
 
-export default function():any {
+export default function (): any {
   const location: any = useLocation();
-  
-  const domain = useContext(appContext)
+
+  const domain = useContext(appContext);
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
     companyId: domain?.id,
   });
-  let pathId = ''
+  let pathId = '';
   if (!location?.state?.id) {
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
 
   const { data: honorResult } = useHonorResult({
@@ -73,7 +72,7 @@ export default function():any {
       {/* 轮播 */}
       <div className="honor-wrapper">
         <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-          {honorResult?.pc?.bannerImageList?.map((x,index) => {
+          {honorResult?.pc?.bannerImageList?.map((x, index) => {
             return (
               <SwiperSlide key={index} className="honor-swiper-img">
                 <img src={x} />
@@ -91,7 +90,7 @@ export default function():any {
       >
         <div className="honor-info">
           <div className="info-item">
-            {honorResult?.pc?.eventList?.map((x,index) => {
+            {honorResult?.pc?.eventList?.map((x, index) => {
               return (
                 <div key={index} className="text-box wow fadeInDown">
                   <div className="icon">

@@ -12,47 +12,47 @@ import { getLanguage } from '../../utils';
 import HistorySwiper from './HistorySwiper';
 import './index.css';
 
-
 const TimeItem = styled.div`
   &::after {
-   background: ${props => props.color};
+    background: ${(props) => props.color};
   }
   &:not(:last-child)::before {
-   background: ${props => props.color};
+    background: ${(props) => props.color};
   }
-`
+`;
 const ArrowRight = styled.div`
-  border-top: 2px solid ${props => props.color};
-  border-right: 2px solid ${props => props.color};
-`
-function About():any {
+  border-top: 2px solid ${(props) => props.color};
+  border-right: 2px solid ${(props) => props.color};
+`;
+function About(): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
 
-  const domain = useContext(appContext)
+  const domain = useContext(appContext);
 
   const { data: menusResult } = useMenusResult({
     language: getLanguage(),
     companyId: domain?.id,
   });
 
-  let pathId = ''
+  let pathId = '';
   if (!location?.state?.id) {
     menusResult?.pc?.topTitleVoList.map((x) => {
-      if(x.subtitleVoList) {
-        x.subtitleVoList.map((k:any) => {
-          if(k.path === window.location.pathname) {
-            pathId = k.subjectId
+      if (x.subtitleVoList) {
+        x.subtitleVoList.map((k: any) => {
+          if (k.path === window.location.pathname) {
+            pathId = k.subjectId;
           }
-        })
+        });
       }
-    })
+    });
   }
-  
-  const { data: aboutResult } = useCompanyResult(
-    { language: getLanguage(), subtitleId: location?.state?.id || pathId }
-  );
+
+  const { data: aboutResult } = useCompanyResult({
+    language: getLanguage(),
+    subtitleId: location?.state?.id || pathId,
+  });
 
   const bannerStyle = {
     minHeight: '100vh',
@@ -63,7 +63,11 @@ function About():any {
       <div className="content-main-about">
         {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">
-          <img style={{width: '100%'}} src={aboutResult?.pc?.topImageUrl} alt="" />
+          <img
+            style={{ width: '100%' }}
+            src={aboutResult?.pc?.topImageUrl}
+            alt=""
+          />
         </div>
         {/* 公司简介 */}
         <div className="container">
@@ -98,7 +102,9 @@ function About():any {
                   {item?.title}
                   {/* <span>{item?.content}</span> */}
                 </div>
-                <div style={{color: domain?.theme}} className="text">{item?.content}</div>
+                <div style={{ color: domain?.theme }} className="text">
+                  {item?.content}
+                </div>
               </div>
             ))}
           </div>
@@ -131,7 +137,12 @@ function About():any {
                       >
                         <div className="time-title">
                           {item?.years}
-                          {isLast && <ArrowRight color={domain?.theme} className="arrow-right"></ArrowRight>}
+                          {isLast && (
+                            <ArrowRight
+                              color={domain?.theme}
+                              className="arrow-right"
+                            ></ArrowRight>
+                          )}
                         </div>
                       </TimeItem>
                     );
@@ -179,7 +190,10 @@ function About():any {
           </div>
         )}
         {/* 发展历程 轮播*/}
-        <HistorySwiper historyVoList={aboutResult?.pc.historyVoList} domain={domain} />
+        <HistorySwiper
+          historyVoList={aboutResult?.pc.historyVoList}
+          domain={domain}
+        />
         {/* shopFooter */}
         <ShopFooter />
         <Footer />
