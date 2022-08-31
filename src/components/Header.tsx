@@ -112,7 +112,7 @@ export default function () {
       <div className="container-fluid">
         <div className="header-box">
           <div className="header-l">
-            <div className="logo">
+            <div onClick={() => navigate('/')} className="logo">
               <img
                 style={{ width: size?.width > 580 ? '200px' : '100px' }}
                 className="navbar-logo"

@@ -62,3 +62,7 @@
   display: flex;
   align-items: center !important;
 }
+
+.amazon:hover {
+  background-color: transparent !important;
+}

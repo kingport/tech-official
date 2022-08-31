@@ -56,8 +56,12 @@ export default function (props: any) {
                       className="amazon"
                       key={index}
                     >
-                      <Avatar size={24}>
-                        <img alt="avatar" src={x?.buttonUrl} />
+                      <Avatar size={32}>
+                        <img
+                          style={{ width: '100%', height: '100%' }}
+                          alt="avatar"
+                          src={x?.buttonUrl}
+                        />
                       </Avatar>
                       &nbsp;
                       {x?.buttonDesc}

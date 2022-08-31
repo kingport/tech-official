@@ -1,6 +1,6 @@
 .sale-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 100px;
   z-index: 9999;
   padding: 20px;
   right: -200px;
