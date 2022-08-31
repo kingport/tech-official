@@ -1,4 +1,3 @@
-
 :root {
   /* header 高度 */
   --header-height: 6rem;
@@ -20,7 +19,6 @@
 
 /* 当宽度小于 1200px 时 */
 @media (max-width: 1200px) {
-
   /* 更新 root */
   :root {
     /* header 两侧 padding */
@@ -48,7 +46,6 @@
   -webkit-user-drag: none;
 }
 
-
 html,
 #root,
 body {
@@ -65,7 +62,6 @@ body {
   overflow: auto;
   -webkit-tap-highlight-color: transparent;
 }
-
 
 @media only screen and (max-width: 767px) {
   body iframe {
@@ -136,7 +132,7 @@ header nav a {
 }
 /* nav bar 文字下面加入动效 */
 header nav a::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   /* 底部留有空隙 */
@@ -182,7 +178,7 @@ header i:hover {
 }
 
 .content .info h2:nth-child(3)::after {
-  content: ".";
+  content: '.';
   color: var(--text-color); /* 通过伪元素形式添加不同颜色点号 */
 }
 
@@ -218,15 +214,14 @@ header i:hover {
 
 .background-svg {
   /*绝对定位防止 svg走形*/
-  position: absolute; 
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   /* 将额外部分隐藏，这样小车通过时不会超出边界形成违和感 */
-  overflow: hidden; 
+  overflow: hidden;
 }
-
 
 a {
   text-decoration: none;
@@ -250,7 +245,7 @@ img {
 .arco-collapse-item-active > .arco-collapse-item-header {
   border-color: transparent !important;
 }
-.arco-divider-horizontal  {
+.arco-divider-horizontal {
   border-bottom: none !important;
 }
 .video-react-video {
@@ -267,6 +262,11 @@ img {
   border: 1px solid transparent !important;
   background-color: rgba(0, 0, 0, 0.4) !important;
 }
-.arco-dropdown-menu-item, .arco-dropdown-menu-pop-header {
+.arco-dropdown-menu-item,
+.arco-dropdown-menu-pop-header {
   height: auto !important;
+}
+.vjs-loading-spinner {
+  /* 加载圆圈 */
+  display: none !important;
 }

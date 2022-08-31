@@ -4,7 +4,7 @@ import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
 
 export default function (props: any) {
-  const { video } = props;
+  const { video,poster } = props;
   const target = React.useRef(null);
   const size = useSize(target);
 
@@ -27,7 +27,7 @@ export default function (props: any) {
   ];
 
   const resources = {
-    poster: '',
+    poster: poster,
   };
 
   return (
