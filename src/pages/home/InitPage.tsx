@@ -4,7 +4,7 @@ import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
 
 export default function (props: any) {
-  const { video,poster } = props;
+  const { video, poster } = props;
   const target = React.useRef(null);
   const size = useSize(target);
 
@@ -37,10 +37,10 @@ export default function (props: any) {
           playerOptions={playerOptions}
           videojsOptions={videojsOptions}
           resources={resources}
-          onReady={(player) => console.log(player)}
-          onPlay={(e, _, second) => console.log('Play!')}
-          onPause={(e, _, second) => console.log('Pause!')}
-          onEnded={(e, _) => console.log('Ended!')}
+          onReady={(player) => {}}
+          onPlay={(e, _, second) => {}}
+          onPause={(e, _, second) => {}}
+          onEnded={(e, _) => {}}
           hideList={hideList}
         />
       )}

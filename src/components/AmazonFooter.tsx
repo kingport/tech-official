@@ -1,4 +1,4 @@
-import { Avatar, Button, Dropdown, Menu } from '@arco-design/web-react';
+import { Avatar, Image, Button, Dropdown, Menu } from '@arco-design/web-react';
 import { IconFire, IconSend } from '@arco-design/web-react/icon';
 import React, { useState } from 'react';
 import { useSize } from '../hooks/useSize';
@@ -45,7 +45,7 @@ export default function (props: any) {
           position="top"
           trigger={size?.width > 580 ? 'hover' : 'click'}
           droplist={
-            <Menu>
+            <Menu levelIndent={10}>
               {brandInfoResult?.pc?.brandButtonVoList.map(
                 (x: any, index: any) => {
                   return (
@@ -56,13 +56,16 @@ export default function (props: any) {
                       className="amazon"
                       key={index}
                     >
-                      <Avatar size={32}>
-                        <img
-                          style={{ width: '100%', height: '100%' }}
-                          alt="avatar"
-                          src={x?.buttonUrl}
-                        />
-                      </Avatar>
+                      <Image
+                        loader
+                        style={{
+                          width: '32px',
+                          height: '100%',
+                          borderRadius: '50%',
+                        }}
+                        alt="avatar"
+                        src={x?.buttonUrl}
+                      />
                       &nbsp;
                       {x?.buttonDesc}
                     </Menu.Item>
