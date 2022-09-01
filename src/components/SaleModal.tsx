@@ -71,9 +71,8 @@ export default function () {
   const mutation = useMutation(postFormSumbit, {
     onSuccess: (data: any, variables, context) => {
       if (data.code === 0) {
-        Message.success(data.msg);
-        if (formResult?.productTurnUrl) {
-          window.location.href = formResult?.productTurnUrl;
+        if (formResult?.pc?.productTurnUrl) {
+          window.location.href = formResult?.pc?.productTurnUrl;
         }
         setOpen(false);
       } else {
@@ -109,47 +108,45 @@ export default function () {
 
   return (
     <>
-      {
-        <div ref={target}>
-          <Draggable
-            bounds={{ top: -600, left: 0, right: 0, bottom: 0 }}
-            handle=".sales-content"
+      <div ref={target}>
+        <Draggable
+          bounds={{ top: -600, left: 0, right: 0, bottom: 0 }}
+          handle=".sales-content"
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              gsap.to('.sale-container', { right: 20, duration: 0.5 });
+            }}
+            className="sale-container"
+            style={{ background: companyIdResult?.theme }}
           >
-            <div
+            <div className="sales-content">
+              <p className="sale-title">{windowResult?.pc?.title}</p>
+              <p className="sale-percent">{windowResult?.pc?.discount}</p>
+              <p className="sale-description">
+                {isEn ? 'sale Ends:' : '销售截止:'}
+              </p>
+              <p className="sale-description">{windowResult?.pc?.saleEnd}</p>
+            </div>
+            <SaleBtn
+              color={companyIdResult?.theme}
+              onClick={handleClickOpen}
+              className="sale-btn"
+            >
+              {isEn ? 'REVEL OFFER' : '狂欢价格'}
+            </SaleBtn>
+            <IconMinusCircleFill
               onClick={(e) => {
                 e.stopPropagation();
-                gsap.to('.sale-container', { right: 20, duration: 0.5 });
+                gsap.to('.sale-container', { right: -120, duration: 0.5 });
               }}
-              className="sale-container"
-              style={{ background: companyIdResult?.theme }}
-            >
-              <div className="sales-content">
-                <p className="sale-title">{windowResult?.pc?.title}</p>
-                <p className="sale-percent">{windowResult?.pc?.discount}</p>
-                <p className="sale-description">
-                  {isEn ? 'sale Ends:' : '销售截止:'}
-                </p>
-                <p className="sale-description">{windowResult?.pc?.saleEnd}</p>
-              </div>
-              <SaleBtn
-                color={companyIdResult?.theme}
-                onClick={handleClickOpen}
-                className="sale-btn"
-              >
-                {isEn ? 'REVEL OFFER' : '狂欢价格'}
-              </SaleBtn>
-              <IconMinusCircleFill
-                onClick={(e) => {
-                  e.stopPropagation();
-                  gsap.to('.sale-container', { right: -120, duration: 0.5 });
-                }}
-                className="minus"
-                style={{ color: '#fff' }}
-              />
-            </div>
-          </Draggable>
-        </div>
-      }
+              className="minus"
+              style={{ color: '#fff' }}
+            />
+          </div>
+        </Draggable>
+      </div>
 
       <Modal
         visible={open}
@@ -206,10 +203,6 @@ export default function () {
                       {isEn ? 'Product*' : '产品*'}
                     </label>
                     <Select
-                      // type="text"
-                      // as="select"
-                      // className="field-input"
-                      // name={'brandId'}
                       placeholder=""
                       value={productId}
                       onChange={(value: any) => {
@@ -223,7 +216,6 @@ export default function () {
                         setProductH5Img(imgurlH5);
                         setProductId(value);
                       }}
-                      // required
                     >
                       {formResult?.pc?.productVoList?.map(
                         (x: any, index: any) => {
