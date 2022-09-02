@@ -1,14 +1,12 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import ShopFooter from '../../components/ShopFooter';
 import { getLanguage } from '../../utils';
 import './index.css';
 
 export default function () {
-  // const location: any = useLocation()
   const navigator = useNavigate();
-  // const { data: storeListResult} = useStoreListResult({language: getLanguage(), subtitleId: location?.state?.id})
   const isEn = getLanguage() === 'en';
 
   return (
@@ -20,7 +18,6 @@ export default function () {
       </div>
       <div className="contact-wrapper">
         <div className="contact-box">
-          {/*  */}
           <div className="contact-item wow fadeInDown">
             <div className="info-box">
               <div className="title">
@@ -51,7 +48,6 @@ export default function () {
               />
             </div>
           </div>
-          {/*  */}
           <div className="contact-item wow fadeInDown">
             <div className="info-box">
               <div className="title">{isEn ? 'JOIN US' : '精英加盟'}</div>
@@ -71,9 +67,7 @@ export default function () {
                 alt=""
               />
             </div>
-            {/* <div className="d-block d-sm-none"><img src="images/contact-b-smb04b0fc0c1c99bb15a50b9260ff42642.png" alt="" /></div> */}
           </div>
-          {/*  */}
           <div className="container-box">
             <div className="infos-item wow fadeInDown">
               <div className="d-none d-md-block d-sm-block">
@@ -91,7 +85,6 @@ export default function () {
               </div>
             </div>
           </div>
-          {/* shopFooter */}
           <ShopFooter />
           <Footer />
         </div>

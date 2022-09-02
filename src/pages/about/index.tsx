@@ -24,11 +24,11 @@ const ArrowRight = styled.div`
   border-top: 2px solid ${(props) => props.color};
   border-right: 2px solid ${(props) => props.color};
 `;
+
 function About(): any {
   const target = React.useRef(null);
   const size = useSize(target);
   const location: any = useLocation();
-
   const domain = useContext(appContext);
 
   const { data: menusResult } = useMenusResult({
@@ -61,7 +61,6 @@ function About(): any {
   return (
     <div ref={target} className="about-container">
       <div className="content-main-about">
-        {/* banner 背景图 */}
         <div style={bannerStyle} className="com-img">
           <img
             style={{ width: '100%' }}
@@ -69,7 +68,6 @@ function About(): any {
             alt=""
           />
         </div>
-        {/* 公司简介 */}
         <div className="container">
           <div style={{ paddingTop: 0 }} className="section-box">
             <div
@@ -85,7 +83,6 @@ function About(): any {
             ></div>
           </div>
         </div>
-        {/* 企业文化 */}
         <div className="culture-container">
           <div className="section-box" style={{ padding: 0 }}>
             <div
@@ -98,10 +95,7 @@ function About(): any {
           <div className="culture-wrapper">
             {aboutResult?.pc?.companyCultureVoList?.map((item, index) => (
               <div key={index} className="culture-info wow fadeInDown">
-                <div className="title">
-                  {item?.title}
-                  {/* <span>{item?.content}</span> */}
-                </div>
+                <div className="title">{item?.title}</div>
                 <div style={{ color: domain?.theme }} className="text">
                   {item?.content}
                 </div>
@@ -109,8 +103,6 @@ function About(): any {
             ))}
           </div>
         </div>
-        {/* 发展历程 Timeline */}
-        {/* PC */}
         {size?.width > 580 && (
           <div className="d-none d-md-block d-sm-block">
             <div
@@ -152,7 +144,6 @@ function About(): any {
             </div>
           </div>
         )}
-        {/* H5 */}
         {size?.width <= 580 && (
           <div className="development-bg d-block d-sm-none">
             <div
@@ -189,12 +180,10 @@ function About(): any {
             </div>
           </div>
         )}
-        {/* 发展历程 轮播*/}
         <HistorySwiper
           historyVoList={aboutResult?.pc.historyVoList}
           domain={domain}
         />
-        {/* shopFooter */}
         <ShopFooter />
         <Footer />
       </div>

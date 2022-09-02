@@ -42,7 +42,6 @@ function Part(): any {
   return (
     <div ref={target} className="about-container">
       <div className="content-main">
-        {/* banner 背景图 */}
         <div
           style={{
             minHeight: '100vh',
@@ -50,7 +49,6 @@ function Part(): any {
           }}
           className="com-img"
         ></div>
-        {/* 配件 */}
         <div className="row-part">
           {accessoryResult?.pc?.detailVoList?.map((x: any, index) => {
             return (
@@ -79,7 +77,6 @@ function Part(): any {
             );
           })}
         </div>
-        {/* shopFooter */}
         <ShopFooter />
         <Footer />
         <AmazonFooter brandInfoResult={accessoryResult} domain={domain} />

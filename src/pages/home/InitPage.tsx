@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSize } from '../../hooks/useSize';
 import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';

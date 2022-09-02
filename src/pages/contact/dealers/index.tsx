@@ -4,15 +4,12 @@ import './index.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
-// import required modules
 import { Pagination, Autoplay } from 'swiper';
 import { useSize } from '../../../hooks/useSize';
-import { useStoreListResult } from '../../../hooks/useStoreListResult';
 import { getLanguage } from '../../../utils';
 import { Formik, Field, Form } from 'formik';
 import { useMutation } from 'react-query';
@@ -28,7 +25,7 @@ import { useCooperateInfoResult } from '../../../hooks/useCooperateInfoResult';
 export default function () {
   const target = React.useRef(null);
   const size = useSize(target);
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const location: any = useLocation();
   const domain = useContext(appContext);
 
@@ -98,7 +95,6 @@ export default function () {
 
   return (
     <div ref={target} className="content-main-dealers">
-      {/* banner图 */}
       <div
         style={{
           background: `url(${cooperateInfoResult?.pc?.topImage}) center/cover no-repeat`,
@@ -316,7 +312,6 @@ export default function () {
           </Form>
         </Formik>
       </div>
-      {/* 线下门店 */}
       <div
         style={{ background: '#fff' }}
         className="development-wrapper-storage"
@@ -344,9 +339,7 @@ export default function () {
           })}
         </Swiper>
       </div>
-      {/* shopFooter */}
       <ShopFooter />
-      {/* footer */}
       <Footer />
     </div>
   );

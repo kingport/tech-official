@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-// Import Swiper React components
+import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 
-// import required modules
-import { Pagination, Navigation } from 'swiper';
+import { Pagination } from 'swiper';
 import { useSize } from '../../hooks/useSize';
 
 interface Iprops {

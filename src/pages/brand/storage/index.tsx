@@ -1,16 +1,13 @@
 // 便携储能
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import ShopFooter from '../../../components/ShopFooter';
 import { useSize } from '../../../hooks/useSize';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
-// import required modules
 import { Pagination, Autoplay } from 'swiper';
 
 import './index.css';
@@ -30,6 +27,7 @@ const TextItem = styled.div`
 `;
 function Storage(): any {
   const target = React.useRef(null);
+  const [active, setActive] = React.useState(1);
   const size = useSize(target);
   const location: any = useLocation();
   const domain = useContext(appContext);
@@ -51,8 +49,6 @@ function Storage(): any {
     });
   }
 
-  const [active, setActive] = React.useState(1);
-
   const { data: brandInfoResult } = useBrandInfoResult({
     language: getLanguage(),
     subtitleId: location?.state?.id || pathId,
@@ -61,14 +57,12 @@ function Storage(): any {
   return (
     <div ref={target} className="about-container">
       <div className="content-main">
-        {/* banner 背景图 */}
         <div
           style={{
             background: `url(${brandInfoResult?.pc?.image}) center/cover no-repeat`,
           }}
           className="com-img-storage"
         ></div>
-        {/* 产品 */}
         <div className="d-none d-md-block d-sm-block">
           <div className="container">
             <div className="row row-section">
@@ -107,7 +101,6 @@ function Storage(): any {
             </div>
           </div>
         </div>
-        {/* 多场景使用 PC */}
         {size?.width > 580 && (
           <div className="d-none d-md-block d-sm-block">
             <div className="com-wrapper">
@@ -188,7 +181,6 @@ function Storage(): any {
             </div>
           </div>
         )}
-        {/* 多场景使用 H5 */}
         {size?.width <= 580 && (
           <div className="d-block d-sm-none">
             <div className="storage-info">
@@ -213,7 +205,6 @@ function Storage(): any {
             </div>
           </div>
         )}
-        {/* 产品 */}
         <div className="d-none d-md-block d-sm-block">
           <div className="container">
             <div className="row row-section">
@@ -248,7 +239,6 @@ function Storage(): any {
             </div>
           </div>
         </div>
-        {/* 产品轮播 */}
         <div
           style={{ background: '#fff' }}
           className="development-wrapper-storage"
@@ -257,7 +247,6 @@ function Storage(): any {
             slidesPerView={size?.width > 580 ? 3 : 1}
             spaceBetween={40}
             modules={[Pagination, Autoplay]}
-            // navigation={true}
             autoplay={{
               delay: 1500,
               disableOnInteraction: false,
@@ -279,7 +268,6 @@ function Storage(): any {
             })}
           </Swiper>
         </div>
-        {/* shopFooter */}
         <ShopFooter />
         <Footer />
         <AmazonFooter brandInfoResult={brandInfoResult} domain={domain} />

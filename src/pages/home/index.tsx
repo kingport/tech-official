@@ -87,7 +87,10 @@ function Home(): any {
         >
           {size?.width > 580 && (
             <SwiperSlide>
-              <InitPage poster={homeResult?.pc?.topImage} video={homeResult?.pc?.video} />
+              <InitPage
+                poster={homeResult?.pc?.topImage}
+                video={homeResult?.pc?.video}
+              />
             </SwiperSlide>
           )}
           <SwiperSlide>

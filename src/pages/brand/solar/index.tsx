@@ -13,12 +13,10 @@ import styled from '@emotion/styled';
 import AmazonFooter from '../../../components/AmazonFooter';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/navigation';
-// import required modules
 import { Pagination, Autoplay } from 'swiper';
 const TextItem = styled.div`
   &::before {
@@ -57,7 +55,6 @@ function Solar(): any {
   return (
     <div ref={target} className="about-container">
       <div className="content-main">
-        {/* banner 背景图 */}
         <div className="com-img">
           <img
             style={{ width: '100%' }}
@@ -65,7 +62,6 @@ function Solar(): any {
             alt=""
           />
         </div>
-        {/* 产品 */}
         <div className="d-none d-md-block d-sm-block">
           <div className="container">
             <div className="row row-section">
@@ -104,7 +100,6 @@ function Solar(): any {
             </div>
           </div>
         </div>
-        {/* 多场景使用 PC */}
         {size?.width > 580 && (
           <div className="d-none d-md-block d-sm-block">
             <div className="com-wrapper">
@@ -185,7 +180,6 @@ function Solar(): any {
             </div>
           </div>
         )}
-        {/* 多场景使用 H5 */}
         {size?.width <= 580 && (
           <div className="d-block d-sm-none">
             <div className="storage-info">
@@ -210,7 +204,6 @@ function Solar(): any {
             </div>
           </div>
         )}
-        {/* 产品轮播 */}
         <div
           style={{ background: '#fff' }}
           className="development-wrapper-storage"
@@ -219,7 +212,6 @@ function Solar(): any {
             slidesPerView={size?.width > 580 ? 3 : 1}
             spaceBetween={40}
             modules={[Pagination, Autoplay]}
-            // navigation={true}
             autoplay={{
               delay: 1500,
               disableOnInteraction: false,
@@ -241,7 +233,6 @@ function Solar(): any {
             })}
           </Swiper>
         </div>
-        {/* shopFooter */}
         <ShopFooter />
         <Footer />
         <AmazonFooter brandInfoResult={brandInfoResult} domain={domain} />

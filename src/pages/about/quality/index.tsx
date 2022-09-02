@@ -41,7 +41,6 @@ export default function (): any {
 
   return (
     <div ref={target} className="content-main-quality">
-      {/* banner */}
       <div
         style={{
           minHeight: '100vh',
@@ -54,7 +53,6 @@ export default function (): any {
           alt=""
         />
       </div>
-      {/* 质量方针 */}
       <div className="container">
         <div className="section-box">
           <div className="title">{qualityResult?.pc?.ecoTitle}</div>
@@ -72,7 +70,6 @@ export default function (): any {
           })}
         </div>
       </div>
-      {/* 四大安全保障 */}
       <div className="store-bg">
         <div className="container">
           <div className="section-box">
@@ -80,7 +77,6 @@ export default function (): any {
               {qualityResult?.pc?.securityTitle}
             </div>
           </div>
-          {/*  PC */}
           {size?.width > 580 && (
             <div className="row row-store-pc">
               <div className="col-xs-12 col-md-4">
@@ -164,7 +160,6 @@ export default function (): any {
             </div>
           )}
 
-          {/* H5 */}
           {size?.width <= 580 && (
             <div className="row row-store-m">
               <div className="col-xs-12">
@@ -271,7 +266,6 @@ export default function (): any {
           )}
         </div>
       </div>
-      {/* banner 图 */}
       <div className="com-img com-img-footer">
         <img
           style={{ width: '100%' }}
@@ -279,7 +273,6 @@ export default function (): any {
           alt=""
         />
       </div>
-      {/* 环境方针 */}
       <div className="container-fluid">
         <div className="section-box">
           <div className="title">{qualityResult?.pc?.qualityTitle}</div>
@@ -294,7 +287,6 @@ export default function (): any {
           })}
         </div>
       </div>
-      {/* footer */}
       <ShopFooter />
       <Footer />
     </div>
