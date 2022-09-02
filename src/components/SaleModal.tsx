@@ -257,6 +257,7 @@ export default function () {
                             },
                           ]}
                           className="field"
+                          initialValue={'1'}
                         >
                           <Select placeholder="">
                             {dictResult?.map((x: any, index: any) => {

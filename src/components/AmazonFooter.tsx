@@ -57,7 +57,6 @@ export default function (props: any) {
                       key={index}
                     >
                       <Image
-                        loader
                         style={{
                           width: '32px',
                           height: '100%',
