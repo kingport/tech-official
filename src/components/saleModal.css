@@ -102,9 +102,7 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
-}
-
-.field-label {
+  margin-top: 10px;
 }
 
 .field-input {

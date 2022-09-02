@@ -410,3 +410,14 @@ export const getEliteInfo = async (params: IGetEliteResultReq) => {
   const res = await axios.get(`/front/elite`, { params });
   return res?.data as IEliteResult | undefined;
 };
+
+// 获取国家信息
+export interface IGetEliteResultReq {
+  subtitleId?: number;
+  language?: string;
+}
+
+export const getDictInfo = async (params: IGetEliteResultReq) => {
+  const res = await axios.get(`/front/dict?dictType=sys_country`, { params });
+  return res?.data as any;
+};
