@@ -1,18 +1,18 @@
 import React from 'react';
-import { useSize } from '../../hooks/useSize';
+import videojs from 'video.js';
 import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
-
+import videoPoster from './video.jpg';
 export default function (props: any) {
   const { video, poster } = props;
   const target = React.useRef(null);
-  const size = useSize(target);
-
-  const playerOptions: VREPlayer.IPlayerOptions = {
+  const [options, setOptions] = React.useState<VREPlayer.IPlayerOptions>({
     src: video,
     controls: false,
-    autoplay: 'play',
-  };
+    // autoplay: 'play',
+  });
+
+  // const playerOptions: VREPlayer.IPlayerOptions = options
 
   const videojsOptions = {
     fluid: true,
@@ -27,23 +27,28 @@ export default function (props: any) {
   ];
 
   const resources = {
-    poster: poster,
+    poster: videoPoster,
   };
 
   return (
     <div ref={target} className="home-init">
-      {size?.width > 580 && video && (
-        <VREPlayer
-          playerOptions={playerOptions}
-          videojsOptions={videojsOptions}
-          resources={resources}
-          onReady={(player) => {}}
-          onPlay={(e, _, second) => {}}
-          onPause={(e, _, second) => {}}
-          onEnded={(e, _) => {}}
-          hideList={hideList}
-        />
-      )}
+      <VREPlayer
+        playerOptions={options}
+        videojsOptions={videojsOptions}
+        resources={resources}
+        onReady={(player) => {
+          console.log('onReady');
+          setTimeout(() => {
+            player.play();
+          }, 500);
+        }}
+        onPlay={(e, _, second) => {
+          console.log('onPlay');
+        }}
+        onPause={(e, _, second) => {}}
+        onEnded={(e, _) => {}}
+        hideList={hideList}
+      />
     </div>
   );
 }

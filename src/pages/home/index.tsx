@@ -85,7 +85,7 @@ function Home(): any {
           className="mySwiper"
           onSlideChange={(e: any) => setActiveIndex(e.activeIndex)}
         >
-          {size?.width > 580 && (
+          {size?.width > 580 && homeResult && (
             <SwiperSlide>
               <InitPage
                 poster={homeResult?.pc?.topImage}

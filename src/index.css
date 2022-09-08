@@ -248,16 +248,6 @@ img {
 .arco-divider-horizontal {
   border-bottom: none !important;
 }
-.video-react-video {
-  height: 100%;
-}
-.vjs-poster {
-  background-size: cover;
-}
-.vjs-fluid {
-  height: 100vh !important;
-}
-
 .arco-dropdown-menu {
   border: 1px solid transparent !important;
   background-color: rgba(0, 0, 0, 0.4) !important;
@@ -265,6 +255,19 @@ img {
 .arco-dropdown-menu-item,
 .arco-dropdown-menu-pop-header {
   height: auto !important;
+}
+
+/* video style */
+.video-react-video {
+  /* height: 100%; */
+}
+.vjs-poster {
+  /* background-image: url(`./video.jpg`); */
+  background-size: cover;
+  z-index: 999;
+}
+.vjs-fluid {
+  /* height: 100vh !important; */
 }
 .vjs-loading-spinner {
   /* 加载圆圈 */

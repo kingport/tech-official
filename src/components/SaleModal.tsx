@@ -52,7 +52,7 @@ export default function () {
     useCompanyIdResult({
       domainName:
         window.location.hostname === 'localhost'
-          ? 'test.wangdingkun.xyz'
+          ? 'www.riwuctshop.com'
           : window.location.hostname,
     });
 
@@ -243,21 +243,22 @@ export default function () {
                     item: { fieldName: string; fieldKey: string },
                     index: any
                   ) => {
-                    if (item?.fieldKey === 'country') {
+                    if (item?.fieldKey === 'nation') {
                       return (
                         <FormItem
-                          label={isEn ? 'Country' : '国家'}
+                          label={isEn ? item.fieldName : '国家'}
                           field="country"
                           rules={[
                             {
                               required: true,
                               message: `${
-                                isEn ? 'Country' : '国家'
+                                isEn ? item.fieldName : '国家'
                               } is required`,
                             },
                           ]}
                           className="field"
                           initialValue={'1'}
+                          key={index}
                         >
                           <Select placeholder="">
                             {dictResult?.map((x: any, index: any) => {
