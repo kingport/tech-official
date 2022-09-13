@@ -52,7 +52,7 @@ export default function () {
     useCompanyIdResult({
       domainName:
         window.location.hostname === 'localhost'
-          ? 'www.riwuctshop.com'
+          ? 'www.lingxisz.xyz'
           : window.location.hostname,
     });
 

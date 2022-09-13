@@ -12,6 +12,8 @@ import { getLanguage } from '../../utils/index';
 import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { appContext } from '../../App';
+import { useMenusResult } from '../../hooks/useMenusResult';
+import axios from 'axios';
 
 function Home(): any {
   const target = React.useRef(null);
@@ -21,9 +23,18 @@ function Home(): any {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const domain = useContext(appContext);
 
+  const { data: menusResult } = useMenusResult({
+    language: getLanguage(),
+    companyId: domain?.id,
+  });
+
+  const menuHomeId = menusResult?.pc.topTitleVoList.find(
+    (x: any) => x.path === '/'
+  ).id;
+
   const { data: homeResult } = useHomeResult({
     language: getLanguage(),
-    topTitleId: location?.state?.id || domain?.id,
+    topTitleId: location?.state?.id || menuHomeId,
   });
 
   const renderNav = () => {

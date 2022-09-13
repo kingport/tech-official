@@ -72,7 +72,7 @@ function App() {
   const { data: companyIdResult } = useCompanyIdResult({
     domainName:
       window.location.hostname === 'localhost'
-        ? 'www.riwuctshop.com'
+        ? 'www.lingxisz.xyz'
         : window.location.hostname,
   });
 
@@ -87,9 +87,9 @@ function App() {
           <Route path="/about/responsibility" element={<Responsibility />} />
           <Route path="/about/news" element={<News />} />
           <Route path="/about/news/:id" element={<NewsDetail />} />
-          <Route path="/brand/storage" element={<Storage />} />
-          <Route path="/brand/solar" element={<Solar />} />
-          <Route path="/brand/part" element={<Part />} />
+          <Route path="/brand/product1" element={<Storage />} />
+          <Route path="/brand/product2" element={<Solar />} />
+          <Route path="/brand/product3" element={<Part />} />
           <Route path="/contact" element={<Dealers />} />
           <Route path="/contact/dealers" element={<Dealers />} />
           <Route path="/contact/join" element={<Join />} />
