@@ -29,16 +29,19 @@
   </script>
   <body>
     <div id="root"></div>
-    <!-- Messenger Chat Plugin Code -->
+    <!-- Messenger 聊天插件 Code -->
     <div id="fb-root"></div>
-    <!-- Your Chat Plugin code -->
-    <div id="fb-customer-chat" class="fb-customerchat"></div>    
+
+    <!-- Your 聊天插件 code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "110871848381881");
+      chatbox.setAttribute("page_id", "106959478812460");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
+
     <!-- Your SDK code -->
     <script>
       window.fbAsyncInit = function() {
@@ -47,7 +50,7 @@
           version          : 'v14.0'
         });
       };
-  
+
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
