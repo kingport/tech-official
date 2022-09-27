@@ -13,7 +13,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { appContext } from '../../App';
 import { useMenusResult } from '../../hooks/useMenusResult';
-import axios from 'axios';
 
 function Home(): any {
   const target = React.useRef(null);
@@ -98,10 +97,7 @@ function Home(): any {
         >
           {size?.width > 580 && homeResult && (
             <SwiperSlide>
-              <InitPage
-                poster={homeResult?.pc?.topImage}
-                video={homeResult?.pc?.video}
-              />
+              <InitPage video={homeResult?.pc?.video} />
             </SwiperSlide>
           )}
           <SwiperSlide>

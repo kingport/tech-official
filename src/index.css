@@ -258,18 +258,22 @@ img {
 }
 
 /* video style */
-.video-react-video {
-  /* height: 100%; */
-}
+/* .video-react-video {
+  height: 100%;
+} */
 .vjs-poster {
   /* background-image: url(`./video.jpg`); */
   background-size: cover;
   z-index: 999;
 }
-.vjs-fluid {
-  /* height: 100vh !important; */
-}
+/* .vjs-fluid {
+  height: 100vh !important;
+} */
 .vjs-loading-spinner {
   /* 加载圆圈 */
   display: none !important;
+}
+.video-js {
+  background: url('../src/pages/home/video.jpg') no-repeat no-repeat;
+  background-size: cover;
 }

@@ -32,7 +32,7 @@ export default function (): any {
   const { data: companyIdResult } = useCompanyIdResult({
     domainName:
       window.location.hostname === 'localhost'
-        ? 'www.lingxisz.xyz'
+        ? 'www.riwuctshop.com'
         : window.location.hostname,
   });
 
