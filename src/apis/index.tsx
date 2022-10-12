@@ -421,3 +421,14 @@ export const getDictInfo = async (params: IGetEliteResultReq) => {
   const res = await axios.get(`/front/dict?dictType=sys_country`, { params });
   return res?.data as any;
 };
+
+// 获取协议
+export interface IGetEliteResultReq {
+  subtitleId?: number;
+  language?: string;
+}
+
+export const getPolicy = async (params: IGetEliteResultReq) => {
+  const res = await axios.get(`/front/policy`, { params });
+  return res?.data as any;
+};

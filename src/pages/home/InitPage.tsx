@@ -2,9 +2,8 @@ import React from 'react';
 import videojs from 'video.js';
 import VREPlayer from 'videojs-react-enhanced';
 import 'video.js/dist/video-js.css';
-import videoPoster from './video.jpg';
 export default function (props: any) {
-  const { video } = props;
+  const { video,topImage } = props;
   const target = React.useRef(null);
   const [isPlay, setIsPay] = React.useState(false);
   const [options, setOptions] = React.useState<VREPlayer.IPlayerOptions>({
@@ -28,7 +27,7 @@ export default function (props: any) {
   ];
 
   const resources = {
-    poster: videoPoster,
+    poster: topImage,
   };
 
   return (
@@ -36,7 +35,7 @@ export default function (props: any) {
       <VREPlayer
         playerOptions={options}
         videojsOptions={videojsOptions}
-        // resources={resources}
+        resources={resources}
         onReady={(player) => {
           console.log('onReady');
           // player.play();

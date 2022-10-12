@@ -38,3 +38,5 @@ export const RQ_COOPERATE = 'RQ_cooperate';
 export const RQ_ELITE = 'RQ_elite';
 // 获取国家信息
 export const RQ_DICT = 'RQ_dict';
+// 获取协议
+export const RQ_POLICY = 'RQ_policy';

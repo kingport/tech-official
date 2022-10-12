@@ -24,6 +24,7 @@ import gsap from 'gsap';
 import { useCompanyIdResult } from './hooks/useCompanyIdResult';
 import { useDocumentTitle } from './hooks/useDocumentTitle';
 import SaleModal from './components/SaleModal';
+import Service from './pages/service/policy';
 
 export const appContext = React.createContext<any>(null);
 
@@ -94,6 +95,7 @@ function App() {
           <Route path="/contact" element={<Dealers />} />
           <Route path="/contact/dealers" element={<Dealers />} />
           <Route path="/contact/join" element={<Join />} />
+          <Route path="/service/policy" element={<Service />} />
         </AnimatedRoutes>
         {show && <SaleModal />}
       </appContext.Provider>

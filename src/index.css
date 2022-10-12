@@ -274,6 +274,6 @@ img {
   display: none !important;
 }
 .video-js {
-  background: url('../src/pages/home/video.jpg') no-repeat no-repeat;
+  background: none;
   background-size: cover;
 }

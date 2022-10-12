@@ -44,7 +44,7 @@ export default function () {
   const [open, setOpen] = React.useState(false);
   const formRef = useRef<any>();
 
-  const handleClickOpen = (e: any) => {
+  const handleClickOpen = () => {
     setOpen(true);
   };
 
@@ -106,6 +106,12 @@ export default function () {
       gsap.to('.sale-container', { right: 20, duration: 0.5 });
     }
   }, [open]);
+
+  React.useEffect(() => {
+    if (window.location.search === '?type=event') {
+      handleClickOpen();
+    }
+  }, []);
 
   if (companyLoading) return null;
 

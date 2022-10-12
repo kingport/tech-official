@@ -95,9 +95,9 @@ function Home(): any {
           className="mySwiper"
           onSlideChange={(e: any) => setActiveIndex(e.activeIndex)}
         >
-          {size?.width > 580 && homeResult && (
+          {size?.width > 580 && homeResult && homeResult?.pc?.video && (
             <SwiperSlide>
-              <InitPage video={homeResult?.pc?.video} />
+              <InitPage video={homeResult?.pc?.video} topImage={homeResult?.pc?.topImage}  />
             </SwiperSlide>
           )}
           <SwiperSlide>

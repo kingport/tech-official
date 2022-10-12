@@ -62,6 +62,23 @@ export default function () {
     companyId: companyIdResult?.id,
   });
 
+  const changeFavicon = (menusResult: any) => {
+    let link = menusResult?.pc?.icon;
+    let favicon: any = document.querySelector('link[rel="icon"]');
+    if (favicon !== null) {
+      favicon.href = link;
+    } else {
+      favicon = document.createElement('link');
+      favicon.rel = 'icon';
+      favicon.href = link;
+      document.head.appendChild(favicon);
+    }
+  };
+
+  React.useEffect(() => {
+    changeFavicon(menusResult);
+  }, [menusResult]);
+
   React.useEffect(() => {
     gsap.to('.children-nav', { height: 60, duration: 0.5 });
     if (selectId === 1) {
